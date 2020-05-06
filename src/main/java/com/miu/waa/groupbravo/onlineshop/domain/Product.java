@@ -12,6 +12,7 @@ public class Product extends DomainClass {
     private String name;
     private String description;
     private BigDecimal unitPrice=BigDecimal.ZERO;
+
     private User seller;
     @Enumerated(EnumType.STRING)
     private EProductStatus productStatus;
