@@ -12,8 +12,12 @@ public class Product extends DomainClass {
     private String name;
     private String description;
     private BigDecimal unitPrice=BigDecimal.ZERO;
+<<<<<<< HEAD
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="seller_id")
+=======
+
+>>>>>>> 828dba2ff260d52459a458ccad4c37cbec2ea942
     private User seller;
     @Enumerated(EnumType.STRING)
     private EProductStatus productStatus;
