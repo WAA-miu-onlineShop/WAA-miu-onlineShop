@@ -1,4 +1,4 @@
-package serviceImpl;
+package com.miu.waa.groupbravo.onlineshop.service.serviceImpl;
 import com.miu.waa.groupbravo.onlineshop.domain.EProductStatus;
 import com.miu.waa.groupbravo.onlineshop.domain.Product;
 import com.miu.waa.groupbravo.onlineshop.service.ProductService;
@@ -13,6 +13,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void addProduct(Product product) {
+        
         product.setProductStatus(EProductStatus.NEW);
     }
 
