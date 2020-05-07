@@ -9,8 +9,8 @@
         <module name="onlineshop" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="onlineshop" target="11" />
+    <bytecodeTargetLevel target="10">
+      <module name="onlineshop" target="10" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

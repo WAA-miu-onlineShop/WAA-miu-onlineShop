@@ -2,12 +2,19 @@ package com.miu.waa.groupbravo.onlineshop.domain;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import java.time.LocalDate;
-
+@Entity
 public class Following extends  DomainClass {
     private Boolean follow=Boolean.TRUE;
     private LocalDate date;
+    @OneToOne
+    @JoinColumn(name="seller_id")
     private User seller;
+    @OneToOne
+    @JoinColumn(name="buyer_id")
     private User buyer;
 
     public Boolean getFollow() {

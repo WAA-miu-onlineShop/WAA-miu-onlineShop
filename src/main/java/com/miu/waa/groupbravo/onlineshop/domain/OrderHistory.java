@@ -4,11 +4,19 @@ import java.time.LocalDateTime;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+import javax.persistence.*;
+
+@Entity
 public class OrderHistory extends  DomainClass {
     private String description;
     private LocalDateTime historyDate;
+   @OneToOne
+    @JoinColumn(name="order_id")
     private Order order;
+    @Enumerated(EnumType.STRING)
     private EOrderStatus orderStatus;
+    @OneToOne
+    @JoinColumn(name="user_id")
     private User user;
 
     public String getDescription() {
@@ -27,7 +35,7 @@ public class OrderHistory extends  DomainClass {
         this.historyDate = historyDate;
     }
 
-    public Order getOrder() {
+   public Order getOrder() {
         return order;
     }
 
@@ -51,7 +59,7 @@ public class OrderHistory extends  DomainClass {
         this.user = user;
     }
 
-    @Override
+/*    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
 
@@ -73,5 +81,5 @@ public class OrderHistory extends  DomainClass {
                 .append(order)
                 .append(orderStatus)
                 .toHashCode();
-    }
+    }*/
 }

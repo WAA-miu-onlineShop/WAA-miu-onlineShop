@@ -1,20 +1,25 @@
 package com.miu.waa.groupbravo.onlineshop.domain;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-
+@Entity(name="Orders")
 public class Order extends DomainClass {
     private String orderNumber;
     private BigDecimal totalAmount=BigDecimal.ZERO;
     private BigDecimal coupons=BigDecimal.ZERO;
     @Enumerated(EnumType.STRING)
     private EOrderStatus orderStatus;
+    @ManyToOne
+    @JoinColumn(name="buyer_id")
     private User buyer;
+   @OneToOne
+    @JoinColumn(name="shippingAddress_id")
     private Address shippingAddress;
+
+    @OneToMany(mappedBy = "order",cascade = CascadeType.ALL)
     private List<OrderLine> orderLineList;
 
     public String getOrderNumber() {
@@ -48,7 +53,6 @@ public class Order extends DomainClass {
     public void setOrderStatus(EOrderStatus orderStatus) {
         this.orderStatus = orderStatus;
     }
-
     public User getBuyer() {
         return buyer;
     }
@@ -57,7 +61,7 @@ public class Order extends DomainClass {
         this.buyer = buyer;
     }
 
-    public Address getShippingAddress() {
+   public Address getShippingAddress() {
         return shippingAddress;
     }
 
@@ -65,13 +69,13 @@ public class Order extends DomainClass {
         this.shippingAddress = shippingAddress;
     }
 
-    public List<OrderLine> getOrderLineList() {
-        return orderLineList;
-    }
+       public List<OrderLine> getOrderLineList() {
+           return orderLineList;
+       }
 
-    public void setOrderLineList(List<OrderLine> orderLineList) {
-        this.orderLineList = orderLineList;
-    }
+       public void setOrderLineList(List<OrderLine> orderLineList) {
+           this.orderLineList = orderLineList;
+       }
     @Override
     public int hashCode() {
         return new HashCodeBuilder().append(orderNumber).toHashCode();
@@ -86,5 +90,4 @@ public class Order extends DomainClass {
         return new EqualsBuilder().append(orderNumber, other.orderNumber).isEquals();
 
     }
-
 }

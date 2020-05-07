@@ -2,10 +2,16 @@ package com.miu.waa.groupbravo.onlineshop.domain;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import java.io.Serializable;
 import java.math.BigDecimal;
-
-public class Coupon  extends DomainClass{
+@Entity
+public class Coupon  extends DomainClass implements Serializable {
     private String couponNumber;
+    @OneToOne
+    @JoinColumn(name="buyer_id")
     private User buyer;
     private BigDecimal totalPoint=BigDecimal.ZERO;
 

@@ -4,13 +4,19 @@ import java.math.BigDecimal;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+import javax.persistence.*;
+
+@Entity
 public class OrderLine extends DomainClass {
     private String description;
     private BigDecimal quantity=BigDecimal.ZERO;
     private BigDecimal amount=BigDecimal.ZERO;
+    @ManyToOne
+    @JoinColumn(name="order_id")
     private Order order;
+    @OneToOne
+    @JoinColumn(name="product_id")
     private Product product;
-
     public String getDescription() {
         return description;
     }
@@ -35,7 +41,7 @@ public class OrderLine extends DomainClass {
         this.amount = amount;
     }
 
-    public Order getOrder() {
+  public Order getOrder() {
         return order;
     }
 
