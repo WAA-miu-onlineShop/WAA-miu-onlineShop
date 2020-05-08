@@ -62,7 +62,7 @@
                         <div class="">
                             <select class="form-control" id="roles" th:field="*{userRole}" required>
                                 <option value="">-Select Role-</option>
-                                <option th:each="role: ${roles}" th:value="${role.id}" th:text="${role.role}">
+                                <option th:each="role: ${roles}" th:value="${role.id}" th:text="${role.name}">
                                 </option>
                             </select>
                         </div>
