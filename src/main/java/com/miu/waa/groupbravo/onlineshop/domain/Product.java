@@ -2,21 +2,31 @@ package com.miu.waa.groupbravo.onlineshop.domain;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.springframework.web.multipart.MultipartFile;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.*;
 import java.math.BigDecimal;
-
+@Entity
 public class Product extends DomainClass {
     private String serialNumber;
     private String name;
     private String description;
     private BigDecimal unitPrice=BigDecimal.ZERO;
+<<<<<<< HEAD
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="seller_id")
+=======
+
+>>>>>>> 828dba2ff260d52459a458ccad4c37cbec2ea942
     private User seller;
     @Enumerated(EnumType.STRING)
     private EProductStatus productStatus;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="product_category_id")
     private ProductCategory productCategory;
-
+    @Transient
+    private MultipartFile MultipartFile;
+    private String file;
     public String getSerialNumber() {
         return serialNumber;
     }
@@ -71,6 +81,22 @@ public class Product extends DomainClass {
 
     public void setProductCategory(ProductCategory productCategory) {
         this.productCategory = productCategory;
+    }
+
+    public void setMultipartFile(org.springframework.web.multipart.MultipartFile multipartFile) {
+        MultipartFile = multipartFile;
+    }
+
+    public void setFile(String file) {
+        this.file = file;
+    }
+
+    public org.springframework.web.multipart.MultipartFile getMultipartFile() {
+        return MultipartFile;
+    }
+
+    public String getFile() {
+        return file;
     }
 
     @Override

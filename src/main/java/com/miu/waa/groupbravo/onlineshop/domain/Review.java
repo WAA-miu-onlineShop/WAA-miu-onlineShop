@@ -3,14 +3,16 @@ package com.miu.waa.groupbravo.onlineshop.domain;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.*;
 import java.time.LocalDateTime;
-
+@Entity
 public class Review extends DomainClass {
     private String description;
     private LocalDateTime reviewDate;
+    @OneToOne
     private User buyer;
+    @OneToOne
+    @JoinColumn(name="product_id")
     private Product product;
     @Enumerated(EnumType.STRING)
     private EReviewStatus reviewStatus;

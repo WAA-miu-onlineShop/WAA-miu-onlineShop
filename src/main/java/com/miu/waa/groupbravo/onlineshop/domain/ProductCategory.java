@@ -3,12 +3,18 @@ package com.miu.waa.groupbravo.onlineshop.domain;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-
+@Entity
 public class ProductCategory extends DomainClass {
     private String description;
     private String name;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="seller_id")
     private User seller;
     private BigDecimal quantityAvailable=BigDecimal.ZERO;
     private BigDecimal quantityPurchased=BigDecimal.ZERO;

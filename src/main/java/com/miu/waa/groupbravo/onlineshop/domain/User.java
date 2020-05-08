@@ -3,22 +3,31 @@ package com.miu.waa.groupbravo.onlineshop.domain;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
+import java.util.List;
 
+@Entity
 public class User  extends  DomainClass{
     private String userNumber;
     private String phone;
     private  String firstName;
     private String lastName;
     private LocalDate dob;
+    @OneToOne
+    @JoinColumn(name="address_id")
     private Address address;
+    @OneToOne
+    @JoinColumn(name="shipping_address_id")
     private Address shippingAddress;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="user_role_id")
     private UserRole userRole;
     @Enumerated(EnumType.STRING)
     private EUserStatus userStatus;
+    @OneToMany(mappedBy ="buyer",cascade = CascadeType.ALL)
+    private List<Order> orderList;
 
     public Address getShippingAddress() {
         return shippingAddress;
@@ -90,6 +99,14 @@ public class User  extends  DomainClass{
 
     public void setUserStatus(EUserStatus userStatus) {
         this.userStatus = userStatus;
+    }
+
+    public List<Order> getOrderList() {
+        return orderList;
+    }
+
+    public void setOrderList(List<Order> orderList) {
+        this.orderList = orderList;
     }
 
     @Override
