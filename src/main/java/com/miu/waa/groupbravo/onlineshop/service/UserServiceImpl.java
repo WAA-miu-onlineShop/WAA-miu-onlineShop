@@ -1,7 +1,7 @@
 package com.miu.waa.groupbravo.onlineshop.service;
 
-import edu.mum.cs.bravowaaproject.model.User;
-import edu.mum.cs.bravowaaproject.repository.UserRepository;
+import com.miu.waa.groupbravo.onlineshop.model.User;
+import com.miu.waa.groupbravo.onlineshop.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

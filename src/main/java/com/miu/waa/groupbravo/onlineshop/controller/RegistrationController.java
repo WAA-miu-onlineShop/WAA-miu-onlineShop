@@ -1,9 +1,9 @@
 package com.miu.waa.groupbravo.onlineshop.controller;
 
-import edu.mum.cs.bravowaaproject.model.Role;
-import edu.mum.cs.bravowaaproject.model.User;
-import edu.mum.cs.bravowaaproject.service.RoleService;
-import edu.mum.cs.bravowaaproject.service.UserService;
+import com.miu.waa.groupbravo.onlineshop.model.Role;
+import com.miu.waa.groupbravo.onlineshop.model.User;
+import com.miu.waa.groupbravo.onlineshop.service.RoleService;
+import com.miu.waa.groupbravo.onlineshop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
