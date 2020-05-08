@@ -3,11 +3,15 @@ package com.miu.waa.groupbravo.onlineshop.domain;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.*;
+
 @Entity
-public class UserRole extends DomainClass{
+@Table(name = "userrole")
+public class UserRole{
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+
     private String name;
     private String description;
     @Enumerated(EnumType.STRING)
@@ -35,6 +39,11 @@ public class UserRole extends DomainClass{
     public void setRoleType(ERoleType roleType) {
         this.roleType = roleType;
     }
+
+    public Integer getId() {
+        return id;
+    }
+
 
     @Override
     public boolean equals(Object o) {

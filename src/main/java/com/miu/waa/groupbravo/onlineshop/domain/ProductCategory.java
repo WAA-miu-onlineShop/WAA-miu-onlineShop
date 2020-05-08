@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import java.math.BigDecimal;
-import java.time.LocalDate;
+
 @Entity
 public class ProductCategory extends DomainClass {
     private String description;
@@ -16,8 +16,8 @@ public class ProductCategory extends DomainClass {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="seller_id")
     private User seller;
-    private BigDecimal quantityAvailable=BigDecimal.ZERO;
-    private BigDecimal quantityPurchased=BigDecimal.ZERO;
+    private BigDecimal quantityAvailable= BigDecimal.ZERO;
+    private BigDecimal quantityPurchased= BigDecimal.ZERO;
 
     public String getDescription() {
         return description;

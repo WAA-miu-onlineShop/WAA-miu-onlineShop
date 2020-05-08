@@ -2,6 +2,7 @@ package com.miu.waa.groupbravo.onlineshop.domain;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -9,12 +10,50 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-public class User  extends  DomainClass{
+@Table(name = "user")
+public class User extends  DomainClass{
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "user_id")
+    private int id;
     private String userNumber;
     private String phone;
-    private  String firstName;
+
+    @Column(name = "firstname")
+    @NotEmpty(message = "*Please provide your first name")
+    private String firstName;
+
+    @Column(name = "lastname")
+    @NotEmpty(message = "*Please provide your last name")
     private String lastName;
+
     private LocalDate dob;
+
+    @Column(name = "username")
+    @NotEmpty(message = "*Please provide a username")
+    private String username;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    @Column(name = "password")
+    @Length(min = 5, message = "*Your password must have at least 5 characters")
+    @NotEmpty(message = "*Please provide your password")
+    private String password;
+
     @OneToOne
     @JoinColumn(name="address_id")
     private Address address;

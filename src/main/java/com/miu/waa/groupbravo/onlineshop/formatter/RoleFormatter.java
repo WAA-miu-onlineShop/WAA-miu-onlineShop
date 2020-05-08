@@ -1,7 +1,7 @@
 package com.miu.waa.groupbravo.onlineshop.formatter;
 
 
-import com.miu.waa.groupbravo.onlineshop.model.Role;
+import com.miu.waa.groupbravo.onlineshop.domain.UserRole;
 import com.miu.waa.groupbravo.onlineshop.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.Formatter;
@@ -12,18 +12,18 @@ import java.util.Locale;
 
 
 @Component
-public class RoleFormatter implements Formatter<Role> {
+public class RoleFormatter implements Formatter<UserRole> {
 
     @Autowired
     private RoleService roleService;
 
     @Override
-    public String print(Role role, Locale locale) {
+    public String print(UserRole role, Locale locale) {
         return String.valueOf(role.getId());
     }
 
     @Override
-    public Role parse(String text, Locale locale) throws ParseException {
+    public UserRole parse(String text, Locale locale) throws ParseException {
         return roleService.get(Long.parseLong(text));
     }
 

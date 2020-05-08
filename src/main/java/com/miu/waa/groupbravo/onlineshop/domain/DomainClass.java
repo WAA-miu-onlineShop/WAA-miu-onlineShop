@@ -3,6 +3,7 @@ package com.miu.waa.groupbravo.onlineshop.domain;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+
 @MappedSuperclass
 public class DomainClass  implements Serializable {
     @NotNull

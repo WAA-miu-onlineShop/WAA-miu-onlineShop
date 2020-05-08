@@ -1,10 +1,9 @@
 package com.miu.waa.groupbravo.onlineshop.service;
 
-import com.miu.waa.groupbravo.onlineshop.model.User;
-
+import com.miu.waa.groupbravo.onlineshop.domain.User;
 
 public interface UserService {
     User saveUser(User user);
 
-    User findUserByUsername(String username);
+    User findByUsername(String username);
 }

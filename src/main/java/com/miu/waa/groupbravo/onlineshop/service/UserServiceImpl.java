@@ -1,6 +1,7 @@
 package com.miu.waa.groupbravo.onlineshop.service;
 
-import com.miu.waa.groupbravo.onlineshop.model.User;
+import com.miu.waa.groupbravo.onlineshop.domain.EUserStatus;
+import com.miu.waa.groupbravo.onlineshop.domain.User;
 import com.miu.waa.groupbravo.onlineshop.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -15,18 +16,20 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public User findUserByUsername(String username) {
+    public User findByUsername(String username) {
+
         return userRepository.findByUsername(username);
     }
 
     public User saveUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
-        if(user.getRoles().stream().findFirst().get().equals("SELLER")){
-            //user.setUserStatus(EUserStatus.NEW);
-            user.setActive(0);
+        if(user.getUserRole().getName().equals("SELLER")){
+            user.setUserStatus(EUserStatus.NEW);
+            //user.setActive(0);
         }else{
-            user.setActive(1);
+            user.setUserStatus(EUserStatus.APPROVED);
+            //user.setActive(1);
         }
         return userRepository.save(user);
     }

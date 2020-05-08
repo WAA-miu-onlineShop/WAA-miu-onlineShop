@@ -1,17 +1,18 @@
 package com.miu.waa.groupbravo.onlineshop.domain;
 
+
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+
 @Entity
 public class Product extends DomainClass {
     private String serialNumber;
     private String name;
     private String description;
-    private BigDecimal unitPrice=BigDecimal.ZERO;
+    private BigDecimal unitPrice= BigDecimal.ZERO;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="seller_id")
@@ -23,7 +24,7 @@ public class Product extends DomainClass {
     @JoinColumn(name="product_category_id")
     private ProductCategory productCategory;
     @Transient
-    private MultipartFile MultipartFile;
+    private org.springframework.web.multipart.MultipartFile MultipartFile;
     private String file;
     public String getSerialNumber() {
         return serialNumber;

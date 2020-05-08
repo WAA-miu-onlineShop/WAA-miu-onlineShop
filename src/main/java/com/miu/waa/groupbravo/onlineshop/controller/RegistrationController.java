@@ -1,7 +1,6 @@
 package com.miu.waa.groupbravo.onlineshop.controller;
-
-import com.miu.waa.groupbravo.onlineshop.model.Role;
-import com.miu.waa.groupbravo.onlineshop.model.User;
+import com.miu.waa.groupbravo.onlineshop.domain.User;
+import com.miu.waa.groupbravo.onlineshop.domain.UserRole;
 import com.miu.waa.groupbravo.onlineshop.service.RoleService;
 import com.miu.waa.groupbravo.onlineshop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,24 +26,23 @@ public class RegistrationController {
     private RoleService roleService;
 
     @ModelAttribute("roles")
-    public List<Role> getRoles(Model model) {
-        List<Role> roles = roleService.findAll();
-        List<Role> roles1 = roles.stream()
-                                .filter(role -> ("BUYER".equals(role.getRole()) || "SELLER".equals(role.getRole())))
+    public List<UserRole> getRoles(Model model) {
+        List<UserRole> roles = roleService.findAll();
+        List<UserRole> roles1 = roles.stream()
+                                .filter(role -> ("BUYER".equals(role.getName()) || "SELLER".equals(role.getName())))
                                 .collect(Collectors.toList());
         return roles1;
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String registration(@ModelAttribute("user") User user) {
-
         return "registration";
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public String createNewUser(@Valid User user, BindingResult bindingResult, Model model) {
         ModelAndView modelAndView = new ModelAndView();
-        User userExists = userService.findUserByUsername(user.getUsername());
+        User userExists = userService.findByUsername(user.getUsername());
         if (userExists != null) {
             bindingResult
                     .rejectValue("email", "error.user",
@@ -53,7 +51,6 @@ public class RegistrationController {
         if (bindingResult.hasErrors()) {
             return "registration";
         } else {
-            user.getRoles().forEach(System.out::println);
             userService.saveUser(user);
             model.addAttribute("successMessage", "User has been registered successfully");
             model.addAttribute("user", new User());

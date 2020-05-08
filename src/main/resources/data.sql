@@ -5,6 +5,6 @@ create table if not exists persistent_logins (
   last_used timestamp not null
   );
 
-INSERT INTO Role VALUES (1, 'ADMIN');
-INSERT INTO Role VALUES (2, 'BUYER');
-INSERT INTO Role VALUES (3, 'SELLER');
+INSERT INTO UserRole VALUES (1, 'ADMIN','This is the administrator','ADMIN');
+INSERT INTO UserRole VALUES (2, 'SELLER','This is the administrator','SELLER');
+INSERT INTO UserRole VALUES (3, 'BUYER','This is the administrator','BUYER');

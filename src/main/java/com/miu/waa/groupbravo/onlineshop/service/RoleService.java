@@ -1,12 +1,12 @@
 package com.miu.waa.groupbravo.onlineshop.service;
 
 
-import com.miu.waa.groupbravo.onlineshop.model.Role;
+import com.miu.waa.groupbravo.onlineshop.domain.UserRole;
 
 import java.util.List;
 
 public interface RoleService {
-    List<Role> findAll();
+    List<UserRole> findAll();
 
-    Role get(Long id);
+    UserRole get(Long id);
 }
