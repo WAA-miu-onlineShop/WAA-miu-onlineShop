@@ -13,12 +13,11 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void addProduct(Product product) {
-        
-        product.setProductStatus(EProductStatus.NEW);
+
     }
 
     @Override
-    public void deleteProduct(String product) {
+    public void deleteProduct(String serialNumber) {
 
     }
 

@@ -24,16 +24,16 @@ public class ProductController {
 		return productService.updateProduct(product);
 	}
     @GetMapping
-    public List<Product> findAll() {
+    public List<Product> findAllProducts() {
         return productService.findAll();
     }
     @GetMapping("/{serialNumber}")
-    public Product findOne(@PathVariable String serialNumber) {
+    public Product findOneProduct(@PathVariable String serialNumber) {
         return productService.findOne(serialNumber);
     }
 
     @DeleteMapping("/{serialNumber}")
-    public void deleteProduct(@RequestBody String serialNumber) {
+    public void deleteProduct(@PathVariable String serialNumber) {
         productService.deleteProduct(serialNumber);
     }
 
