@@ -12,10 +12,6 @@ import java.util.List;
 @Entity
 @Table(name = "user")
 public class User extends  DomainClass{
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "user_id")
-    private int id;
     private String userNumber;
     private String phone;
 

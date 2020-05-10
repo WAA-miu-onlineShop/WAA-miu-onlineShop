@@ -7,11 +7,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "userrole")
-public class UserRole{
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
-
+public class UserRole extends DomainClass{
     private String name;
     private String description;
     @Enumerated(EnumType.STRING)
@@ -38,10 +34,6 @@ public class UserRole{
 
     public void setRoleType(ERoleType roleType) {
         this.roleType = roleType;
-    }
-
-    public Integer getId() {
-        return id;
     }
 
 
