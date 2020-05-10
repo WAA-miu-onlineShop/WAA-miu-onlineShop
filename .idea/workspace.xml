@@ -2,117 +2,228 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="271bf99b-99d1-44f7-9b16-43bcc491a043" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HELP.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/kotlinc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__antlr_antlr_2_7_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_2_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_core_1_2_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_classmate_1_5_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_10_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_10_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_10_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jdk8_2_10_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jsr310_2_10_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_module_jackson_module_parameter_names_2_10_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_h2database_h2_1_4_200.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_jayway_jsonpath_json_path_2_4_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_istack_istack_commons_runtime_3_0_8.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_xml_fastinfoset_FastInfoset_1_2_16.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_external_google_android_json_0_0_20131108_vaadin1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_zaxxer_HikariCP_3_4_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_activation_jakarta_activation_api_1_2_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_annotation_jakarta_annotation_api_1_3_5.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_persistence_jakarta_persistence_api_2_2_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_transaction_jakarta_transaction_api_1_3_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_validation_jakarta_validation_api_2_0_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_xml_bind_jakarta_xml_bind_api_2_3_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_10_8.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_agent_1_10_8.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_minidev_accessors_smart_1_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_minidev_json_smart_2_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_9.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_api_2_12_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_to_slf4j_2_12_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_9_0_33.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_el_9_0_33.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_9_0_33.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_1_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjweaver_1_9_5.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_assertj_assertj_core_3_13_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_attoparser_attoparser_2_0_5_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_dom4j_dom4j_2_1_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jaxb_jaxb_runtime_2_3_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jaxb_txw2_2_3_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_2_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_common_hibernate_commons_annotations_5_1_0_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_hibernate_core_5_4_12_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_validator_hibernate_validator_6_0_18_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_javassist_javassist_3_24_0_GA.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_jandex_2_1_1_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_4_1_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_5_5_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_5_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_engine_5_5_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_params_5_5_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_commons_1_5_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_engine_1_5_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jvnet_staxex_stax_ex_1_8_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_core_3_1_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_junit_jupiter_3_1_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_objenesis_objenesis_2_6.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_opentest4j_opentest4j_1_2_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_ow2_asm_asm_5_0_4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_projectlombok_lombok_1_18_12.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_skyscreamer_jsonassert_1_5_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_jul_to_slf4j_1_7_30.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_30.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_2_2_6_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_2_2_6_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_2_2_6_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_aop_2_2_6_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_data_jpa_2_2_6_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_jdbc_2_2_6_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_json_2_2_6_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_2_2_6_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_test_2_2_6_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_thymeleaf_2_2_6_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_2_2_6_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_validation_2_2_6_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_2_2_6_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_2_2_6_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_autoconfigure_2_2_6_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_commons_2_2_6_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_jpa_2_2_6_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_5_2_5_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aspects_5_2_5_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_5_2_5_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_5_2_5_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_5_2_5_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_5_2_5_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jcl_5_2_5_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jdbc_5_2_5_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_orm_5_2_5_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_test_5_2_5_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_tx_5_2_5_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_web_5_2_5_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_webmvc_5_2_5_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_thymeleaf_extras_thymeleaf_extras_java8time_3_0_4_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_thymeleaf_thymeleaf_3_0_11_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_thymeleaf_thymeleaf_spring5_3_0_11_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_unbescape_unbescape_1_1_6_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_xmlunit_xmlunit_core_2_6_4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_yaml_snakeyaml_1_25.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/config/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/config/WebMVCConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/constant/IRepositoryConstant.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/controller/ErrorController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/controller/LoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/controller/RegistrationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/domain/EAddressRole.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/domain/ESequenceType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/domain/SequenceNumber.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/exceptions/RequestBravoException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/formatter/RoleFormatter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/repository/RoleRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/repository/SequenceNumberRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/service/RoleService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/service/RoleServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/service/SequenceNumberService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/service/UserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/service/serviceImpl/SequenceNumberServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/bootstrap/_media.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/bootstrap/mixins/_border-radius.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/bootstrap/mixins/_screen-reader.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/bootstrap/mixins/_visibility.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/bootstrap/utilities/_stretched-link.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/login.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/clothing.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/delicacies.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/electronics.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/juice.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/left-nav-picture.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/login.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/logo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/miu-logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/miulogo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/resized.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/restaurant-resized.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/vegetarian.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/jquery.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/login.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/popper.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/_alert.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/_badge.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/_breadcrumb.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/_button-group.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/_buttons.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/_card.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/_carousel.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/_close.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/_code.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/_custom-forms.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/_dropdown.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/_forms.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/_functions.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/_grid.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/_images.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/_input-group.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/_jumbotron.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/_list-group.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/_media.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/_mixins.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/_modal.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/_nav.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/_navbar.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/_pagination.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/_popover.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/_print.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/_progress.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/_reboot.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/_root.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/_spinners.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/_tables.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/_toasts.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/_tooltip.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/_transitions.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/_type.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/_utilities.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/_variables.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/bootstrap-grid.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/bootstrap-reboot.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/bootstrap.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/mixins/_alert.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/mixins/_background-variant.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/mixins/_badge.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/mixins/_border-radius.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/mixins/_box-shadow.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/mixins/_breakpoints.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/mixins/_buttons.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/mixins/_caret.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/mixins/_clearfix.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/mixins/_deprecate.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/mixins/_float.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/mixins/_forms.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/mixins/_gradients.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/mixins/_grid-framework.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/mixins/_grid.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/mixins/_hover.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/mixins/_image.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/mixins/_list-group.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/mixins/_lists.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/mixins/_nav-divider.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/mixins/_pagination.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/mixins/_reset-text.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/mixins/_resize.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/mixins/_screen-reader.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/mixins/_size.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/mixins/_table-row.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/mixins/_text-emphasis.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/mixins/_text-hide.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/mixins/_text-truncate.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/mixins/_transition.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/mixins/_visibility.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/utilities/_align.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/utilities/_background.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/utilities/_borders.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/utilities/_clearfix.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/utilities/_display.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/utilities/_embed.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/utilities/_flex.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/utilities/_float.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/utilities/_overflow.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/utilities/_position.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/utilities/_screenreaders.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/utilities/_shadows.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/utilities/_sizing.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/utilities/_spacing.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/utilities/_stretched-link.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/utilities/_text.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/utilities/_visibility.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/bootstrap/vendor/_rfs.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scss/style.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/403.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/main.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/registration.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/user/admin.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/user/dba.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/user/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/miu/waa/groupbravo/onlineshop/builder/OrderBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/miu/waa/groupbravo/onlineshop/builder/SequenceNumberBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/miu/waa/groupbravo/onlineshop/domain/SequenceNumberTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/miu/waa/groupbravo/onlineshop/repository/SequenceNumberRepositoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/miu/waa/groupbravo/onlineshop/serviceImpl/SequenceNumberServiceImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/onlineshop.iml" beforeDir="false" afterPath="$PROJECT_DIR$/onlineshop.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/domain/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/domain/Address.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/domain/Coupon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/domain/Coupon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/domain/DomainClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/domain/DomainClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/domain/Following.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/domain/Following.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/domain/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/domain/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/domain/OrderHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/domain/OrderHistory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/domain/OrderLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/domain/OrderLine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/domain/Payment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/domain/Payment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/domain/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/domain/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/domain/ProductCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/domain/ProductCategory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/domain/Review.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/domain/Review.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/domain/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/domain/UserRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/domain/UserRole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/repository/AddressRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/repository/AddressRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/repository/CouponRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/repository/CouponRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/repository/FollowingRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/repository/FollowingRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/repository/OrderHistoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/repository/OrderHistoryRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/repository/OrderLineRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/repository/OrderLineRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/repository/OrderRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/repository/OrderRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/repository/PaymentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/repository/PaymentRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/repository/ProductCategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/repository/ProductCategoryRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/repository/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/repository/ProductRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/repository/ReviewRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/repository/ReviewRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/service/serviceImpl/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/service/serviceImpl/ProductServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/miu-logo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/miu/waa/groupbravo/onlineshop/OnlineshopApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/miu/waa/groupbravo/onlineshop/OnlineshopApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/onlineshop.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/controller/AddressController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/controller/AddressController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/controller/CouponController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/controller/CouponController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/controller/FollowingController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/controller/FollowingController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/controller/OrderController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/controller/OrderController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/controller/OrderHistoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/controller/OrderHistoryController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/controller/PaymentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/controller/PaymentController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/controller/ProductCategoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/controller/ProductCategoryController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/controller/ProductController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/controller/ProductController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/controller/ReviewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/controller/ReviewController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/controller/TestController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/controller/UserRoleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/controller/UserRoleController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/Address.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/Address.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/Coupon.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/Coupon.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/DomainClass.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/DomainClass.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/Following.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/Following.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/Order.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/Order.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/OrderHistory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/OrderHistory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/OrderLine.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/OrderLine.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/Payment.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/Payment.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/Product.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/Product.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/Review.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/Review.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/TestDomain.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/UserRole.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/UserRole.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/repository/ITestRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/repository/TestRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/repository/TestRepositoryImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/repository/UserRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/service/ITestService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/service/TestService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/images/miu-logo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/miu/waa/groupbravo/onlineshop/OnlineshopApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/miu/waa/groupbravo/onlineshop/OnlineshopApplicationTests.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -209,6 +320,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="65" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1588947324900" />
+    <state x="507" y="266" key="Github.CreateGistDialog" timestamp="1589128087795">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="507" y="266" key="Github.CreateGistDialog/0.0.1366.728@0.0.1366.728" timestamp="1589128087795" />
     <state width="1367" height="186" key="GridCell.Tab.0.bottom" timestamp="1588817247989">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -241,10 +356,22 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1367" height="186" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1588817247989" />
+    <state x="129" y="55" key="MergeDialog" timestamp="1589127522654">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="129" y="55" key="MergeDialog/0.0.1366.728@0.0.1366.728" timestamp="1589127522654" />
+    <state x="571" y="232" key="MultipleFileMergeDialog" timestamp="1589127698400">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="571" y="232" key="MultipleFileMergeDialog/0.0.1366.728@0.0.1366.728" timestamp="1589127698400" />
     <state x="163" y="0" key="SettingsEditor" timestamp="1588884453582">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="163" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1588884453582" />
+    <state x="375" y="122" key="Vcs.Multiple.Commit.Info.Dialog.Key" timestamp="1589127485285">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="375" y="122" key="Vcs.Multiple.Commit.Info.Dialog.Key/0.0.1366.728@0.0.1366.728" timestamp="1589127485285" />
     <state x="414" y="121" key="refactoring.ChangeSignatureDialog" timestamp="1588720643845">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
