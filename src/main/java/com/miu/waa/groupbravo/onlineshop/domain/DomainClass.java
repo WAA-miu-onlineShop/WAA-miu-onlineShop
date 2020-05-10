@@ -3,6 +3,7 @@ package com.miu.waa.groupbravo.onlineshop.domain;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+
 @MappedSuperclass
 public class DomainClass  implements Serializable {
     @NotNull
@@ -28,5 +29,12 @@ public class DomainClass  implements Serializable {
 
     public void setVersion(int version) {
         this.version = version;
+    }
+
+    public boolean isNew() {
+        if (id == null){
+            return true;
+          }
+    return false;
     }
 }

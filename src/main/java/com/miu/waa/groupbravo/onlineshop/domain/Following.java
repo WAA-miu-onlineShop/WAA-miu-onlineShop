@@ -6,9 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import java.time.LocalDate;
+
 @Entity
 public class Following extends  DomainClass {
-    private Boolean follow=Boolean.TRUE;
+    private Boolean follow= Boolean.TRUE;
     private LocalDate date;
     @OneToOne
     @JoinColumn(name="seller_id")

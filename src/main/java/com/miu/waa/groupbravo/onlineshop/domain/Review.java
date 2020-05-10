@@ -5,6 +5,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+
 @Entity
 public class Review extends DomainClass {
     private String description;

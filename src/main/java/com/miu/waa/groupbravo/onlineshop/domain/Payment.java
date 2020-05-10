@@ -3,12 +3,16 @@ package com.miu.waa.groupbravo.onlineshop.domain;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.math.BigDecimal;
+
 @Entity
 public class Payment extends DomainClass {
     private String paymentNumber;
-    private BigDecimal paidAmount=BigDecimal.ZERO;
+    private BigDecimal paidAmount= BigDecimal.ZERO;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="order_id")
     private Order order;

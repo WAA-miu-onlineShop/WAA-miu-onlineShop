@@ -1,23 +1,23 @@
 package com.miu.waa.groupbravo.onlineshop.domain;
 
+
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+
 @Entity
 public class Product extends DomainClass {
     private String serialNumber;
+    private String productNumber;
     private String name;
     private String description;
-    private BigDecimal unitPrice=BigDecimal.ZERO;
-<<<<<<< HEAD
+    private BigDecimal unitPrice= BigDecimal.ZERO;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="seller_id")
-=======
 
->>>>>>> 828dba2ff260d52459a458ccad4c37cbec2ea942
     private User seller;
     @Enumerated(EnumType.STRING)
     private EProductStatus productStatus;
@@ -25,7 +25,7 @@ public class Product extends DomainClass {
     @JoinColumn(name="product_category_id")
     private ProductCategory productCategory;
     @Transient
-    private MultipartFile MultipartFile;
+    private org.springframework.web.multipart.MultipartFile MultipartFile;
     private String file;
     public String getSerialNumber() {
         return serialNumber;
@@ -85,6 +85,14 @@ public class Product extends DomainClass {
 
     public void setMultipartFile(org.springframework.web.multipart.MultipartFile multipartFile) {
         MultipartFile = multipartFile;
+    }
+
+    public String getProductNumber() {
+        return productNumber;
+    }
+
+    public void setProductNumber(String productNumber) {
+        this.productNumber = productNumber;
     }
 
     public void setFile(String file) {

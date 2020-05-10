@@ -1,15 +1,17 @@
 package com.miu.waa.groupbravo.onlineshop.domain;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 @Entity(name="Orders")
 public class Order extends DomainClass {
     private String orderNumber;
-    private BigDecimal totalAmount=BigDecimal.ZERO;
-    private BigDecimal coupons=BigDecimal.ZERO;
+    private BigDecimal totalAmount= BigDecimal.ZERO;
+    private BigDecimal coupons= BigDecimal.ZERO;
     @Enumerated(EnumType.STRING)
     private EOrderStatus orderStatus;
     @ManyToOne

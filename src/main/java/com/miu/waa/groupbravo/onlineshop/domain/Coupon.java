@@ -7,13 +7,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import java.io.Serializable;
 import java.math.BigDecimal;
+
 @Entity
 public class Coupon  extends DomainClass implements Serializable {
     private String couponNumber;
     @OneToOne
     @JoinColumn(name="buyer_id")
     private User buyer;
-    private BigDecimal totalPoint=BigDecimal.ZERO;
+    private BigDecimal totalPoint= BigDecimal.ZERO;
 
     public String getCouponNumber() {
         return couponNumber;
