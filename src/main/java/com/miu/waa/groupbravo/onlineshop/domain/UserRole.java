@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "userrole")
-public class UserRole extends DomainClass{
+public class UserRole extends  DomainClass{
     private String name;
     private String description;
     @Enumerated(EnumType.STRING)

@@ -1,8 +1,9 @@
-package com.miu.waa.groupbravo.onlineshop.service;
+package com.miu.waa.groupbravo.onlineshop.service.serviceImpl;
 
 
 import com.miu.waa.groupbravo.onlineshop.domain.UserRole;
 import com.miu.waa.groupbravo.onlineshop.repository.RoleRepository;
+import com.miu.waa.groupbravo.onlineshop.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +19,7 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public List<UserRole> findAll() {
 
-        return (List<UserRole>)roleRepository.findAll();
+        return (List<UserRole>) roleRepository.findAll();
     }
 
     @Override

@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 @Entity
 public class Product extends DomainClass {
     private String serialNumber;
+    private String productNumber;
     private String name;
     private String description;
     private BigDecimal unitPrice= BigDecimal.ZERO;
@@ -84,6 +85,14 @@ public class Product extends DomainClass {
 
     public void setMultipartFile(org.springframework.web.multipart.MultipartFile multipartFile) {
         MultipartFile = multipartFile;
+    }
+
+    public String getProductNumber() {
+        return productNumber;
+    }
+
+    public void setProductNumber(String productNumber) {
+        this.productNumber = productNumber;
     }
 
     public void setFile(String file) {
