@@ -15,7 +15,7 @@
     <description>Online Shop for WAA class 2020</description>
 
     <properties>
-        <java.version>10</java.version>
+        <java.version>13</java.version>
     </properties>
 
     <dependencies>
