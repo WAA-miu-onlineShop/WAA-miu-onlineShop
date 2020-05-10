@@ -30,4 +30,11 @@ public class DomainClass  implements Serializable {
     public void setVersion(int version) {
         this.version = version;
     }
+
+    public boolean isNew() {
+        if (id == null){
+            return true;
+          }
+    return false;
+    }
 }

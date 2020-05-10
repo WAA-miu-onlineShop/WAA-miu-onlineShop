@@ -26,13 +26,10 @@ public class User extends  DomainClass{
     @Column(name = "lastname")
     @NotEmpty(message = "*Please provide your last name")
     private String lastName;
-
     private LocalDate dob;
-
     @Column(name = "username")
     @NotEmpty(message = "*Please provide a username")
     private String username;
-
     public String getUsername() {
         return username;
     }
@@ -54,12 +51,9 @@ public class User extends  DomainClass{
     @NotEmpty(message = "*Please provide your password")
     private String password;
 
-    @OneToOne
-    @JoinColumn(name="address_id")
-    private Address address;
-    @OneToOne
-    @JoinColumn(name="shipping_address_id")
-    private Address shippingAddress;
+    @OneToMany
+    @JoinColumn(name="user_id")
+    private List<Address> addresses;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="user_role_id")
     private UserRole userRole;
@@ -68,13 +62,6 @@ public class User extends  DomainClass{
     @OneToMany(mappedBy ="buyer",cascade = CascadeType.ALL)
     private List<Order> orderList;
 
-    public Address getShippingAddress() {
-        return shippingAddress;
-    }
-
-    public void setShippingAddress(Address shippingAddress) {
-        this.shippingAddress = shippingAddress;
-    }
 
     public String getUserNumber() {
         return userNumber;
@@ -116,12 +103,12 @@ public class User extends  DomainClass{
         this.dob = dob;
     }
 
-    public Address getAddress() {
-        return address;
+    public List<Address> getAddresses() {
+        return addresses;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = addresses;
     }
 
     public UserRole getUserRole() {

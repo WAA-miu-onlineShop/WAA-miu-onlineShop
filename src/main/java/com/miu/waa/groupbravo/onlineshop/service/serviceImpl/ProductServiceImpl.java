@@ -2,6 +2,7 @@ package com.miu.waa.groupbravo.onlineshop.service.serviceImpl;
 
 import com.miu.waa.groupbravo.onlineshop.domain.EProductStatus;
 import com.miu.waa.groupbravo.onlineshop.domain.Product;
+import com.miu.waa.groupbravo.onlineshop.exceptions.RequestBravoException;
 import com.miu.waa.groupbravo.onlineshop.service.ProductService;
 import org.springframework.stereotype.Service;
 
@@ -15,8 +16,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void addProduct(Product product) {
-        
-        product.setProductStatus(EProductStatus.NEW);
+
+            product.setProductStatus(EProductStatus.NEW);
+
     }
 
     @Override

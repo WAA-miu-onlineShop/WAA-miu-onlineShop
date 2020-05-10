@@ -3,6 +3,8 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 @Entity
 public class Address extends  DomainClass{
@@ -10,6 +12,8 @@ public class Address extends  DomainClass{
     private String street;
     private String state;
     private String zipCode;
+    @Enumerated(EnumType.STRING)
+    private EAddressRole addressRole;
 
     public String getCity() {
         return city;
