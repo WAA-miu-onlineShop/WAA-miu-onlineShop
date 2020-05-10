@@ -5,7 +5,6 @@ import com.miu.waa.groupbravo.onlineshop.domain.ESequenceType;
 import com.miu.waa.groupbravo.onlineshop.domain.SequenceNumber;
 import com.miu.waa.groupbravo.onlineshop.repository.SequenceNumberRepository;
 import com.miu.waa.groupbravo.onlineshop.service.SequenceNumberService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
