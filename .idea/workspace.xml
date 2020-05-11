@@ -1,9 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:master" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="271bf99b-99d1-44f7-9b16-43bcc491a043" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/WAA-miu-onlineShop.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/WAA-miu-onlineShop.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/service/serviceImpl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/service/serviceImpl/OrderServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,8 +38,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -46,7 +70,7 @@
     <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2724138" />
-    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="ExtractSuperBase.RECENT_KEYS">
@@ -58,7 +82,23 @@
       <recent name="com.miu.waa.groupbravo.onlineshop.service" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.UserMessageTest.testSetValue">
+    <configuration name="UserMessageTest.testSetValue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="WAA-miu-onlineShop" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.miu.waa.groupbravo.onlineshop.domain.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.miu.waa.groupbravo.onlineshop.domain" />
+      <option name="MAIN_CLASS_NAME" value="com.miu.waa.groupbravo.onlineshop.domain.UserMessageTest" />
+      <option name="METHOD_NAME" value="testSetValue" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="OnlineshopApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="WAA-miu-onlineShop" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.miu.waa.groupbravo.onlineshop.OnlineshopApplication" />
@@ -68,6 +108,11 @@
         <option name="MakeProject" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.UserMessageTest.testSetValue" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -87,11 +132,15 @@
       <workItem from="1588969588022" duration="1186000" />
       <workItem from="1589044439468" duration="1002000" />
       <workItem from="1589161571280" duration="8010000" />
+      <workItem from="1589176012505" duration="301000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="582" y="255" key="#Assign_Data_Sources" timestamp="1588883976027">
@@ -123,10 +172,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="412" y="154" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1366.728@0.0.1366.728" timestamp="1589128623214" />
-    <state x="295" y="288" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1589142700244">
+    <state x="295" y="288" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1589175200807">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="295" y="288" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1366.728@0.0.1366.728" timestamp="1589142700244" />
+    <state x="295" y="288" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1366.728@0.0.1366.728" timestamp="1589175200807" />
     <state x="431" y="222" width="506" height="292" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1589145319391">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -151,28 +200,28 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="507" y="266" key="Github.CreateGistDialog/0.0.1366.728@0.0.1366.728" timestamp="1589128087795" />
-    <state width="1398" height="245" key="GridCell.Tab.0.bottom" timestamp="1589167470611">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1322" height="191" key="GridCell.Tab.0.bottom" timestamp="1589176226705">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="35" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1589148695876" />
+    <state width="1322" height="191" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1589176226705" />
     <state width="1398" height="245" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1589167470611" />
     <state width="1398" height="245" key="GridCell.Tab.0.bottom/0.23.1440.832@0.23.1440.832" timestamp="1589163531659" />
-    <state width="1398" height="245" key="GridCell.Tab.0.center" timestamp="1589167470609">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1322" height="191" key="GridCell.Tab.0.center" timestamp="1589176226705">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="35" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1589148695875" />
+    <state width="1322" height="191" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1589176226704" />
     <state width="1398" height="245" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1589167470609" />
     <state width="1398" height="245" key="GridCell.Tab.0.center/0.23.1440.832@0.23.1440.832" timestamp="1589163531650" />
-    <state width="1398" height="245" key="GridCell.Tab.0.left" timestamp="1589167470607">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1322" height="191" key="GridCell.Tab.0.left" timestamp="1589176226704">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="35" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1589148695875" />
+    <state width="1322" height="191" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1589176226704" />
     <state width="1398" height="245" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1589167470607" />
     <state width="1398" height="245" key="GridCell.Tab.0.left/0.23.1440.832@0.23.1440.832" timestamp="1589163531647" />
-    <state width="1398" height="245" key="GridCell.Tab.0.right" timestamp="1589167470610">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1322" height="191" key="GridCell.Tab.0.right" timestamp="1589176226705">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="35" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1589148695876" />
+    <state width="1322" height="191" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1589176226705" />
     <state width="1398" height="245" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1589167470610" />
     <state width="1398" height="245" key="GridCell.Tab.0.right/0.23.1440.832@0.23.1440.832" timestamp="1589163531658" />
     <state width="1398" height="245" key="GridCell.Tab.1.bottom" timestamp="1589167470614">
@@ -211,10 +260,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="348" y="68" width="694" height="591" key="NewModule_or_Project.wizard/0.0.1366.728@0.0.1366.728" timestamp="1589129053791" />
-    <state x="228" y="0" key="SettingsEditor" timestamp="1589161709237">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="216" y="0" key="SettingsEditor" timestamp="1589175975121">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="216" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1589142174332" />
+    <state x="216" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1589175975121" />
     <state x="228" y="0" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1589161709237" />
     <state x="92" y="92" width="1182" height="544" key="ShowDiffWithBranchDialog" timestamp="1589141987203">
       <screen x="0" y="0" width="1366" height="728" />
@@ -240,5 +289,12 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1589144948696" />
+  </component>
+  <component name="XDebuggerManager">
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo typeName="com.miu.waa.groupbravo.onlineshop.service.serviceImpl.SequenceNumberServiceImpl" fieldName="sequenceNumberRepository" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
 </project>
