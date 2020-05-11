@@ -2,35 +2,42 @@ package com.miu.waa.groupbravo.onlineshop.service.serviceImpl;
 
 import com.miu.waa.groupbravo.onlineshop.domain.EOrderStatus;
 import com.miu.waa.groupbravo.onlineshop.domain.Order;
+import com.miu.waa.groupbravo.onlineshop.repository.OrderRepository;
 import com.miu.waa.groupbravo.onlineshop.service.OrderService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.ByteArrayInputStream;
 import java.util.List;
 
 public class OrderServiceImpl implements OrderService {
+
+    @Autowired
+    private OrderRepository orderRepository;
+
     @Override
     public Order save(Order order) {
-        return null;
+        return orderRepository.save(order);
     }
 
     @Override
     public EOrderStatus getStatusByName(EOrderStatus status) {
-        return null;
+        return orderRepository;
     }
 
     @Override
     public List<Order> getAllOrders() {
-        return null;
+        return (List<Order>)orderRepository.findAll();
+
     }
 
     @Override
     public List<Order> getAllOrdersByUser(Long userId) {
-        return null;
+        return orderRepository.getAllOrdersByUser(userId);
     }
 
     @Override
     public Order getOrderById(Long id) {
-        return null;
+        return orderRepository.findById(id).get();
     }
 
     @Override
