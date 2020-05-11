@@ -8,7 +8,7 @@ public class RequestBravoException extends RuntimeException {
     public RequestBravoException(Exception ex){
         super(ex);
     }
-    public RequestBravoException(Exception ex, String message){
+    public RequestBravoException(Exception ex, String message,Object ...objects){
         super(ex);
     }
 
