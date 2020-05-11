@@ -2,11 +2,14 @@ package com.miu.waa.groupbravo.onlineshop.controller;
 import com.miu.waa.groupbravo.onlineshop.domain.ProductCategory;
 import com.miu.waa.groupbravo.onlineshop.service.ProductCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/productCategories")
 public class ProductCategoryController {
 
@@ -14,7 +17,7 @@ public class ProductCategoryController {
     ProductCategoryService productCategoryService;
 
     @PostMapping
-    public void saveProductCategory(@RequestBody ProductCategory productCategory) {
+    public void saveProductCategory(@Valid @ModelAttribute("productCategory") ProductCategory productCategory, Model model) {
 
         productCategoryService.saveProductCategory(productCategory);
     }
@@ -29,9 +32,9 @@ public class ProductCategoryController {
         return productCategoryService.findAllProductCategory();
     }
 
-    @DeleteMapping("/{name}")
-    public void deleteProductCategory(@PathVariable String name) {
-        productCategoryService.deleteProductCategory(name);
+    @DeleteMapping
+    public void deleteProductCategory(@RequestBody ProductCategory productCategory){
+        productCategoryService.deleteProductCategory(productCategory);
     }
 
 
