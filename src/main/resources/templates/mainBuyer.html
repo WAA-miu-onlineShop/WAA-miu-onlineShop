@@ -1,10 +1,299 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Bravo online shop</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
 
+<div class="wrapper d-flex align-items-stretch">
+    <nav id="sidebar">
+        <div class="p-4 pt-5">
+            <a href="#" class="img logo rounded-circle mb-5"
+               style="background-image: url(/images/left-nav-picture.png);"></a>
+            <ul class="list-unstyled components mb-5">
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        Buyer Portal</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li>
+                            <a href="#">Place Order</a>
+                        </li>
+                        <li>
+                            <a href="#">Manage Orders</a>
+                        </li>
+                        <li>
+                            <a href="#">View Points</a>
+                        </li>
+                        <li>
+                            <a href="#">Follow/Unfollow seller</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" id="top5Items">Top 5 Menu Items</a>
+                </li>
+                <li>
+                    <a href="#" id="nutritionalFacts">Nutritional Facts</a>
+                </li>
+            </ul>
+
+            <div class="footer">
+                <p>
+                    Copyright &copy;
+                    <script>document.write(new Date().getFullYear());</script> All rights reserved
+                </p>
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content" class="p-4 p-md-5">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+
+                <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                    <i class="fa fa-bars"></i>
+                    <span class="sr-only">Toggle Menu</span>
+                </button>
+                <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <i class="fa fa-bars"></i>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <button type="button" class="btn btn-outline-primary btn-nav-bar" data-toggle="modal"
+                                    data-target="#exampleModal" id="placeOrderNavBtn">
+                                Place Order
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button id ="createMenuNavBtn" type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#menuModal">
+                                Add Address
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#addItemModal">
+                                Follow Seller
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <form method="post" th:action="@{/logout}">
+                                <input type="submit" class="btn btn-outline-primary" data-toggle="modal" value="Sign Out"/>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <h2 class="mb-4">Welcome <span sec:authentication="name"></span></h2>
+        <p>Welcome to Pick Bravo Online Shop, a place where you can buy and sell products. Register as a seller or buyer
+            to get started and join the millions of other people already enjoying our services</p>
+        <p>Contact the administrator for any queries regarding this online shop</p>
+        <div class="row" style="margin-top: 10px;" id="dynamicContent">
+            <div class="card" style="width: 18rem; margin-left:15px;">
+                <img src="/images/delicacies.jpg" class="card-img-top" />
+                <div class="card-body">
+                    <p class="card-text">A wide range of delicacies also available in the shop</p>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem; margin-left:15px;">
+                <img src="/images/electronics.jpg" class="card-img-top" />
+                <div class="card-body">
+                    <p class="card-text">Electronics devices are among the most purchased items</p>
+                </div>
+
+            </div>
+            <div class="card" style="width: 18rem; margin-left:15px;">
+                <img src="/images/clothing.jpg" class="card-img-top" />
+                <div class="card-body">
+                    <p class="card-text">Checkout the clothing section for specialized clothing needs</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Create New Menu -->
+<div class="modal fade" id="menuModal" tabindex="-1" role="dialog" aria-labelledby="menuModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="menuModalLabel">Register Address</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="menuFormErrors" style="display: none;"></div>
+                <form method="POST" id="newMenuForm">
+                    <div class="form-group">
+                        <div class="">
+                            <input type="text" name="city" placeholder="City"
+                                   class="form-control" required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="">
+                            <input type="text" name="street"
+                                   placeholder="Street" class="form-control" required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="">
+                            <input type="text" name="state" placeholder="State"
+                                   class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="">
+                            <input type="text" name="zipCode" placeholder="Zip Code"
+                                   class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" name="billingType">
+                            <option value="">-Select-</option>
+                            <option value="billing">Billing Address</option>
+                            <option value="shipping">Shipping Address</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <div >
+                            <button type="submit" class="btn btn-primary btn-block">Save Address</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Place Order Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Place Order</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="orderFormErrors" style="display: none;"></div>
+                <form method="POST" id="placeOrderForm">
+                    <div id="placeOrderContent">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input" value="juice001">Orange Juice
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input" value="juice002">Passion Juice
+                            </label>
+                        </div>
+                        <div class="form-check disabled">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input" value="eggs001">Boiled Eggs
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary" id="placeOrderBtn" value="Place Order"/>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Add Item Modal -->
+<div class="modal fade" id="addItemModal" tabindex="-1" role="dialog" aria-labelledby="addItemModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addItemModalLabel">Create Menu Item</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="submitFormErrors" style="display: none;"></div>
+                <form method="POST" id="addItemForm">
+                    <div class="form-group">
+                        <label for="itemName">Item Name</label>
+                        <input type="text" class="form-control" id="itemName" aria-describedby="nameHelp" placeholder="E.g. Orange Juice" required>
+                        <small id="nameHelp" class="form-text text-muted">Enter name of item</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <input type="text" class="form-control" id="description" placeholder="E.g. 100% orange juice" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <select id="category" class="form-control" required>
+                            <option value="">-Select Category-</option>
+                            <option value="breakfast">Breakfast</option>
+                            <option value="lunch">Lunch</option>
+                            <option value="dinner">Dinner</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary" id="addItemBtn" value="Add Item"/>
+                    </div>
+                </form>
+            </div>
+            <div class="form-group modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- <script src="js/jquery.min.js"></script> -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
+</script>
+<script src="/js/popper.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/app.js"></script>
+
 </body>
+
 </html>

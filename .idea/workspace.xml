@@ -2,100 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="271bf99b-99d1-44f7-9b16-43bcc491a043" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/WAA-miu-onlineShop.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/constant/IRepositoryConstant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/domain/EAddressRole.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/domain/ESequenceType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/domain/SequenceNumber.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/exceptions/RequestBravoException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/repository/SequenceNumberRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/service/ProductCategoryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/service/SequenceNumberService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/service/serviceImpl/ProductCategoryServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/service/serviceImpl/SequenceNumberServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/miu/waa/groupbravo/onlineshop/builder/OrderBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/miu/waa/groupbravo/onlineshop/builder/SequenceNumberBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/miu/waa/groupbravo/onlineshop/domain/SequenceNumberTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/miu/waa/groupbravo/onlineshop/repository/SequenceNumberRepositoryTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/miu/waa/groupbravo/onlineshop/serviceImpl/SequenceNumberServiceImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/config/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/config/WebMVCConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/config/WebMVCConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/controller/ProductCategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/controller/ProductCategoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/controller/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/controller/RegistrationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/controller/RegistrationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/domain/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/domain/Address.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/domain/DomainClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/domain/DomainClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/domain/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/domain/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/domain/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/domain/UserRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/domain/UserRole.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/repository/RoleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/repository/RoleRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/service/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/service/RoleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/service/serviceImpl/RoleServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/service/serviceImpl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/service/serviceImpl/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/service/serviceImpl/ProductServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/mainAdmin.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/miu/waa/groupbravo/onlineshop/OnlineshopApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/miu/waa/groupbravo/onlineshop/OnlineshopApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/onlineshop.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/OnlineshopApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/OnlineshopApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/controller/AddressController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/controller/AddressController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/controller/CouponController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/controller/CouponController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/controller/FollowingController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/controller/FollowingController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/controller/OrderController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/controller/OrderController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/controller/OrderHistoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/controller/OrderHistoryController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/controller/PaymentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/controller/PaymentController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/controller/ProductCategoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/controller/ProductCategoryController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/controller/ProductController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/controller/ProductController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/controller/ReviewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/controller/ReviewController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/controller/TestController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/controller/UserRoleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/controller/UserRoleController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/Address.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/Address.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/Coupon.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/Coupon.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/DomainClass.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/DomainClass.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/EOrderStatus.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/EOrderStatus.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/EProductStatus.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/EProductStatus.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/EReviewStatus.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/EReviewStatus.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/ERoleType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/ERoleType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/EUserStatus.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/EUserStatus.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/Following.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/Following.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/Order.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/Order.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/OrderHistory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/OrderHistory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/OrderLine.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/OrderLine.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/Payment.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/Payment.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/Product.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/Product.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/ProductCategory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/ProductCategory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/Review.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/Review.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/TestDomain.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/UserRole.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/domain/UserRole.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/exceptions/TestException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/exceptions/TestException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/repository/AddressRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/repository/AddressRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/repository/CouponRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/repository/CouponRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/repository/FollowingRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/repository/FollowingRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/repository/ITestRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/repository/OrderHistoryRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/repository/OrderHistoryRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/repository/OrderLineRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/repository/OrderLineRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/repository/OrderRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/repository/OrderRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/repository/PaymentRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/repository/PaymentRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/repository/ProductCategoryRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/repository/ProductCategoryRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/repository/ProductRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/repository/ProductRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/repository/ReviewRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/repository/ReviewRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/repository/TestRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/repository/TestRepositoryImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/repository/UserRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/repository/UserRoleRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/repository/UserRoleRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/service/ITestService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/service/TestService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/validator/TestValidator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/validator/TestValidator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/images/miu-logo.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/miu/waa/groupbravo/onlineshop/OnlineshopApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/miu/waa/groupbravo/onlineshop/OnlineshopApplicationTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/mainAdmin.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/mainAdmin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/mainBuyer.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/mainBuyer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/mainSeller.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/mainSeller.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,8 +19,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -147,53 +60,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
-      <module name="WAA-miu-onlineShop" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="WORKING_DIRECTORY" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
-      <module name="WAA-miu-onlineShop" />
-      <option name="filePath" />
-      <option name="vmParameters" />
-      <option name="alternativeJrePath" />
-      <option name="programParameters" />
-      <option name="passParentEnvs" value="true" />
-      <option name="workingDirectory" />
-      <option name="isAlternativeJrePathEnabled" value="false" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="filePath" />
-      <option name="vmParameters" />
-      <option name="alternativeJrePath" />
-      <option name="programParameters" />
-      <option name="passParentEnvs" value="true" />
-      <option name="workingDirectory" />
-      <option name="isAlternativeJrePathEnabled" value="false" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="WORKING_DIRECTORY" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="OnlineshopApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="WAA-miu-onlineShop" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.miu.waa.groupbravo.onlineshop.OnlineshopApplication" />
@@ -233,11 +99,12 @@
       <workItem from="1588947227852" duration="1084000" />
       <workItem from="1588969588022" duration="1186000" />
       <workItem from="1589044439468" duration="1002000" />
+      <workItem from="1589169684508" duration="8608000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
     <state x="582" y="255" key="#Assign_Data_Sources" timestamp="1588883976027">
@@ -284,46 +151,46 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="92" y="92" width="1182" height="544" key="DiffContextDialog/0.0.1366.728@0.0.1366.728" timestamp="1589141987203" />
-    <state x="517" y="203" key="FileChooserDialogImpl" timestamp="1589129529207">
+    <state x="517" y="203" key="FileChooserDialogImpl" timestamp="1589159042120">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="517" y="203" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1589129529207" />
+    <state x="517" y="203" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1589159042120" />
     <state x="507" y="266" key="Github.CreateGistDialog" timestamp="1589128087795">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="507" y="266" key="Github.CreateGistDialog/0.0.1366.728@0.0.1366.728" timestamp="1589128087795" />
-    <state width="1322" height="35" key="GridCell.Tab.0.bottom" timestamp="1589148695876">
+    <state width="1322" height="130" key="GridCell.Tab.0.bottom" timestamp="1589178804668">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="35" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1589148695876" />
-    <state width="1322" height="35" key="GridCell.Tab.0.center" timestamp="1589148695875">
+    <state width="1322" height="130" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1589178804668" />
+    <state width="1322" height="130" key="GridCell.Tab.0.center" timestamp="1589178804668">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="35" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1589148695875" />
-    <state width="1322" height="35" key="GridCell.Tab.0.left" timestamp="1589148695875">
+    <state width="1322" height="130" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1589178804668" />
+    <state width="1322" height="130" key="GridCell.Tab.0.left" timestamp="1589178804668">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="35" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1589148695875" />
-    <state width="1322" height="35" key="GridCell.Tab.0.right" timestamp="1589148695876">
+    <state width="1322" height="130" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1589178804668" />
+    <state width="1322" height="130" key="GridCell.Tab.0.right" timestamp="1589178804668">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="35" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1589148695876" />
-    <state width="1322" height="35" key="GridCell.Tab.1.bottom" timestamp="1589148695876">
+    <state width="1322" height="130" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1589178804668" />
+    <state width="1322" height="130" key="GridCell.Tab.1.bottom" timestamp="1589178804668">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="35" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1589148695876" />
-    <state width="1322" height="35" key="GridCell.Tab.1.center" timestamp="1589148695876">
+    <state width="1322" height="130" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1589178804668" />
+    <state width="1322" height="130" key="GridCell.Tab.1.center" timestamp="1589178804668">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="35" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1589148695876" />
-    <state width="1322" height="35" key="GridCell.Tab.1.left" timestamp="1589148695876">
+    <state width="1322" height="130" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1589178804668" />
+    <state width="1322" height="130" key="GridCell.Tab.1.left" timestamp="1589178804668">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="35" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1589148695876" />
-    <state width="1322" height="35" key="GridCell.Tab.1.right" timestamp="1589148695876">
+    <state width="1322" height="130" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1589178804668" />
+    <state width="1322" height="130" key="GridCell.Tab.1.right" timestamp="1589178804668">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="35" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1589148695876" />
+    <state width="1322" height="130" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1589178804668" />
     <state x="129" y="55" key="MergeDialog" timestamp="1589127522654">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

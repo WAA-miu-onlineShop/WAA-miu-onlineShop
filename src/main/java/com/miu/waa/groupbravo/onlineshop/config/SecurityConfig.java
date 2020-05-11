@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
@@ -21,6 +22,12 @@ import javax.sql.DataSource;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+    private AuthenticationSuccessHandler authenticationSuccessHandler;
+
+    @Autowired
+    public SecurityConfig(AuthenticationSuccessHandler authenticationSuccessHandler) {
+        this.authenticationSuccessHandler = authenticationSuccessHandler;
+    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -61,7 +68,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/h2-console/**","/resources/**", "/static/**", "/css/**", "/js/**", "/images/**").permitAll();
 
         http.authorizeRequests()
-                .antMatchers("/", "/login", "/registration", "/h2-console/**").permitAll()
+                .antMatchers("/", "/login", "/registration", "/h2-console/**","/logout/").permitAll()
                 .antMatchers("/admin/**").hasAuthority("ADMIN")
                 .antMatchers("/buyer/**").hasAuthority("BUYER")
                 .antMatchers("/seller/**").hasAuthority("SELLER")
@@ -72,7 +79,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .failureUrl("/login-error")
                 .usernameParameter("username")
                 .passwordParameter("password")
-                .defaultSuccessUrl("/")
+                //.defaultSuccessUrl("/")
+                .successHandler(authenticationSuccessHandler)
                 .and()
                 .logout()
                 .invalidateHttpSession(true)
