@@ -21,7 +21,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public EOrderStatus getStatusByName(EOrderStatus status) {
-        return orderRepository;
+        return orderRepository.getOrderStatus();
     }
 
     @Override
