@@ -62,7 +62,7 @@ public class OrderServiceImpl implements OrderService {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Dear ").append(user.getFirstName()).append(" ").append(user.getLastName()).append("<br/><br/>");
         stringBuilder.append("Your order #" + orderId.toString() + " on 3L* Store (%s) has been cancelled.<br/><br/>");
-        stringBuilder.append("Thank you so much<br/><br/>Waa3L Team.");
+        stringBuilder.append("Thank you so much<br/><br/>TBrova Team.");
 
        // emailService.sendEmail(stringBuilder.toString(), "Order Canceled", Arrays.asList(user.getEmail()));
         return order;
