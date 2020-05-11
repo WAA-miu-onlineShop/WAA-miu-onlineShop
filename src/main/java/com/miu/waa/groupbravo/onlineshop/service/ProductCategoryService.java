@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ProductCategoryService {
     public void saveProductCategory(ProductCategory productCategory);
-    public void deleteProductCategory(String name);
+    public void deleteProductCategory(ProductCategory productCategory);
     public ProductCategory updateProductCategory(ProductCategory productCategory);
     public List<ProductCategory> findAllProductCategory();
 

@@ -33,8 +33,9 @@ public class ProductCategoryController {
     }
 
     @DeleteMapping
-    public void deleteProductCategory(@RequestBody ProductCategory productCategory){
-        productCategoryService.deleteProductCategory(productCategory);
+    public void deleteProductCategory(ProductCategory productCategory){
+
+        productCategoryService.deleteProductCategory();
     }
 
 
