@@ -34,6 +34,7 @@ public class UserServiceImpl implements UserService {
     }
 
     public User saveUser(User user) {
+        //System.out.println(passwordEncoder.encode("pass12345"));
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         if(user.isNew()){
             Optional<UserRole> userRole = userRoleRepository.findById(user.getUserRole().getId());
