@@ -14,5 +14,7 @@ public interface OrderRepository extends CrudRepository<Order, Long> {
     @Query("select o from Orders o where o.buyer.id = :userId")
     List<Order> getAllOrdersByUser(Long userId);
 
+    @Query("select o.orderStatus from Orders o")
+    String getOrderStatus();
 }
 
