@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="271bf99b-99d1-44f7-9b16-43bcc491a043" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/domain/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/domain/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/repository/OrderHistoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/repository/OrderHistoryRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/service/serviceImpl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/service/serviceImpl/OrderServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -86,7 +88,7 @@
       <workItem from="1588947227852" duration="1084000" />
       <workItem from="1588969588022" duration="1186000" />
       <workItem from="1589044439468" duration="1002000" />
-      <workItem from="1589161571280" duration="8010000" />
+      <workItem from="1589161571280" duration="15651000" />
     </task>
     <servers />
   </component>
@@ -94,10 +96,11 @@
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="582" y="255" key="#Assign_Data_Sources" timestamp="1588883976027">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="614" y="314" key="#Assign_Data_Sources" timestamp="1589171544742">
+      <screen x="0" y="23" width="1440" height="832" />
     </state>
     <state x="582" y="255" key="#Assign_Data_Sources/0.0.1366.728@0.0.1366.728" timestamp="1588883976027" />
+    <state x="614" y="314" key="#Assign_Data_Sources/0.23.1440.832@0.23.1440.832" timestamp="1589171544742" />
     <state x="341" y="0" width="697" height="728" key="#OnlineshopApplication" timestamp="1588903712239">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -114,11 +117,12 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="69" key="#com.intellij.ide.macro.MacrosDialog/0.0.1366.728@0.0.1366.728" timestamp="1589129685848" />
-    <state x="514" y="87" key="#com.intellij.ide.util.MemberChooser" timestamp="1589167744874">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="514" y="103" key="#com.intellij.ide.util.MemberChooser" timestamp="1589217110708">
+      <screen x="0" y="23" width="1440" height="832" />
     </state>
     <state x="488" y="70" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1588886755431" />
     <state x="514" y="87" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1589167744874" />
+    <state x="514" y="103" key="#com.intellij.ide.util.MemberChooser/0.23.1440.832@0.23.1440.832" timestamp="1589217110708" />
     <state x="412" y="154" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1589128623214">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
