@@ -16,5 +16,6 @@ public class UserMessage implements Serializable {
     @Column(name="ID")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+    private Integer code;
     private String Value;
 }
