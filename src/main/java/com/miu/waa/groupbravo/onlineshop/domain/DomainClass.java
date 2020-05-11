@@ -31,7 +31,7 @@ public class DomainClass  implements Serializable {
     }
 
     public boolean isNew() {
-        if (id == null){
+        if (id == null||id.toString().isEmpty()){
             return true;
           }
     return false;

@@ -3,6 +3,7 @@ package com.miu.waa.groupbravo.onlineshop.domain;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -25,7 +26,7 @@ public class Product extends DomainClass {
     @JoinColumn(name="product_category_id")
     private ProductCategory productCategory;
     @Transient
-    private org.springframework.web.multipart.MultipartFile MultipartFile;
+    private MultipartFile MultipartFile;
     private String file;
     public String getSerialNumber() {
         return serialNumber;
