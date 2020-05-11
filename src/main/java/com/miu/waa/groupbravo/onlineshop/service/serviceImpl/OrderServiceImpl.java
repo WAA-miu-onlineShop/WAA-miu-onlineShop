@@ -70,7 +70,13 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public int getPointsOfUser(Long userId) {
-        return 0;
+        int points = 0;
+        List<Order> orders = this.getAllOrdersByUser(userId);
+
+        for(Order o: orders)
+            points += o.getCoupons().intValue();
+
+        return points;
     }
 
     @Override
