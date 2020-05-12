@@ -1,5 +1,6 @@
 package com.miu.waa.groupbravo.onlineshop.controller;
 
+import com.miu.waa.groupbravo.onlineshop.domain.Product;
 import com.miu.waa.groupbravo.onlineshop.domain.User;
 import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
@@ -48,7 +49,8 @@ public class LoginController {
     }
 
     @RequestMapping("/seller")
-    public String mainSellerPage() {
+    public String mainSellerPage(Model model) {
+        model.addAttribute("product", new Product());
         return "mainSeller";
     }
 
