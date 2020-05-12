@@ -2,6 +2,7 @@ package com.miu.waa.groupbravo.onlineshop.controller;
 
 import com.miu.waa.groupbravo.onlineshop.domain.ERoleType;
 import com.miu.waa.groupbravo.onlineshop.domain.EUserStatus;
+import com.miu.waa.groupbravo.onlineshop.domain.Product;
 import com.miu.waa.groupbravo.onlineshop.domain.User;
 import com.miu.waa.groupbravo.onlineshop.service.UserService;
 import org.dom4j.rule.Mode;
@@ -46,7 +47,7 @@ public class UserController {
         }else{
             model.addAttribute("approved", false);
         }
-
+        model.addAttribute("product", new Product());
         return "mainSeller";
     }
 

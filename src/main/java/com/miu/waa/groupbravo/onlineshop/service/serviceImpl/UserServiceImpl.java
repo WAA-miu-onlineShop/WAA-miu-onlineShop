@@ -9,6 +9,7 @@ import com.miu.waa.groupbravo.onlineshop.repository.UserRoleRepository;
 import com.miu.waa.groupbravo.onlineshop.service.SequenceNumberService;
 import com.miu.waa.groupbravo.onlineshop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -35,6 +36,7 @@ public class UserServiceImpl implements UserService {
     }
 
     public User approveSeller(User seller){
+        //auth.getPrincipal();
         return userRepository.save(seller);
     }
 

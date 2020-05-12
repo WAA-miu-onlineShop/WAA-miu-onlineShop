@@ -1,6 +1,7 @@
 package com.miu.waa.groupbravo.onlineshop.service.serviceImpl;
 
 import com.miu.waa.groupbravo.onlineshop.domain.ProductCategory;
+import com.miu.waa.groupbravo.onlineshop.domain.User;
 import com.miu.waa.groupbravo.onlineshop.repository.ProductCategoryRepository;
 import com.miu.waa.groupbravo.onlineshop.repository.ProductRepository;
 import com.miu.waa.groupbravo.onlineshop.service.ProductCategoryService;
@@ -18,6 +19,7 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
 
     @Autowired
     private ProductCategoryRepository productCategoryRepository;
+
     @Override
     public void saveProductCategory(ProductCategory productCategory) {
 
@@ -37,6 +39,11 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
     @Override
     public List<ProductCategory> findAllProductCategory() {
 
-        return (List<ProductCategory>)productCategoryRepository.findAll();
+        return (List<ProductCategory>) productCategoryRepository.findAll();
+    }
+
+    @Override
+    public List<ProductCategory> findProductCategoriesBySeller(User seller) {
+        return productCategoryRepository.findBySeller(seller);
     }
 }

@@ -16,26 +16,26 @@ public class ProductCategoryController {
     @Autowired
     ProductCategoryService productCategoryService;
 
-    @PostMapping
-    public void saveProductCategory(@Valid @ModelAttribute("productCategory") ProductCategory productCategory, Model model) {
+    @PostMapping("/saveCategory")
+    public void saveProductCategory(@Valid @ModelAttribute("productCategory") ProductCategory productCategory) {
 
         productCategoryService.saveProductCategory(productCategory);
     }
 
-    @PutMapping
-    public ProductCategory updateProductCategory(@RequestBody ProductCategory productCategory) {
+    @PutMapping("/updateProductCategory")
+    public ProductCategory updateProductCategory(ProductCategory productCategory) {
         return productCategoryService.updateProductCategory(productCategory);
     }
-    @GetMapping
+    @GetMapping("/findAll")
     public List<ProductCategory> findAllProductCategories() {
 
         return productCategoryService.findAllProductCategory();
     }
 
-    @DeleteMapping
+    @DeleteMapping("/deleteCategory")
     public void deleteProductCategory(ProductCategory productCategory){
 
-        productCategoryService.deleteProductCategory();
+        productCategoryService.deleteProductCategory(productCategory);
     }
 
 
