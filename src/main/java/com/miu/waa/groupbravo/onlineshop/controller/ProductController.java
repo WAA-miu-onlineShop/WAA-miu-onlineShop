@@ -33,38 +33,11 @@ public class ProductController {
     ServletContext servletContext;
 
     @PostMapping("/save")
-    public String addProduct(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult, Model model, HttpRequest request)throws FileNotFoundException {
+    public String addProduct(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult, Model model)throws FileNotFoundException {
         if (bindingResult.hasErrors()) {
 
             return ("seller/product");
         }
-
-//        User seller=new User();
-//        seller.setFirstName("Eric");
-//
-//        ProductCategory productCategory=new ProductCategory();
-//        productCategory.setName("Test");
-//        Product product1=new Product();
-//
-//        product1.setName("Laptop");
-//        product1.setDescription("dell laptopn 2345");
-//        product1.setSerialNumber("S34567");
-//        product1.setUnitPrice(new BigDecimal(12));
-//        product1.setSeller(seller);
-//       // product1.setProductCategory(productCategory);
-
-
-        //uploading a picture
-   /*     MultipartFile photo = product.getMultipartFile();
-        String rootDirectory = servletContext.getRealPath("/");
-
-        if (photo!=null && !photo.isEmpty()) {
-            try {
-                photo.transferTo(new File(rootDirectory+"\\images\\"+ product.getProductNumber()+ ".jpg"));
-            } catch (Exception e) {
-                throw new FileNotFoundException("Can't upload the image: " + photo.getOriginalFilename() );
-            }
-        }*/
         productService.addProduct(product);
 
         return ("seller/product");
