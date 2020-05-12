@@ -1,5 +1,6 @@
 package com.miu.waa.groupbravo.onlineshop.domain;
 
+import com.miu.waa.groupbravo.onlineshop.repository.OrderRepository;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -8,7 +9,8 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;
-
+@NamedQueries({@NamedQuery(name=OrderRepository.QUERY_NAME.findBySellerAndStatus,query =OrderRepository.QUERY.findBySellerAndStatus ),
+        @NamedQuery(name=OrderRepository.QUERY_NAME.findOrderByBuyerAndStatus,query=OrderRepository.QUERY.findOrderByBuyerAndStatus)})
 @Entity(name="Orders")
 public class Order extends DomainClass {
     private String orderNumber;
@@ -35,10 +37,16 @@ public class Order extends DomainClass {
     }
 
     public BigDecimal getTotalAmount() {
-        return totalAmount;
+
+
+
+        return orderLineList.stream().map(x->x.getAmount()).reduce(BigDecimal.ZERO,(x,y)->x.add(y));
     }
 
     public void setTotalAmount(BigDecimal totalAmount) {
+
+
+
         this.totalAmount = totalAmount;
     }
 

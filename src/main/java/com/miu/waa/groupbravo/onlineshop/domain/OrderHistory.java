@@ -1,5 +1,8 @@
 package com.miu.waa.groupbravo.onlineshop.domain;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -56,7 +59,7 @@ public class OrderHistory extends  DomainClass {
         this.user = user;
     }
 
-/*    @Override
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
 
@@ -78,5 +81,5 @@ public class OrderHistory extends  DomainClass {
                 .append(order)
                 .append(orderStatus)
                 .toHashCode();
-    }*/
+    }
 }

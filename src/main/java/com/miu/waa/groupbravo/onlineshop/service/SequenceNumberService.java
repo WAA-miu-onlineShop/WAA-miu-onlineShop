@@ -8,5 +8,6 @@ public interface SequenceNumberService {
     public String getNextOrderNumber();
     public String getNextProductNumber();
     public String getNextPaymentNumber();
+    public String getNextCouponNumber();
 
 }

@@ -1,14 +1,14 @@
 package com.miu.waa.groupbravo.onlineshop.domain;
+import com.miu.waa.groupbravo.onlineshop.repository.CouponRepository;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Entity
+@NamedQueries(@NamedQuery(name = CouponRepository.QUERY_NAME.findByUser,query = CouponRepository.QUERY.findByUser))
 public class Coupon  extends DomainClass implements Serializable {
     private String couponNumber;
     @OneToOne

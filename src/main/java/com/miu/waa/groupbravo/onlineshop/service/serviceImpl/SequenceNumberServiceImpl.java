@@ -3,8 +3,11 @@ package com.miu.waa.groupbravo.onlineshop.service.serviceImpl;
 import com.miu.waa.groupbravo.onlineshop.domain.ERoleType;
 import com.miu.waa.groupbravo.onlineshop.domain.ESequenceType;
 import com.miu.waa.groupbravo.onlineshop.domain.SequenceNumber;
+import com.miu.waa.groupbravo.onlineshop.domain.User;
 import com.miu.waa.groupbravo.onlineshop.repository.SequenceNumberRepository;
 import com.miu.waa.groupbravo.onlineshop.service.SequenceNumberService;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -33,6 +36,13 @@ public class SequenceNumberServiceImpl  implements SequenceNumberService {
            prefix="AD";
         }
         return prefix+getNextSequence(ESequenceType.USER)+getCurrentYear();
+    }
+
+    @Override
+    public String getNextCouponNumber() {
+       SequenceNumber sequenceNumber=sequenceNumberRepository.findBySequenceType(ESequenceType.COUPON);
+       //CP+Sequence+year
+       return "CP"+sequenceNumber+getCurrentYear();
     }
 
     private Long getNextSequence(ESequenceType sequenceType){

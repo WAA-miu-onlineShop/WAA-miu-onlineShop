@@ -6,7 +6,8 @@ public enum ESequenceType {
 	ORDER("Order"),
 	PAYMENT("Payment"),
 	USER("User"),
-	PRODUCT("Product");
+	PRODUCT("Product"),
+	COUPON("Coupon");
 	private String status;
 	
 
