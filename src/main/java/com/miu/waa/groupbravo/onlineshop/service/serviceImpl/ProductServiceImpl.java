@@ -8,6 +8,7 @@ import com.miu.waa.groupbravo.onlineshop.repository.ProductRepository;
 import com.miu.waa.groupbravo.onlineshop.repository.UserRepository;
 import com.miu.waa.groupbravo.onlineshop.service.ProductService;
 import com.miu.waa.groupbravo.onlineshop.service.SequenceNumberService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
@@ -15,19 +16,20 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.transaction.Transactional;
 import java.io.File;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
 @Transactional
 public class ProductServiceImpl implements ProductService {
 
-    //@Autowired
+    @Autowired
     private SequenceNumberService sequenceNumberService;
-   // @Autowired
+    @Autowired
     private ProductRepository productRepository;
-    //@Autowired
+    @Autowired
     private ProductCategoryRepository productCategoryRepository;
-   // @Autowired
+   @Autowired
     private UserRepository userRepository;
     public ProductServiceImpl(SequenceNumberService sequenceNumberService,ProductRepository productRepository,ProductCategoryRepository productCategoryRepository,UserRepository userRepository){
      this.sequenceNumberService=sequenceNumberService;
@@ -44,6 +46,7 @@ public class ProductServiceImpl implements ProductService {
             product.setProductCategory(productCategory);
             product.setProductStatus(EProductStatus.NEW);
             product.setSeller(getUser());
+            productCategory.setQuantityAvailable(productCategory.getQuantityAvailable().add(BigDecimal.valueOf(1)));
             ///UPLOAD FILE
             String rootDirectory=System.getProperty("user.dir");
             MultipartFile photo = product.getMultipartFile();

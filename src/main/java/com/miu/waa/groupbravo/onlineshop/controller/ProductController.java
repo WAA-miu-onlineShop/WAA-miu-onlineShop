@@ -76,7 +76,7 @@ public class ProductController {
 //        return "product/mainSeller_List";
 //    }
 
-    @DeleteMapping("/delete")
+    @DeleteMapping("/seller/product/delete/{product_id}")
     public String deleteProduct( Product product,Model model) {
         if(product.getProductStatus().compareTo(EProductStatus.NEW)!=0||product.getProductStatus().compareTo(EProductStatus.AVAILABLE)!=0){
             model.addAttribute("errorMessage","you can not delete a purchased product");
