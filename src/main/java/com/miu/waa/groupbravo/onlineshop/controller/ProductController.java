@@ -1,5 +1,4 @@
 package com.miu.waa.groupbravo.onlineshop.controller;
-
 import com.miu.waa.groupbravo.onlineshop.domain.EProductStatus;
 import com.miu.waa.groupbravo.onlineshop.domain.Product;
 import com.miu.waa.groupbravo.onlineshop.domain.ProductCategory;
@@ -18,7 +17,6 @@ import javax.servlet.ServletContext;
 import javax.validation.Valid;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.math.BigDecimal;
 import java.util.List;
 
 @Controller
@@ -42,8 +40,23 @@ public class ProductController {
             return "product/mainSeller";
         }
 
+//        User seller=new User();
+//        seller.setFirstName("Eric");
+//
+//        ProductCategory productCategory=new ProductCategory();
+//        productCategory.setName("Test");
+//        Product product1=new Product();
+//
+//        product1.setName("Laptop");
+//        product1.setDescription("dell laptopn 2345");
+//        product1.setSerialNumber("S34567");
+//        product1.setUnitPrice(new BigDecimal(12));
+//        product1.setSeller(seller);
+//       // product1.setProductCategory(productCategory);
+
+
         //uploading a picture
-        MultipartFile photo = product.getMultipartFile();
+   /*     MultipartFile photo = product.getMultipartFile();
         String rootDirectory = servletContext.getRealPath("/");
 
         if (photo!=null && !photo.isEmpty()) {
@@ -52,7 +65,7 @@ public class ProductController {
             } catch (Exception e) {
                 throw new FileNotFoundException("Can't upload the image: " + photo.getOriginalFilename() );
             }
-        }
+        }*/
         productService.addProduct(product);
 
         return "redirect:list";
@@ -97,7 +110,7 @@ public class ProductController {
             model.addAttribute("errorMessage","you can not delete a purchased product");
             return "product/mainSeller_List";
         }
-        else {
+          else {
             productService.deleteProduct(product);
         }
         return "product/mainSeller_List";

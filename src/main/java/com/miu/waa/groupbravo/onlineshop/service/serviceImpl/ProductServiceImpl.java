@@ -5,11 +5,19 @@ import com.miu.waa.groupbravo.onlineshop.domain.ProductCategory;
 import com.miu.waa.groupbravo.onlineshop.domain.User;
 import com.miu.waa.groupbravo.onlineshop.repository.ProductCategoryRepository;
 import com.miu.waa.groupbravo.onlineshop.repository.ProductRepository;
+import com.miu.waa.groupbravo.onlineshop.repository.UserRepository;
 import com.miu.waa.groupbravo.onlineshop.service.ProductService;
 import com.miu.waa.groupbravo.onlineshop.service.SequenceNumberService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
 import javax.transaction.Transactional;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.security.Principal;
 import java.util.List;
 
 @Service
@@ -22,6 +30,8 @@ public class ProductServiceImpl implements ProductService {
     private ProductRepository productRepository;
     @Autowired
     private ProductCategoryRepository productCategoryRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     @Override
     public void addProduct(Product product) {
@@ -31,12 +41,35 @@ public class ProductServiceImpl implements ProductService {
             product.setProductNumber(productNumber);
             product.setProductCategory(productCategory);
             product.setProductStatus(EProductStatus.NEW);
+            product.setSeller(getUser());
+            ///
+            String rootDirectory=System.getProperty("user.dir");
+            MultipartFile photo = product.getMultipartFile();
+            String path=rootDirectory+"\\images\\"+ product.getProductNumber()+ ".jpg";
+            product.setFile(path);
+            if (photo!=null && !photo.isEmpty()) {
+                try {
+                    photo.transferTo(new File(path));
+                } catch (Exception e) {
+                   // throw new FileNotFoundException("Can't upload the image: " + photo.getOriginalFilename() );
+                }
+            }
         }
 
         productRepository.save(product);
     }
+    private User getUser(){
 
-
+        Object principal= SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String username="";
+        if(principal instanceof UserDetails){
+            username=((UserDetails)principal).getUsername();
+        }else{
+            username=principal.toString();
+        }
+        User user=userRepository.findByUsername(username);
+        return user;
+    }
     @Override
     public void deleteProduct(Product product) {
         if(product.getProductStatus().compareTo(EProductStatus.NEW)==0||product.getProductStatus().compareTo(EProductStatus.AVAILABLE)==0) {
