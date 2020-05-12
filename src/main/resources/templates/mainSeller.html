@@ -28,7 +28,7 @@
                         Seller Portal</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
-                            <a href="#">Manage products</a>
+                            <a href="#" th:href="@{/seller/sellerStatus/}">Manage products</a>
                         </li>
                         <li>
                             <a href="#">Manage Orders</a>
@@ -76,7 +76,7 @@
                         </li>
                         <li class="nav-item">
                             <button type="button" class="btn btn-outline-primary btn-nav-bar" data-toggle="modal"
-                                    data-target="#exampleModal" id="placeOrderNavBtn">
+                                    data-target="#exampleModal" id="addProductNavBtn">
                                 Add Product
                             </button>
                         </li>
@@ -90,28 +90,38 @@
             </div>
         </nav>
 
-        <h2 class="mb-4">Welcome <span sec:authentication="name"></span></h2>
+        <h2 class="mb-4">Welcome <span sec:authentication="name" id="usernameDisplay"></span></h2>
         <p>Welcome to Pick Bravo Online Shop, a place where you can buy and sell products. Register as a seller or buyer
             to get started and join the millions of other people already enjoying our services</p>
         <p>Contact the administrator for any queries regarding this online shop</p>
-        <div class="row" style="margin-top: 10px;" id="dynamicContent">
-            <div class="card" style="width: 18rem; margin-left:15px;">
-                <img src="/images/delicacies.jpg" class="card-img-top" />
-                <div class="card-body">
-                    <p class="card-text">A wide range of delicacies also available in the shop</p>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem; margin-left:15px;">
-                <img src="/images/electronics.jpg" class="card-img-top" />
-                <div class="card-body">
-                    <p class="card-text">Electronics devices are among the most purchased items</p>
-                </div>
 
+        <div>
+            <div th:if="${approved}">
+                <!-- TODO: Display list of products for the seller -->
+                <p>Fill out the form below to add new product</p>
             </div>
-            <div class="card" style="width: 18rem; margin-left:15px;">
-                <img src="/images/clothing.jpg" class="card-img-top" />
-                <div class="card-body">
-                    <p class="card-text">Checkout the clothing section for specialized clothing needs</p>
+            <div th:unless="${approved}">
+                <div class="alert alert-danger">You need Administrator Approval to Add products</div>
+                <div class="row" style="margin-top: 10px;" id="dynamicContent">
+                    <div class="card" style="width: 18rem; margin-left:15px;">
+                        <img src="/images/delicacies.jpg" class="card-img-top" />
+                        <div class="card-body">
+                            <p class="card-text">A wide range of delicacies also available in the shop</p>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 18rem; margin-left:15px;">
+                        <img src="/images/electronics.jpg" class="card-img-top" />
+                        <div class="card-body">
+                            <p class="card-text">Electronics devices are among the most purchased items</p>
+                        </div>
+
+                    </div>
+                    <div class="card" style="width: 18rem; margin-left:15px;">
+                        <img src="/images/clothing.jpg" class="card-img-top" />
+                        <div class="card-body">
+                            <p class="card-text">Checkout the clothing section for specialized clothing needs</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
