@@ -73,20 +73,20 @@ public class ProductController {
     @PutMapping("/update")
     public String updateProduct(Product product) {
         productService.updateProduct(product);
-        return "redirect:list";
+        return ("seller/product");
     }
 
     @GetMapping("/list")
     public String findAllProducts() {
         productService.findAll();
-        return "product/mainSeller_List";
+        return ("seller/product");
     }
 
     @GetMapping("/byseller")
     public String findProductsBySeller(String username) {
         User seller = userService.findByUsername(username);
         productService.findProductsBySeller(seller);
-        return "product/mainSeller_List";
+        return ("seller/product");
     }
 
         @ModelAttribute("productCategoryList")
@@ -107,12 +107,12 @@ public class ProductController {
     public String deleteProduct( Product product,Model model) {
         if(product.getProductStatus().compareTo(EProductStatus.NEW)!=0||product.getProductStatus().compareTo(EProductStatus.AVAILABLE)!=0){
             model.addAttribute("errorMessage","you can not delete a purchased product");
-            return "product/mainSeller_List";
+            return ("seller/product");
         }
           else {
             productService.deleteProduct(product);
         }
-        return "product/mainSeller_List";
+        return ("seller/product");
     }
 
 
