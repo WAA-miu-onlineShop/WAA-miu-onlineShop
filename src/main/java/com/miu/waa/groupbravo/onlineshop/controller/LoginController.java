@@ -50,7 +50,7 @@ public class LoginController {
 
     @RequestMapping("/seller")
     public String mainSellerPage(Model model) {
-        model.addAttribute("product", new Product());
+        //model.addAttribute("product", new Product());
         return "mainSeller";
     }
 

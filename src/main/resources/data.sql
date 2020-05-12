@@ -15,6 +15,21 @@ INSERT INTO User (id, version, firstName, lastName, username, password, user_rol
 INSERT INTO User (id, version, firstName, lastName, username, password, user_role_id) VALUES(24, 1, 'Erik', 'Erik', 'erik', '$2a$10$kAsVIEI4C0xcEp2abBVM.uzrsfe94lWMAb2wy8pF9jB5031cJWwIy',3);
 INSERT INTO User (id, version, firstName, lastName, username, password, user_status, user_role_id) VALUES(25, 1, 'Moses', 'Wasswa', 'mwseller', '$2a$10$kAsVIEI4C0xcEp2abBVM.uzrsfe94lWMAb2wy8pF9jB5031cJWwIy','NEW',2);
 
-INSERT INTO Product_Category (ID, VERSION,DESCRIPTION,NAME,QUANTITY_AVAILABLE,QUANTITY_PURCHASED,SELLER_ID) VALUES (1,1, 'MAC  240GB 16GB','Laptop',20,2,22);
-INSERT INTO Product_Category (ID, VERSION,DESCRIPTION,NAME,QUANTITY_AVAILABLE,QUANTITY_PURCHASED,SELLER_ID) VALUES (2,1, 'Galaxy S7 64GB','Samsung',50,5,22);
-INSERT INTO Product_Category (ID, VERSION,DESCRIPTION,NAME,QUANTITY_AVAILABLE,QUANTITY_PURCHASED,SELLER_ID) VALUES (3,2, '3 piece suit one button business wedding suits','Cloths',100,25,22);
+
+INSERT INTO product_category (id,version, description, name, quantity_available, quantity_purchased, seller_id)
+VALUES(21,1,'Electronic Devices phones', 'Phones',100,20,22);
+
+INSERT INTO product_category (id,version, description, name, quantity_available, quantity_purchased, seller_id)
+VALUES(22,1,'Electronic Devices laptops', 'Laptops',120,10,22);
+
+INSERT INTO product_category (id,version, description, name, quantity_available, quantity_purchased, seller_id)
+VALUES(23,1,'Shirts and Shorts', 'Clothing',80,20,22);
+
+INSERT INTO product_category(id,version, description, name, quantity_available, quantity_purchased, seller_id)
+VALUES(24,1,'Kitchen equipment', 'Kitchen Equipment',113,16,22);
+
+INSERT INTO product_category(id,version, description, name, quantity_available, quantity_purchased, seller_id)
+VALUES(25,1,'Furniture', 'Furniture',110,17,22);
+
+INSERT INTO product_category(id,version, description, name, quantity_available, quantity_purchased, seller_id)
+VALUES(26,1,'School and Office Stationery', 'Stationery',100,20,22);

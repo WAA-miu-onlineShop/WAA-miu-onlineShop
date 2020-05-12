@@ -241,7 +241,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="addProductModalLabel">Create Menu Item</h5>
+                <h4 class="modal-title" id="addProductModalLabel">Register New Product</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -284,17 +284,16 @@
 <!--                        </div>-->
                         <div class="form-group col-md-6">
                             <label for="productCategory">Product Category</label>
-                            <select id="productCategory" class="form-control">
+                            <select id="productCategory" class="form-control" th:field="*{productCategory.id}">
                                 <option value="">-Select-</option>
-                                <option value="CAT1">CAT1</option>
-                                <option value="CAT2">CAT2</option>
-                                <option value="CAT3">CAT3</option>
-                                <option value="CAT4">CAT4</option>
+                                <option th:each="category: ${productCategories}" th:text="${category.name}" th:value="${category.id}">
+
+                                </option>
                             </select>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="pictureUpload">Unit Price</label>
-                            <input th:field="*{file}" type="file" class="form-control" id="pictureUpload">
+                            <input th:field="*{multipartFile}" type="file" class="form-control" id="pictureUpload">
                         </div>
                     </div>
 

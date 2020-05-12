@@ -26,7 +26,7 @@ public class Product extends DomainClass {
     @JoinColumn(name="product_category_id")
     private ProductCategory productCategory;
     @Transient
-    private MultipartFile MultipartFile;
+    private MultipartFile multipartFile;
     private String file  ;
     public String getSerialNumber() {
         return serialNumber;
@@ -85,7 +85,7 @@ public class Product extends DomainClass {
     }
 
     public void setMultipartFile(org.springframework.web.multipart.MultipartFile multipartFile) {
-        MultipartFile = multipartFile;
+        this.multipartFile = multipartFile;
     }
 
     public String getProductNumber() {
@@ -101,7 +101,7 @@ public class Product extends DomainClass {
     }
 
     public org.springframework.web.multipart.MultipartFile getMultipartFile() {
-        return MultipartFile;
+        return multipartFile;
     }
 
     public String getFile() {
