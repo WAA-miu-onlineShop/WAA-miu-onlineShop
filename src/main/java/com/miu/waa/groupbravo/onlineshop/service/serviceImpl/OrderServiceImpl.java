@@ -10,12 +10,15 @@ import com.miu.waa.groupbravo.onlineshop.service.SequenceNumberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.ByteArrayInputStream;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.*;
-
+@Service
+@Transactional
 public class OrderServiceImpl implements OrderService {
 
     @Autowired

@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="271bf99b-99d1-44f7-9b16-43bcc491a043" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/WAA-miu-onlineShop.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/WAA-miu-onlineShop.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/domain/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/domain/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/mainSeller.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/mainSeller.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/miu/waa/groupbravo/onlineshop/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/controller/OrderController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,18 +67,6 @@
         <option name="MakeProject" enabled="true" />
       </method>
     </configuration>
-  </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -264,13 +245,26 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="414" y="121" key="refactoring.ChangeSignatureDialog/0.0.1366.728@0.0.1366.728" timestamp="1588720643845" />
-    <state x="339" y="157" key="run.anything.popup" timestamp="1589238282619">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="357" y="202" key="run.anything.popup" timestamp="1589322265553">
+      <screen x="0" y="23" width="1440" height="832" />
     </state>
     <state x="339" y="157" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1589238282619" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1589144948696">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="357" y="202" key="run.anything.popup/0.23.1440.832@0.23.1440.832" timestamp="1589322265553" />
+    <state x="365" y="79" width="709" height="775" key="search.everywhere.popup" timestamp="1589322024437">
+      <screen x="0" y="23" width="1440" height="832" />
     </state>
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1589144948696" />
+    <state x="365" y="79" width="709" height="775" key="search.everywhere.popup/0.23.1440.832@0.23.1440.832" timestamp="1589322024437" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/miu/waa/groupbravo/onlineshop/controller/OrderController.java</url>
+          <line>29</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
