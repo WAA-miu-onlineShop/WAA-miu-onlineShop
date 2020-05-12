@@ -24,15 +24,20 @@ import java.util.List;
 @Transactional
 public class ProductServiceImpl implements ProductService {
 
-    @Autowired
+    //@Autowired
     private SequenceNumberService sequenceNumberService;
-    @Autowired
+   // @Autowired
     private ProductRepository productRepository;
-    @Autowired
+    //@Autowired
     private ProductCategoryRepository productCategoryRepository;
-    @Autowired
+   // @Autowired
     private UserRepository userRepository;
-
+    public ProductServiceImpl(SequenceNumberService sequenceNumberService,ProductRepository productRepository,ProductCategoryRepository productCategoryRepository,UserRepository userRepository){
+     this.sequenceNumberService=sequenceNumberService;
+     this.productRepository=productRepository;
+     this.productCategoryRepository=productCategoryRepository;
+     this.userRepository=userRepository;
+    }
     @Override
     public void addProduct(Product product) {
         if(product.isNew()){
@@ -58,16 +63,20 @@ public class ProductServiceImpl implements ProductService {
 
         productRepository.save(product);
     }
-    private User getUser(){
-
-        Object principal= SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        String username="";
-        if(principal instanceof UserDetails){
-            username=((UserDetails)principal).getUsername();
-        }else{
-            username=principal.toString();
-        }
-        User user=userRepository.findByUsername(username);
+    private  User getUser(){
+        User user=null;
+      try {
+          Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+          String username = "";
+          if (principal instanceof UserDetails) {
+              username = ((UserDetails) principal).getUsername();
+          } else {
+              username = principal.toString();
+          }
+          user = userRepository.findByUsername(username);
+      }catch (Exception ex){
+          System.out.println(ex.getMessage());
+      }
         return user;
     }
     @Override
