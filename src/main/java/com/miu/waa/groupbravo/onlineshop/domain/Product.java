@@ -27,8 +27,7 @@ public class Product extends DomainClass {
     private ProductCategory productCategory;
     @Transient
     private MultipartFile MultipartFile;
-
-    private String  ;
+    private String file  ;
     public String getSerialNumber() {
         return serialNumber;
     }
