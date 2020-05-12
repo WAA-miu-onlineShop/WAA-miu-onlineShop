@@ -20,7 +20,6 @@ import java.io.FileNotFoundException;
 import java.util.List;
 
 @Controller
-@RequestMapping("/products")
 public class ProductController {
 
     @Autowired
@@ -34,60 +33,33 @@ public class ProductController {
     ServletContext servletContext;
 
     @PostMapping("/save")
-    public String addProduct(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult, Model model, HttpRequest request)throws FileNotFoundException {
+    public String addProduct(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult, Model model)throws FileNotFoundException {
         if (bindingResult.hasErrors()) {
 
-            return "product/mainSeller";
+            return ("seller/product");
         }
-
-//        User seller=new User();
-//        seller.setFirstName("Eric");
-//
-//        ProductCategory productCategory=new ProductCategory();
-//        productCategory.setName("Test");
-//        Product product1=new Product();
-//
-//        product1.setName("Laptop");
-//        product1.setDescription("dell laptopn 2345");
-//        product1.setSerialNumber("S34567");
-//        product1.setUnitPrice(new BigDecimal(12));
-//        product1.setSeller(seller);
-//       // product1.setProductCategory(productCategory);
-
-
-        //uploading a picture
-   /*     MultipartFile photo = product.getMultipartFile();
-        String rootDirectory = servletContext.getRealPath("/");
-
-        if (photo!=null && !photo.isEmpty()) {
-            try {
-                photo.transferTo(new File(rootDirectory+"\\images\\"+ product.getProductNumber()+ ".jpg"));
-            } catch (Exception e) {
-                throw new FileNotFoundException("Can't upload the image: " + photo.getOriginalFilename() );
-            }
-        }*/
         productService.addProduct(product);
 
-        return "redirect:list";
+        return ("seller/product");
     }
 
     @PutMapping("/update")
     public String updateProduct(Product product) {
         productService.updateProduct(product);
-        return "redirect:list";
+        return ("seller/product");
     }
 
     @GetMapping("/list")
     public String findAllProducts() {
         productService.findAll();
-        return "product/mainSeller_List";
+        return ("seller/product");
     }
 
     @GetMapping("/byseller")
     public String findProductsBySeller(String username) {
         User seller = userService.findByUsername(username);
         productService.findProductsBySeller(seller);
-        return "product/mainSeller_List";
+        return ("seller/product");
     }
 
         @ModelAttribute("productCategoryList")
@@ -108,12 +80,12 @@ public class ProductController {
     public String deleteProduct( Product product,Model model) {
         if(product.getProductStatus().compareTo(EProductStatus.NEW)!=0||product.getProductStatus().compareTo(EProductStatus.AVAILABLE)!=0){
             model.addAttribute("errorMessage","you can not delete a purchased product");
-            return "product/mainSeller_List";
+            return ("seller/product");
         }
           else {
             productService.deleteProduct(product);
         }
-        return "product/mainSeller_List";
+        return ("seller/product");
     }
 
 
