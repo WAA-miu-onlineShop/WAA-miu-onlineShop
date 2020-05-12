@@ -20,7 +20,6 @@ import java.io.FileNotFoundException;
 import java.util.List;
 
 @Controller
-@RequestMapping("/products")
 public class ProductController {
 
     @Autowired
@@ -37,7 +36,7 @@ public class ProductController {
     public String addProduct(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult, Model model, HttpRequest request)throws FileNotFoundException {
         if (bindingResult.hasErrors()) {
 
-            return "product/mainSeller";
+            return ("seller/product");
         }
 
 //        User seller=new User();
@@ -68,7 +67,7 @@ public class ProductController {
         }*/
         productService.addProduct(product);
 
-        return "redirect:list";
+        return ("seller/product");
     }
 
     @PutMapping("/update")
