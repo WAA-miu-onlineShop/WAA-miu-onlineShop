@@ -23,31 +23,32 @@ public class ProductServiceImpl implements ProductService {
             String productNumber=sequenceNumberService.getNextProductNumber();
            product.setProductNumber(productNumber);
            product.setProductStatus(EProductStatus.NEW);
-        }
-        productRepository.save(product);
 
+        }
+
+        productRepository.save(product);
     }
 
 
     @Override
-    public void deleteProduct(String serialNumber) {
-
+    public void deleteProduct(Product product) {
+    productRepository.delete(product);
     }
 
     @Override
     public Product updateProduct(Product product) {
-        return null;
+
+        return productRepository.save(product);
     }
 
     @Override
     public List<Product> findAll() {
-        return null;
+
+        return (List<Product>)productRepository.findAll();
     }
 
-    @Override
-    public Product findOne(String id) {
-        return null;
-    }
+    //find product by user
+
 }
 
 

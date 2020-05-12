@@ -2,12 +2,16 @@ package com.miu.waa.groupbravo.onlineshop.service.serviceImpl;
 
 import com.miu.waa.groupbravo.onlineshop.domain.EOrderStatus;
 import com.miu.waa.groupbravo.onlineshop.domain.Order;
+import com.miu.waa.groupbravo.onlineshop.domain.OrderHistory;
 import com.miu.waa.groupbravo.onlineshop.domain.User;
+import com.miu.waa.groupbravo.onlineshop.repository.OrderHistoryRepository;
 import com.miu.waa.groupbravo.onlineshop.repository.OrderRepository;
 import com.miu.waa.groupbravo.onlineshop.service.OrderService;
+import com.miu.waa.groupbravo.onlineshop.service.SequenceNumberService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.ByteArrayInputStream;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -16,9 +20,28 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private OrderRepository orderRepository;
+    @Autowired
+    private SequenceNumberService sequenceNumberService;
+    @Autowired
+    private OrderHistoryRepository orderHistoryRepository;
 
     @Override
     public Order save(Order order) {
+        if(order.isNew()) {
+            String orderNumber = sequenceNumberService.getNextOrderNumber();
+            order.setOrderNumber(orderNumber);
+            order.setOrderStatus(EOrderStatus.NEW);
+            OrderHistory orderHistory = new OrderHistory();
+            orderHistory.setDescription("Order History");
+            orderHistory.setOrderStatus(order.getOrderStatus());
+            orderHistory.setUser(order.getBuyer());//Login in user, we have to retrieve this from Principal
+            orderHistory.setHistoryDate(LocalDateTime.now());
+            Order savedOrder=save(order);
+            //Add coupons
+            //create coupon object, we search first if the coupon for that buyer already exist, if true increment the totalPoint, if not create a new coupon for that buyer
+            orderHistory.setOrder(savedOrder);
+            orderHistoryRepository.save(orderHistory);
+        }
         return orderRepository.save(order);
     }
 
@@ -26,7 +49,10 @@ public class OrderServiceImpl implements OrderService {
     public EOrderStatus getStatusByName(EOrderStatus status) {
         return orderRepository.getOrderStatus();
     }
-
+   //orderByUser(Seller)AndStatus
+    //AllOrderByStatus(seller)
+    //AllOrderByBuyer
+    //AllOrdersByBuyerAndStatus
     @Override
     public List<Order> getAllOrders() {
         return (List<Order>)orderRepository.findAll();
@@ -52,19 +78,11 @@ public class OrderServiceImpl implements OrderService {
         Order order = optionalOrder.get();
         order.setOrderStatus(getStatusByName(EOrderStatus.CANCELLED));
 
-//        if(order.getPayment().getPayment() == PaymentMethod.POINT)
-//            order.setPoint(0);
-
         orderRepository.save(order);
 
         User user = order.getBuyer();
 
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("Dear ").append(user.getFirstName()).append(" ").append(user.getLastName()).append("<br/><br/>");
-        stringBuilder.append("Your order #" + orderId.toString() + " on 3L* Store (%s) has been cancelled.<br/><br/>");
-        stringBuilder.append("Thank you so much<br/><br/>TBrova Team.");
 
-       // emailService.sendEmail(stringBuilder.toString(), "Order Canceled", Arrays.asList(user.getEmail()));
         return order;
     }
 
