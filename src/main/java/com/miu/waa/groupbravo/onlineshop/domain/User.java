@@ -2,6 +2,7 @@ package com.miu.waa.groupbravo.onlineshop.domain;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.hibernate.annotations.Cascade;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;

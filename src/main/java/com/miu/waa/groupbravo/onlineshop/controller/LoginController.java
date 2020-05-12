@@ -1,5 +1,6 @@
 package com.miu.waa.groupbravo.onlineshop.controller;
 
+import com.miu.waa.groupbravo.onlineshop.domain.User;
 import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.support.SessionStatus;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class LoginController {
@@ -33,7 +36,9 @@ public class LoginController {
     }
 
     @RequestMapping("/admin")
-    public String mainAdminPage() {
+    public String mainAdminPage(Model model) {
+        List<User> sellers = new ArrayList<>();
+        model.addAttribute("sellers",sellers);
         return "mainAdmin";
     }
 

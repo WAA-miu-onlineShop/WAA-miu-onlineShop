@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -29,11 +30,20 @@ public class UserServiceImpl implements UserService {
     private UserRoleRepository userRoleRepository;
 
     public User findByUsername(String username) {
-
+        //System.out.println("Username in the service layer: " + username);
         return userRepository.findByUsername(username);
     }
 
+    public User approveSeller(User seller){
+        return userRepository.save(seller);
+    }
+
+    public List<User> findAll(){
+        return (List<User>)userRepository.findAll();
+    }
+
     public User saveUser(User user) {
+        //System.out.println(passwordEncoder.encode("pass12345"));
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         if(user.isNew()){
             Optional<UserRole> userRole = userRoleRepository.findById(user.getUserRole().getId());

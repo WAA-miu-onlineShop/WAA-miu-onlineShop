@@ -7,103 +7,25 @@ function loadAddressForm(){
     }
 }
 
+function checkSellerStatus(){
+    let username = $("#usernameDisplay").html();
+    console.log(username);
+    $.ajax({
+        "url": "http://localhost:8080/seller/sellerStatus/" + username,
+        "type": "GET",
+        "dataType": "json",
+        "contentType": "application/json",
+    }).done(function (data) {
+        console.log(data);
 
-$("#placeOrderNavBtn").click(function () {
-    let placeOrderContent = $("#placeOrderContent");
-    let modalHeader = $("#exampleModalLabel");
-    let date = new Date();
-    let hours = date.getHours() - 1;
-    if ((hours >= 3) && (hours < 10)) {
-        modalHeader.html("Place your Breakfast Order");
-        $.ajax({
-            "url": "http://localhost:8083/pick_n_go_app_war_exploded/menus",
-            "type": "GET"
-        }).done(function (menuObj) {
-            let html = "";
-            let i = 0;
-            menuObj.data.forEach(function (obj) {
-                if (obj.category === "breakfast") {
-                    obj.items.forEach(function (item) {
-                        html += `<div class='form-check'><label class='form-check-label'>
-            <input type='radio' class='form-check-input' value='${item.itemId}' name='${item.itemId}'>${item.itemName}</label></div>`;
-                    });
-                }
+    }).fail(function (xhr, status, exception) {
+        console.log(xhr.status, xhr, status, exception);
+    });
+}
 
-            });
-            html += "</tbody></table>";
-            placeOrderContent.html(html);
 
-        }).fail(function (xhr, status, exception) {
-            console.log(xhr.status, xhr, status, exception);
-        });
-
-        // menuObj.data.breakfast.forEach(function (obj) {
-
-        //     //modalHeader.html("Place your Breakfast Order");
-        // });
-    } else if ((hours >= 11) && (hours < 13)) {
-        modalHeader.html("Place your Lunch Order");
-        $.ajax({
-            "url": "http://localhost:8083/pick_n_go_app_war_exploded/menus",
-            "type": "GET"
-        }).done(function (menuObj) {
-            let html = "";
-            let i = 0;
-            menuObj.data.forEach(function (obj) {
-                if (obj.category === "lunch") {
-                    obj.items.forEach(function (item) {
-                        html += `<div class='form-check'><label class='form-check-label'>
-            <input type='radio' class='form-check-input' value='${item.itemId}' name='${item.itemId}'>${item.itemName}</label></div>`;
-                    });
-                }
-
-            });
-            html += "</tbody></table>";
-            placeOrderContent.html(html);
-
-        }).fail(function (xhr, status, exception) {
-            console.log(xhr.status, xhr, status, exception);
-        });
-
-        // modalHeader.html("Place your Lunch Order");
-        // menuObj.data.lunch.forEach(function (obj) {
-        //     html += `<div class='form-check'><label class='form-check-label'>
-        //     <input type='radio' class='form-check-input' value='${obj.itemId}' name='${obj.itemId}'>${obj.itemName}</label></div>`;
-        // });
-    } else if ((hours >= 18) && (hours <= 21)) {
-        modalHeader.html("Place your Dinner Order");
-        $.ajax({
-            "url": "http://localhost:8083/pick_n_go_app_war_exploded/menus",
-            "type": "GET"
-        }).done(function (menuObj) {
-            let html = "";
-            let i = 0;
-            menuObj.data.forEach(function (obj) {
-                if (obj.category === "breakfast") {
-                    obj.items.forEach(function (item) {
-                        html += `<div class='form-check'><label class='form-check-label'>
-            <input type='radio' class='form-check-input' value='${item.itemId}' name='${item.itemId}'>${item.itemName}</label></div>`;
-                    });
-                }
-
-            });
-            html += "</tbody></table>";
-            placeOrderContent.html(html);
-
-        }).fail(function (xhr, status, exception) {
-            console.log(xhr.status, xhr, status, exception);
-        });
-
-        // menuObj.data.dinner.forEach(function (obj) {
-        //     html1 += `<div class='form-check'><label class='form-check-label'>
-        //     <input type='radio' class='form-check-input' value='${obj.itemId}' name='${obj.itemId}'>${obj.itemName}</label></div>`;
-        // });
-    } else {
-        modalHeader.html("Timeout for orders");
-        let html = "<div class='alert alert-info'>Sorry, no menu available outside meal hours</div>";
-        placeOrderContent.html(html);
-    }
-
+$("#addProductNavBtn").click(function () {
+    checkSellerStatus();
 });
 
 $("#createMenuNavBtn").click(function () {

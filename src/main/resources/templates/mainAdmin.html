@@ -27,7 +27,7 @@
             <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Admin Portal</a>
             <ul class="collapse list-unstyled" id="homeSubmenu">
               <li>
-                <a href="#" id="menuBreakfast">Approve Seller</a>
+                <a href="#" id="approveSellerLink" th:href="@{/admin/manageSeller}">Manage Seller</a>
               </li>
               <li>
                 <a href="#" id="menuLunch">Approve Buyer Review</a>
@@ -101,25 +101,115 @@
       <p>Welcome to Pick Bravo Online Shop, a place where you can buy and sell products. Register as a seller or buyer
         to get started and join the millions of other people already enjoying our services</p>
       <p>Contact the administrator for any queries regarding this online shop</p>
-      <div class="row" style="margin-top: 10px;" id="dynamicContent">
-        <div class="card" style="width: 18rem; margin-left:15px;">
-            <img src="/images/delicacies.jpg" class="card-img-top" />
-            <div class="card-body">
+
+      <div>
+        <div th:if="${sellers.size() > 0}">
+          <table class="table table-bordered">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>First name</th>
+              <th>Last name</th>
+              <th>Username</th>
+              <th>Role</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="seller: ${sellers}">
+              <td th:text="${seller.id}"></td>
+              <td th:text="${seller.firstName}"></td>
+              <td th:text="${seller.lastName}"></td>
+              <td th:text="${seller.username}"></td>
+              <td th:text="${seller.userRole.name}"></td>
+              <td th:text="${seller.userStatus.getStatus()}"></td>
+              <td th:switch="${seller.userStatus.getStatus().toUpperCase()}">
+                <a th:case="'NEW'" th:href="@{'/admin/changeSellerStatus/' + ${seller.username}}">Approve</a>
+                <a th:case="'APPROVED'" th:href="@{'/admin/changeSellerStatus/' + ${seller.username}}">Disable</a>
+                <a th:case="'DISABLED'" th:href="@{'/admin/changeSellerStatus/' + ${seller.username}}">Re-enable</a>
+              </td>
+<!--              <td th:if="${seller.userStatus.getStatus().toUpperCase() == 'NEW'}"><a th:href="@{'/admin/changeSellerStatus/' + ${seller.username}}">Approve Seller</a></td>-->
+<!--              <td th:unless="${seller.userStatus.getStatus().toUpperCase() == 'NEW'}"><a th:href="@{'/admin/changeSellerStatus/' + ${seller.username}}">Disable Seller</a></td>-->
+<!--              <td>-->
+<!--                <button type="button" class="btn btn-outline-primary btn-nav-bar" data-toggle="modal"-->
+<!--                          data-target="#exampleModal" id="changeSellerStatusBtn">-->
+<!--                  Change Status-->
+<!--                </button>-->
+<!--              </td>-->
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div th:unless="${sellers.size() > 0}">
+          <div class="alert alert-success" th:if="${#httpServletRequest.requestURI.contains('manageSeller')}">No sellers registered in the system</div>
+          <div class="row" style="margin-top: 10px;" id="dynamicContent">
+            <div class="card" style="width: 18rem; margin-left:15px;">
+              <img src="/images/delicacies.jpg" class="card-img-top" />
+              <div class="card-body">
                 <p class="card-text">A wide range of delicacies also available in the shop</p>
+              </div>
             </div>
-        </div>
-        <div class="card" style="width: 18rem; margin-left:15px;">
-            <img src="/images/electronics.jpg" class="card-img-top" />
-            <div class="card-body">
+            <div class="card" style="width: 18rem; margin-left:15px;">
+              <img src="/images/electronics.jpg" class="card-img-top" />
+              <div class="card-body">
                 <p class="card-text">Electronics devices are among the most purchased items</p>
+              </div>
+
             </div>
-          
-        </div>
-        <div class="card" style="width: 18rem; margin-left:15px;">
-            <img src="/images/clothing.jpg" class="card-img-top" />
-            <div class="card-body">
+            <div class="card" style="width: 18rem; margin-left:15px;">
+              <img src="/images/clothing.jpg" class="card-img-top" />
+              <div class="card-body">
                 <p class="card-text">Checkout the clothing section for specialized clothing needs</p>
+              </div>
             </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+  <!-- Change Seller Status Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+       aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Place Order</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div id="orderFormErrors" style="display: none;"></div>
+          <form method="POST" id="placeOrderForm">
+            <div id="placeOrderContent">
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input type="radio" class="form-check-input" value="juice001">Orange Juice
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input type="radio" class="form-check-input" value="juice002">Passion Juice
+                </label>
+              </div>
+              <div class="form-check disabled">
+                <label class="form-check-label">
+                  <input type="radio" class="form-check-input" value="eggs001">Boiled Eggs
+                </label>
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="submit" class="btn btn-primary" id="placeOrderBtn" value="Place Order"/>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
         </div>
       </div>
     </div>
