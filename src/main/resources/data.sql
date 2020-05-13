@@ -37,12 +37,12 @@ VALUES(26,1,'School and Office Stationery', 'Stationery',100,20,22);
 INSERT INTO Product (ID, VERSION,DESCRIPTION,FILE,NAME,PRODUCT_NUMBER,PRODUCT_STATUS,SERIAL_NUMBER,UNIT_PRICE,PRODUCT_CATEGORY_ID,SELLER_ID)
 VALUES (21,1, '3 piece suit one button business wedding suits','File not found','Salvatore','PR12020','NEW','S1',500,21,22);
 INSERT INTO Product (ID, VERSION,DESCRIPTION,FILE,NAME,PRODUCT_NUMBER,PRODUCT_STATUS,SERIAL_NUMBER,UNIT_PRICE,PRODUCT_CATEGORY_ID,SELLER_ID)
-VALUES (22,1, 'Samsung Galaxy Smartphone with both cameras','File not found','Samsung G7','SR12020','NEW','SAM1',200,26,22);
+VALUES (22,1, 'Samsung Galaxy Smartphone with both cameras','File not found','Samsung G7','SR12020','AVAILABLE','SAM1',200,26,22);
 INSERT INTO Product (ID, VERSION,DESCRIPTION,FILE,NAME,PRODUCT_NUMBER,PRODUCT_STATUS,SERIAL_NUMBER,UNIT_PRICE,PRODUCT_CATEGORY_ID,SELLER_ID)
-VALUES (23,1, 'Dell Laptop with webcam','File not found','Dell Lattitude','DR12020','NEW','S1',600,25,22);
+VALUES (23,1, 'Dell Laptop with webcam','File not found','Dell Lattitude','DR12020','AVAILABLE','S1',600,25,22);
 INSERT INTO Product (ID, VERSION,DESCRIPTION,FILE,NAME,PRODUCT_NUMBER,PRODUCT_STATUS,SERIAL_NUMBER,UNIT_PRICE,PRODUCT_CATEGORY_ID,SELLER_ID)
 VALUES (24,1, 'Shorts for gentlemen','File not found','Office Suits','CR12020','NEW','S1',800,24,22);
 INSERT INTO Product (ID, VERSION,DESCRIPTION,FILE,NAME,PRODUCT_NUMBER,PRODUCT_STATUS,SERIAL_NUMBER,UNIT_PRICE,PRODUCT_CATEGORY_ID,SELLER_ID)
-VALUES (25,1, 'Sneakers for running and jogging','File not found','Addidas Fast Sneakers','AR12020','NEW','S1',900,23,22);
+VALUES (25,1, 'Sneakers for running and jogging','File not found','Addidas Fast Sneakers','AR12020','AVAILABLE','S1',900,23,22);
 INSERT INTO Product (ID, VERSION,DESCRIPTION,FILE,NAME,PRODUCT_NUMBER,PRODUCT_STATUS,SERIAL_NUMBER,UNIT_PRICE,PRODUCT_CATEGORY_ID,SELLER_ID)
-VALUES (26,1, 'Refrigulators for multipurpose use','File not found','Samsung LP001','LP001','NEW','S1',400,23,22);
+VALUES (26,1, 'Refrigulators for multipurpose use','File not found','Samsung LP001','LP001','AVAILABLE','S1',400,23,22);

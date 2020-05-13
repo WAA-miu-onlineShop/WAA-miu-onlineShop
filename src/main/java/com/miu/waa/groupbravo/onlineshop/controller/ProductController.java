@@ -63,13 +63,12 @@ public class ProductController {
         productService.findAll();
         return ("seller/product");
     }
-    @GetMapping("/availableProduct")
-    public String getAvailableProduct(Model model){
+    //@GetMapping("/availableProduct")
+    public List<Product> getAvailableProduct(){
         List<EProductStatus> available=new ArrayList<>();
         available.add(EProductStatus.AVAILABLE);
         List<Product> availableProducts=productService.findProductByStatus(available);
-        model.addAttribute("availableProducts",availableProducts);
-      return "buyer/ ";
+        return availableProducts;
     }
     @GetMapping("/availableProduct/{productCategoryId}")
     public String getAvailableProductByCategory(@PathVariable("productCategoryId") Long productCategoryId, Model model){

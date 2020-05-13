@@ -32,6 +32,9 @@ public class LoginController {
     @Autowired
     private ProductService productService;
 
+    @Autowired
+    private ProductController productController;
+
     @RequestMapping("/")
     public String root(Principal principal, HttpServletRequest httpRequest, SecurityContextHolder auth) {
         if(httpRequest.isUserInRole("ROLE_BUYER")){
@@ -60,7 +63,7 @@ public class LoginController {
         Long userId = user.getId();
         model.addAttribute("address",new Address());
         model.addAttribute("addresses", user.getAddresses());
-        model.addAttribute("products", productService.findAll());
+        model.addAttribute("products", productController.getAvailableProduct());
         model.addAttribute("userDetails",user);
         return "mainBuyer";
     }
