@@ -12,5 +12,5 @@ public interface ProductCategoryService {
     public ProductCategory updateProductCategory(ProductCategory productCategory);
     public List<ProductCategory> findAllProductCategory();
     public List<ProductCategory> findProductCategoriesBySeller(User seller);
-
+    public ProductCategory findById(Long productCategoryId);
 }
