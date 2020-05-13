@@ -18,7 +18,6 @@ public class ProductCategoryController {
 
     @PostMapping("/saveCategory")
     public void saveProductCategory(@Valid @ModelAttribute("productCategory") ProductCategory productCategory) {
-
         productCategoryService.saveProductCategory(productCategory);
     }
 

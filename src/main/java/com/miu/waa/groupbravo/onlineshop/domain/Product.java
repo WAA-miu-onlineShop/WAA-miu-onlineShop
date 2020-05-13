@@ -16,13 +16,13 @@ public class Product extends DomainClass {
     private String description;
     private BigDecimal unitPrice= BigDecimal.ZERO;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name="seller_id")
 
     private User seller;
     @Enumerated(EnumType.STRING)
     private EProductStatus productStatus;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name="product_category_id")
     private ProductCategory productCategory;
     @Transient

@@ -15,15 +15,15 @@ import javax.validation.Valid;
 @Controller
 @RequestMapping("/order")
 public class OrderController {
-    @Autowired
-    private OrderService orderService;
-    @PostMapping("/createOrder")
-    public String createOrder(@Valid @ModelAttribute("order") Order order, BindingResult bindingResult, Model model){
-
-      if(bindingResult.hasErrors()){
-     return "buyer/";
-      }
-       orderService.saveOrder(order);
-        return "redirect:/buyer/";
-    }
+//    @Autowired
+//    private OrderService orderService;
+//    @PostMapping("/createOrder")
+//    public String createOrder(@Valid @ModelAttribute("order") Order order, BindingResult bindingResult, Model model){
+//
+//      if(bindingResult.hasErrors()){
+//     return "buyer/";
+//      }
+//       orderService.saveOrder(order);
+//        return "redirect:/buyer/";
+//    }
 }

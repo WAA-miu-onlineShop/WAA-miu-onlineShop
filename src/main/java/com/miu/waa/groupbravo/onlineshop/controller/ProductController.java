@@ -32,21 +32,29 @@ public class ProductController {
     @Autowired
     ServletContext servletContext;
 
-    @PostMapping("/save")
+    @Autowired
+    UserController userController;
+
+    @PostMapping("/seller/product")
     public String addProduct(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult, Model model)throws FileNotFoundException {
         if (bindingResult.hasErrors()) {
 
-            return ("seller/product");
+            return userController.checkSellerApproval(model);
         }
         productService.addProduct(product);
 
-        return ("seller/product");
+        return userController.checkSellerApproval(model);
     }
 
-    @PutMapping("/update")
-    public String updateProduct(Product product) {
+
+
+    @PostMapping("/seller/product/update")
+    public String updateProduct(@Valid @ModelAttribute("productDetails") Product product, BindingResult bindingResult, Model model) {
+        if(bindingResult.hasErrors()){
+            return userController.checkSellerApproval(model);
+        }
         productService.updateProduct(product);
-        return ("seller/product");
+        return userController.checkSellerApproval(model);
     }
 
     @GetMapping("/list")
@@ -76,8 +84,8 @@ public class ProductController {
 //        return "product/mainSeller_List";
 //    }
 
-    @DeleteMapping("/delete")
-    public String deleteProduct( Product product,Model model) {
+    @DeleteMapping("/seller/product/delete/{product_id}")
+    public String deleteProduct(Product product,Model model) {
         if(product.getProductStatus().compareTo(EProductStatus.NEW)!=0||product.getProductStatus().compareTo(EProductStatus.AVAILABLE)!=0){
             model.addAttribute("errorMessage","you can not delete a purchased product");
             return ("seller/product");
@@ -88,6 +96,19 @@ public class ProductController {
         return ("seller/product");
     }
 
+    @GetMapping("/seller/product/delete/{productId}")
+    public String deleteProductById(@PathVariable Long productId, Model model) {
+        productService.deleteProductById(productId);
+        return userController.checkSellerApproval(model);
+    }
+
+    @GetMapping("/seller/product/updateDetails/{productId}")
+    public String getProductDetailsById(@PathVariable Long productId, Model model){
+        Product prod = productService.findProductById(productId).get();
+        model.addAttribute("productDetails",prod);
+        return userController.checkSellerApproval(model);
+        //return "mainSeller";
+    }
 
 
 

@@ -33,3 +33,5 @@ VALUES(25,1,'Furniture', 'Furniture',110,17,22);
 
 INSERT INTO product_category(id,version, description, name, quantity_available, quantity_purchased, seller_id)
 VALUES(26,1,'School and Office Stationery', 'Stationery',100,20,22);
+
+-- INSERT INTO Product (ID, VERSION,DESCRIPTION,FILE,NAME,PRODUCT_NUMBER,PRODUCT_STATUS,SERIAL_NUMBER,UNIT_PRICE,PRODUCT_CATEGORY_ID,SELLER_ID) VALUES (1,1, '3 piece suit one button business wedding suits','File not found',Salvatore','PR12020','NEW','S1',500,21,22);
