@@ -1,6 +1,7 @@
 package com.miu.waa.groupbravo.onlineshop.service.serviceImpl;
 
 import com.miu.waa.groupbravo.onlineshop.domain.*;
+import com.miu.waa.groupbravo.onlineshop.exceptions.BravoException;
 import com.miu.waa.groupbravo.onlineshop.repository.*;
 import com.miu.waa.groupbravo.onlineshop.service.OrderService;
 import com.miu.waa.groupbravo.onlineshop.service.SequenceNumberService;
@@ -132,9 +133,13 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Order cancelOrder(Order order) throws Exception {
+    public Order cancelOrder(Order order)  {
         if (order.getOrderStatus().compareTo(EOrderStatus.NEW) != 0) {
-            throw new Exception("You can only cancel an order that is new");
+            try {
+                throw new Exception("You can only cancel an order that is new");
+            } catch (Exception e) {
+                throw  new BravoException(e);
+            }
         }
         order.setOrderStatus(EOrderStatus.CANCELLED);
         //Create OrderHistory
@@ -150,9 +155,13 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Order payOrder(Order order) throws Exception {
+    public Order payOrder(Order order){
         if (order.getOrderStatus().compareTo(EOrderStatus.NEW) != 0) {
-            throw new Exception("You can only pay the total amount for a new order");
+            try {
+                throw new Exception("You can only pay the total amount for a new order");
+            } catch (Exception e) {
+                throw  new BravoException(e);
+            }
         }
         order.setOrderStatus(EOrderStatus.PAID);
         //Create orderHistory
@@ -161,10 +170,14 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Order shippingOrder(Order order)throws Exception  {
+    public Order shippingOrder(Order order) {
 
         if (order.getOrderStatus().compareTo(EOrderStatus.PAID) != 0) {
-            throw new Exception("You can only shipp a paid order");
+            try {
+                throw new Exception("You can only shipp a paid order");
+            } catch (Exception e) {
+                throw new BravoException(e);
+            }
         }
         order.setOrderStatus(EOrderStatus.ON_THE_WAY);
         //create orderHistory
@@ -173,12 +186,15 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Order delivering(Order order) throws Exception {
+    public Order delivering(Order order){
 
         if (order.getOrderStatus().compareTo(EOrderStatus.PAID) != 0||order.getOrderStatus().compareTo(EOrderStatus.ON_THE_WAY) != 0) {
-            throw new Exception("You can only deliver a shipped or paid order");
+            try {
+                throw new Exception("You can only deliver a shipped or paid order");
+            } catch (Exception e) {
+                throw new BravoException(e);
+            }
         }
-
         order.setOrderStatus(EOrderStatus.DELIVERED);
         //Create orderHistory
         createOrderHistory(order);

@@ -28,19 +28,19 @@ public class OrderController {
     }
 
     @GetMapping("cancelOrder/{orderId}")
-    public String cancelOrder(@PathVariable("orderId") Long orderId, Model model) throws Exception {
+    public String cancelOrder(@PathVariable("orderId") Long orderId, Model model){
       Order order=orderService.findById(orderId);
         orderService.cancelOrder(order);
         return "";
     }
     @GetMapping("shippingOrder/{orderId}")
-    public String shippingOrder(@PathVariable("orderId") Long orderId, Model model) throws Exception {
+    public String shippingOrder(@PathVariable("orderId") Long orderId, Model model){
         Order order=orderService.findById(orderId);
         orderService.shippingOrder(order);
         return "";
     }
     @GetMapping("delivered/{orderId}")
-    public String delivered(@PathVariable("orderId") Long orderId, Model model) throws Exception {
+    public String delivered(@PathVariable("orderId") Long orderId, Model model) {
         Order order=orderService.findById(orderId);
         orderService.delivering(order);
         return "";
