@@ -82,7 +82,7 @@ public class SequenceNumberServiceImpl  implements SequenceNumberService {
 
         String  prefix="PR";
 
-        //OR+SEQUENCE+YEAR
+        //OR+SEQUENCE+YEAR eg:PR12020
 
         return  prefix+getNextSequence(ESequenceType.PRODUCT)+getCurrentYear();
     }

@@ -49,11 +49,8 @@ public class ProductServiceImplTest {
       ProductCategory productCategory=new ProductCategory();
       productCategory.setName("Test");
       productCategory.setId(Long.valueOf(1));
-
-
-       User seller=new User();
-        seller.setFirstName("Eric");
-
+      User seller=new User();
+      seller.setFirstName("Eric");
       Product product1=new Product();
       product1.setName("Laptop");
       product1.setDescription("dell laptopn 2345");

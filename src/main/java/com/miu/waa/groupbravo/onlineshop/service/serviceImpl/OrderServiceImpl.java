@@ -91,10 +91,10 @@ public class OrderServiceImpl implements OrderService {
         }
         return user;
     }
-    @Override
+  /*  @Override
     public EOrderStatus getStatusByName(EOrderStatus status) {
         return orderRepository.getOrderStatus();
-    }
+    }*/
     @Override
     public List<Order> getAllOrders() {
         return (List<Order>) orderRepository.findAll();
@@ -102,10 +102,10 @@ public class OrderServiceImpl implements OrderService {
     }
     //payOrder, change the status from ...to Paid
 
-    @Override
+   /* @Override
     public List<Order> getAllOrdersByUser(Long userId) {
         return orderRepository.getAllOrdersByUser(userId);
-    }
+    }*/
 
     @Override
     public Order getOrderById(Long id) {
@@ -174,6 +174,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public List<Order> findOrderByBuyerAndStatus(User buyer, List<EOrderStatus> statusList) {
         return orderRepository.findOrderByBuyerAndStatus(buyer,statusList);
+
     }
 
 

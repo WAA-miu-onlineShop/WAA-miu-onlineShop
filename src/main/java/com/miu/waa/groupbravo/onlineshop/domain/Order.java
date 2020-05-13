@@ -10,7 +10,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;
 @NamedQueries({@NamedQuery(name=OrderRepository.QUERY_NAME.findBySellerAndStatus,query =OrderRepository.QUERY.findBySellerAndStatus ),
-        @NamedQuery(name=OrderRepository.QUERY_NAME.findOrderByBuyerAndStatus,query=OrderRepository.QUERY.findOrderByBuyerAndStatus)})
+        @NamedQuery(name=OrderRepository.QUERY_NAME.findOrderByBuyerAndStatus,query=OrderRepository.QUERY.findOrderByBuyerAndStatus)})//
 @Entity(name="Orders")
 public class Order extends DomainClass {
     private String orderNumber;
