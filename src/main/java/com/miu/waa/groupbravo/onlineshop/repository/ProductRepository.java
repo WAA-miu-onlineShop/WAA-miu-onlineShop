@@ -14,8 +14,8 @@ import java.util.List;
 public interface ProductRepository extends CrudRepository<Product, Long> {
 
     public static class QUERY{
-        public static final String findByStatus="select p from Product whare p.productStatus in :productStatusList ";
-        public static final String findByCategoryAndStatus="select p from Product whare p.productStatus in :productStatusList and p.productCategory= :productCategory ";
+        public static final String findByStatus="select p from Product p where p.productStatus in :productStatusList ";
+        public static final String findByCategoryAndStatus="select p from Product p where p.productStatus in :productStatusList and p.productCategory= :productCategory ";
 
     }
     public static class QUERY_NAME{
