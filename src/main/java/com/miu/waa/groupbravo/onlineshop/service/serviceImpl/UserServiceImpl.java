@@ -1,9 +1,7 @@
 package com.miu.waa.groupbravo.onlineshop.service.serviceImpl;
 
-import com.miu.waa.groupbravo.onlineshop.domain.ERoleType;
-import com.miu.waa.groupbravo.onlineshop.domain.EUserStatus;
-import com.miu.waa.groupbravo.onlineshop.domain.User;
-import com.miu.waa.groupbravo.onlineshop.domain.UserRole;
+import com.miu.waa.groupbravo.onlineshop.domain.*;
+import com.miu.waa.groupbravo.onlineshop.repository.AddressRepository;
 import com.miu.waa.groupbravo.onlineshop.repository.UserRepository;
 import com.miu.waa.groupbravo.onlineshop.repository.UserRoleRepository;
 import com.miu.waa.groupbravo.onlineshop.service.SequenceNumberService;
@@ -30,6 +28,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRoleRepository userRoleRepository;
 
+    @Autowired
+    private AddressRepository addressRepository;
+
     public User findByUsername(String username) {
         //System.out.println("Username in the service layer: " + username);
         return userRepository.findByUsername(username);
@@ -39,6 +40,13 @@ public class UserServiceImpl implements UserService {
         //auth.getPrincipal();
         return userRepository.save(seller);
     }
+
+    @Override
+    public User updateUser(User buyer) {
+        return userRepository.save(buyer);
+    }
+
+
 
     public List<User> findAll(){
         return (List<User>)userRepository.findAll();

@@ -15,6 +15,14 @@ public class Address extends  DomainClass{
     @Enumerated(EnumType.STRING)
     private EAddressRole addressRole;
 
+    public EAddressRole getAddressRole() {
+        return addressRole;
+    }
+
+    public void setAddressRole(EAddressRole addressRole) {
+        this.addressRole = addressRole;
+    }
+
     public String getCity() {
         return city;
     }

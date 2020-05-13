@@ -1,9 +1,7 @@
 package com.miu.waa.groupbravo.onlineshop.controller;
 
-import com.miu.waa.groupbravo.onlineshop.domain.ERoleType;
-import com.miu.waa.groupbravo.onlineshop.domain.EUserStatus;
-import com.miu.waa.groupbravo.onlineshop.domain.Product;
-import com.miu.waa.groupbravo.onlineshop.domain.User;
+import com.miu.waa.groupbravo.onlineshop.domain.*;
+import com.miu.waa.groupbravo.onlineshop.service.AddressService;
 import com.miu.waa.groupbravo.onlineshop.service.ProductCategoryService;
 import com.miu.waa.groupbravo.onlineshop.service.ProductService;
 import com.miu.waa.groupbravo.onlineshop.service.UserService;
@@ -14,8 +12,11 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,6 +26,7 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
 
     @Autowired
     private ProductCategoryService productCategoryService;
@@ -42,6 +44,21 @@ public class UserController {
             outPut = true;
         }
         return outPut;
+    }
+
+    @PostMapping("/buyer/saveAddress")
+    public String saveAddress(@Valid @ModelAttribute("address") Address address, BindingResult bindingResult, HttpServletRequest httpRequest){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User buyer = userService.findByUsername(auth.getName());
+
+        //System.out.println("The Address Role is: " + httpRequest.getParameter("addressRole"));
+
+        EAddressRole addressRole1 = (httpRequest.getParameter("addressRole").trim().toLowerCase().equals("billing")) ? EAddressRole.BILLING : EAddressRole.SHIPPING;
+        address.setAddressRole(addressRole1);
+        buyer.setAddress(address);
+
+        userService.updateUser(buyer);
+        return "redirect:/buyer";
     }
 
     @GetMapping(value = "/seller/sellerStatus/")

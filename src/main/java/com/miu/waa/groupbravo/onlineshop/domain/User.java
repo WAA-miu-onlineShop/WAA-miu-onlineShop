@@ -48,7 +48,7 @@ public class User extends  DomainClass{
     @NotEmpty(message = "*Please provide your password")
     private String password;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name="user_id")
     private List<Address> addresses;
 
@@ -109,6 +109,10 @@ public class User extends  DomainClass{
 
     public void setAddresses(List<Address> addresses) {
         this.addresses = addresses;
+    }
+
+    public void setAddress(Address address){
+        addresses.add(address);
     }
 
     public UserRole getUserRole() {

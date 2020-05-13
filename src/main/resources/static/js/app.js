@@ -1,3 +1,30 @@
+let totalAmount = 0.0;
+$("#addToCartForm").submit(function (event) {
+    let selectedProduct = $("#cartProduct").val();
+    let selectedProductArr = selectedProduct.split(":@");
+    let selectedQty = $("#cartItemQty").val();
+
+    let amount = parseInt(selectedQty) * parseFloat(selectedProductArr[5]);
+
+
+    let cartEntry = `<tr><td scope='row'>${selectedProductArr[1]}</td>
+                <td>${selectedProductArr[2]}</td>
+                <td>${selectedQty}</td>
+                <td>${selectedProductArr[5]}</td>
+                <td>${amount}</td>
+                </tr>`;
+    $("#shoppingCartBody").append(cartEntry);
+    $("#totalCartAmount").html(computeTotalCartAmount(amount));
+    $("#shoppingCart").css("display","block");
+    $(".otherContent").css("display","none");
+    event.preventDefault();
+});
+
+function computeTotalCartAmount(rowAmount){
+    totalAmount += rowAmount;
+    return totalAmount;
+}
+
 function loadAddressForm(){
     const targetDiv = $("#loadAddressForm");
     const selectedRole = $("#roles");

@@ -77,14 +77,14 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="nav navbar-nav ml-auto">
-                        <li class="nav-item">
+                        <li class="nav-item" th:if="${userDetails.getAddresses().size() > 0}">
                             <button type="button" class="btn btn-outline-primary btn-nav-bar" data-toggle="modal"
                                     data-target="#exampleModal" id="placeOrderNavBtn">
                                 Place Order
                             </button>
                         </li>
                         <li class="nav-item">
-                            <button id ="createMenuNavBtn" type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#menuModal">
+                            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#menuModal">
                                 Add Address
                             </button>
                         </li>
@@ -104,10 +104,72 @@
         </nav>
 
         <h2 class="mb-4">Welcome <span sec:authentication="name"></span></h2>
-        <p>Welcome to Pick Bravo Online Shop, a place where you can buy and sell products. Register as a seller or buyer
+        <div>
+            <p>Welcome to Pick Bravo Online Shop, a place where you can buy and sell products. Register as a seller or buyer
             to get started and join the millions of other people already enjoying our services</p>
-        <p>Contact the administrator for any queries regarding this online shop</p>
-        <div class="row" style="margin-top: 10px;" id="dynamicContent">
+            <p>Contact the administrator for any queries regarding this online shop</p>
+            <div id="shoppingCart" style="display: none" class="row">
+                <form id="shoppingCartForm" method="post" class="form-row">
+                    <table class="table table-bordered table-striped shopping-cart">
+                        <thead>
+                        <tr>
+                            <th colspan="4" style="text-align: right">Sub Total</th>
+                            <th id="totalCartAmount"></th>
+                        </tr>
+                        <tr>
+                            <th scope="col">Item</th>
+                            <th scope="col">Info</th>
+                            <th scope="col">Qty</th>
+                            <th scope="col">UnitPrice</th>
+                            <th scope="col">Amount</th>
+                        </tr>
+                        </thead>
+                        <tbody id="shoppingCartBody">
+
+                        </tbody>
+                    </table>
+                    <div class="form-group">
+                        <div>
+                            <button type="submit" class="btn btn-primary btn-block">Checkout</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div th:if="${addresses.size() > 0}" class="otherContent">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>City</th>
+                    <th>Street</th>
+                    <th>State</th>
+                    <th>ZipCode</th>
+                    <th>Type</th>
+                    <th colspan="2">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="address: ${addresses}">
+                    <td th:text="${address.id}"></td>
+                    <td th:text="${address.city}"></td>
+                    <td th:text="${address.street}"></td>
+                    <td th:text="${address.state}"></td>
+                    <td th:text="${address.zipCode}"></td>
+                    <td th:text="${address.getAddressRole().getStatus()}"></td>
+                    <td>
+                        <a th:href="@{'/buyer/address/updateDetails/' + ${address.id}}">Edit</a>
+                    </td>
+                    <td>
+                        <a th:href="@{'/buyer/address/delete/' + ${address.id}}">Delete</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div th:unless="${addresses.size() > 0}" class="otherContent row" style="margin-top: 10px;" id="dynamicContent">
             <div class="card" style="width: 18rem; margin-left:15px;">
                 <img src="/images/delicacies.jpg" class="card-img-top" />
                 <div class="card-body">
@@ -131,8 +193,6 @@
     </div>
 </div>
 
-
-
 <!-- Create New Menu -->
 <div class="modal fade" id="menuModal" tabindex="-1" role="dialog" aria-labelledby="menuModalLabel"
      aria-hidden="true">
@@ -146,36 +206,36 @@
             </div>
             <div class="modal-body">
                 <div id="menuFormErrors" style="display: none;"></div>
-                <form method="POST" id="newMenuForm">
+                <form method="POST" th:object="${address}" th:action="@{/buyer/saveAddress}">
                     <div class="form-group">
                         <div class="">
-                            <input type="text" name="city" placeholder="City"
+                            <input type="text" name="city" th:field="*{city}" placeholder="City"
                                    class="form-control" required/>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="">
-                            <input type="text" name="street"
+                            <input type="text" name="street" th:field="*{street}"
                                    placeholder="Street" class="form-control" required/>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="">
-                            <input type="text" name="state" placeholder="State"
+                            <input type="text" name="state" placeholder="State" th:field="*{state}"
                                    class="form-control"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="">
-                            <input type="text" name="zipCode" placeholder="Zip Code"
+                            <input type="text" name="zipCode" placeholder="Zip Code" th:field="*{zipCode}"
                                    class="form-control"/>
                         </div>
                     </div>
                     <div class="form-group">
-                        <select class="form-control" name="billingType">
+                        <select class="form-control" name="addressRole" th:field="*{addressRole}">
                             <option value="">-Select-</option>
-                            <option value="billing">Billing Address</option>
-                            <option value="shipping">Shipping Address</option>
+                            <option value="Billing">Billing Address</option>
+                            <option value="Shipping">Shipping Address</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -206,27 +266,32 @@
             </div>
             <div class="modal-body">
                 <div id="orderFormErrors" style="display: none;"></div>
-                <form method="POST" id="placeOrderForm">
+                <form method="POST" id="addToCartForm">
                     <div id="placeOrderContent">
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                <input type="radio" class="form-check-input" value="juice001">Orange Juice
-                            </label>
+                        <div class="form-group">
+                            <label for="cartProduct">Available Products</label>
+                            <select id="cartProduct" class="form-control" >
+                                <option value="">-Select-</option>
+                                <option th:if="${products.size() > 0}"
+                                        th:each="product: ${products}"
+                                        th:text="${product.name + ' :[' + 'Price: ' + product.unitPrice + ' Info: ' + product.description + ' ]'}"
+                                        th:value="${product.id + ':@' + product.name + ':@' + product.description + ':@'
+                                        + product.serialNumber + ':@' + product.productNumber + ':@' + product.unitPrice}">
+
+                                </option>
+                                <option th:unless="${products.size() > 0}" value="">
+                                    -No Products Available In the Shop-
+                                </option>
+                            </select>
                         </div>
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                <input type="radio" class="form-check-input" value="juice002">Passion Juice
-                            </label>
+                        <div class="form-group">
+                            <label for="cartItemQty">Item Name</label>
+                            <input pattern="^[0-9]*$" type="text" class="form-control" id="cartItemQty" aria-describedby="qtyHelp" placeholder="e.g. 2" required>
+                            <small id="qtyHelp" class="form-text text-muted">Enter number of items</small>
                         </div>
-                        <div class="form-check disabled">
-                            <label class="form-check-label">
-                                <input type="radio" class="form-check-input" value="eggs001">Boiled Eggs
-                            </label>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary" id="addToCartBtn" value="Add To Cart"/>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" class="btn btn-primary" id="placeOrderBtn" value="Place Order"/>
-                    </div>
                 </form>
             </div>
             <div class="modal-footer">
