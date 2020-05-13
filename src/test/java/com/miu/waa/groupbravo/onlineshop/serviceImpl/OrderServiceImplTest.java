@@ -2,10 +2,7 @@ package com.miu.waa.groupbravo.onlineshop.serviceImpl;
 
 import com.miu.waa.groupbravo.onlineshop.builder.OrderBuilder;
 import com.miu.waa.groupbravo.onlineshop.domain.*;
-import com.miu.waa.groupbravo.onlineshop.repository.CouponRepository;
-import com.miu.waa.groupbravo.onlineshop.repository.OrderHistoryRepository;
-import com.miu.waa.groupbravo.onlineshop.repository.OrderRepository;
-import com.miu.waa.groupbravo.onlineshop.repository.UserRepository;
+import com.miu.waa.groupbravo.onlineshop.repository.*;
 import com.miu.waa.groupbravo.onlineshop.service.OrderService;
 import com.miu.waa.groupbravo.onlineshop.service.SequenceNumberService;
 import com.miu.waa.groupbravo.onlineshop.service.serviceImpl.OrderServiceImpl;
@@ -38,10 +35,14 @@ public class OrderServiceImplTest {
     private UserRepository userRepository;
     @Mock
     private CouponRepository couponRepository;
+    @Mock
+    private ProductRepository productRepository;
+    @Mock
+    private ProductCategoryRepository productCategoryRepository;
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        orderService=new OrderServiceImpl(orderRepository,sequenceNumberService,orderHistoryRepository,userRepository,couponRepository);
+        orderService=new OrderServiceImpl(productCategoryRepository,productRepository,orderRepository,sequenceNumberService,orderHistoryRepository,userRepository,couponRepository);
         SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken("erurangwa","122333"));
     }
       @Test
@@ -50,16 +51,18 @@ public class OrderServiceImplTest {
 
         OrderHistory orderHistory=mock(OrderHistory.class);
         Coupon coupon=mock(Coupon.class);
+        Product product1=mock(Product.class);
         User buyer=new User();
         Product product=new Product();
         buyer.setFirstName("elias");
         OrderLine orderLine1=new OrderLine();
-        orderLine1.setProduct(product);
-
-        Order order=new OrderBuilder().withOrderNumber(orderNumber).withOrderLineList(Arrays.asList(orderLine1)).build();
-
-
-
+       // orderLine1.setProduct(product);
+        ProductCategory productCategory=mock(ProductCategory.class);
+          ProductCategory productCategory1=new ProductCategory();
+          productCategory1.setName("Laptop");
+          product1.setProductCategory(productCategory1);
+          orderLine1.setProduct(product1);
+          Order order=new OrderBuilder().withOrderNumber(orderNumber).withOrderLineList(Arrays.asList(orderLine1)).build();
 
 
         when(sequenceNumberService.getNextOrderNumber()).thenReturn(orderNumber);
@@ -67,6 +70,9 @@ public class OrderServiceImplTest {
         when(couponRepository.save(coupon)).thenReturn(coupon);
         when(couponRepository.findByUser(buyer)).thenReturn(null);
         when(userRepository.findByUsername("erurangwa")).thenReturn(buyer);
+        when(productRepository.save(product1)).thenReturn(product1);
+        when(orderRepository.save(order)).thenReturn(order);
+        when(productCategoryRepository.save(productCategory)).thenReturn(productCategory);
 
         orderService.saveOrder(order);
 

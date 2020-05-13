@@ -1,10 +1,7 @@
 package com.miu.waa.groupbravo.onlineshop.service.serviceImpl;
 
 import com.miu.waa.groupbravo.onlineshop.domain.*;
-import com.miu.waa.groupbravo.onlineshop.repository.CouponRepository;
-import com.miu.waa.groupbravo.onlineshop.repository.OrderHistoryRepository;
-import com.miu.waa.groupbravo.onlineshop.repository.OrderRepository;
-import com.miu.waa.groupbravo.onlineshop.repository.UserRepository;
+import com.miu.waa.groupbravo.onlineshop.repository.*;
 import com.miu.waa.groupbravo.onlineshop.service.OrderService;
 import com.miu.waa.groupbravo.onlineshop.service.SequenceNumberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,13 +27,17 @@ public class OrderServiceImpl implements OrderService {
     private UserRepository userRepository;
 
     private CouponRepository couponRepository;
+    private ProductRepository productRepository;
+    private ProductCategoryRepository productCategoryRepository;
 
-    public OrderServiceImpl(OrderRepository orderRepository,SequenceNumberService sequenceNumberService,OrderHistoryRepository orderHistoryRepository,UserRepository userRepository,CouponRepository couponRepository){
+    public OrderServiceImpl(ProductCategoryRepository productCategoryRepository,ProductRepository productRepository,OrderRepository orderRepository,SequenceNumberService sequenceNumberService,OrderHistoryRepository orderHistoryRepository,UserRepository userRepository,CouponRepository couponRepository){
+        this.productRepository=productRepository;
         this.orderRepository=orderRepository;
         this.sequenceNumberService=sequenceNumberService;
         this.orderHistoryRepository=orderHistoryRepository;
         this.userRepository=userRepository;
         this.couponRepository=couponRepository;
+        this.productCategoryRepository=productCategoryRepository;
     }
     @Override
     public Order saveOrder(Order order) {
@@ -49,12 +50,29 @@ public class OrderServiceImpl implements OrderService {
             BigDecimal couponPoints = getCouponPoint(order);
             order.setTotalAmount(couponPoints);
             savedOrder = orderRepository.save(order);
+
+            updateProduct(savedOrder);
+            //order.getOrderLineList().stream().reduce()
             createOrderHistory(savedOrder);
             addCouponPoints(savedOrder);
         } else {
             savedOrder = order;
         }
         return savedOrder;
+    }
+    private void updateProduct(Order order){
+
+        for(OrderLine orderLine: order.getOrderLineList()){
+            Product product=orderLine.getProduct();
+            product.setProductStatus(EProductStatus.ORDERED);
+            ProductCategory productCategory=product.getProductCategory();
+            productCategory.setQuantityPurchased(productCategory.getQuantityPurchased().add(orderLine.getQuantity()));
+            productCategory.setQuantityAvailable(productCategory.getQuantityAvailable().subtract(orderLine.getQuantity()));
+
+        productRepository.save(product);
+            productCategoryRepository.save(productCategory);
+
+        }
     }
     private  Coupon addCouponPoints(Order order){
         Coupon coupon = couponRepository.findByUser(order.getBuyer());
@@ -134,7 +152,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public Order payOrder(Order order) throws Exception {
         if (order.getOrderStatus().compareTo(EOrderStatus.NEW) != 0) {
-            throw new Exception("You can only pay the total amout for a new order");
+            throw new Exception("You can only pay the total amount for a new order");
         }
         order.setOrderStatus(EOrderStatus.PAID);
         //Create orderHistory
