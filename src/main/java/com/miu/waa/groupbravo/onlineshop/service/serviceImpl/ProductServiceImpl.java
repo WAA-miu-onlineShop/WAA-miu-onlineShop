@@ -116,8 +116,14 @@ public class ProductServiceImpl implements ProductService {
     public Optional<Product> findProductById(Long productId) {
         return productRepository.findById(productId);
     }
-
-    //find product by user
+     @Override
+    public List<Product> findProductByStatus(List<EProductStatus> productStatusList){
+     return productRepository.findByStatus(productStatusList);
+    }
+    @Override
+    public List<Product> findProductByCategoryAndStatus(ProductCategory productCategory,List<EProductStatus> productStatusList){
+    return productRepository. findByCategoryAndStatus(productCategory,productStatusList);
+    }
 
 }
 

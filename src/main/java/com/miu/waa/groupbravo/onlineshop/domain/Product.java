@@ -1,6 +1,7 @@
 package com.miu.waa.groupbravo.onlineshop.domain;
 
 
+import com.miu.waa.groupbravo.onlineshop.repository.ProductRepository;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.springframework.web.multipart.MultipartFile;
@@ -9,6 +10,8 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
+@NamedQueries({@NamedQuery(name= ProductRepository.QUERY_NAME.findByStatus,query=ProductRepository.QUERY.findByStatus),
+        @NamedQuery(name=ProductRepository.QUERY_NAME.findByCategoryAndStatus,query=ProductRepository.QUERY.findByCategoryAndStatus)})
 public class Product extends DomainClass {
     private String serialNumber;
     private String productNumber;
