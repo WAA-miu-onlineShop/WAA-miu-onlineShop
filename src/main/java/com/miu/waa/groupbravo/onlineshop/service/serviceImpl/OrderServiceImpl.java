@@ -21,17 +21,23 @@ import java.util.*;
 @Transactional
 public class OrderServiceImpl implements OrderService {
 
-    @Autowired
     private OrderRepository orderRepository;
-    @Autowired
+
     private SequenceNumberService sequenceNumberService;
-    @Autowired
+
     private OrderHistoryRepository orderHistoryRepository;
-    @Autowired
+
     private UserRepository userRepository;
-    @Autowired
+
     private CouponRepository couponRepository;
 
+    public OrderServiceImpl(OrderRepository orderRepository,SequenceNumberService sequenceNumberService,OrderHistoryRepository orderHistoryRepository,UserRepository userRepository,CouponRepository couponRepository){
+        this.orderRepository=orderRepository;
+        this.sequenceNumberService=sequenceNumberService;
+        this.orderHistoryRepository=orderHistoryRepository;
+        this.userRepository=userRepository;
+        this.couponRepository=couponRepository;
+    }
     @Override
     public Order saveOrder(Order order) {
         Order savedOrder = null;
@@ -91,21 +97,16 @@ public class OrderServiceImpl implements OrderService {
         }
         return user;
     }
-  /*  @Override
-    public EOrderStatus getStatusByName(EOrderStatus status) {
-        return orderRepository.getOrderStatus();
-    }*/
     @Override
     public List<Order> getAllOrders() {
         return (List<Order>) orderRepository.findAll();
 
     }
-    //payOrder, change the status from ...to Paid
 
-   /* @Override
+    @Override
     public List<Order> getAllOrdersByUser(Long userId) {
         return orderRepository.getAllOrdersByUser(userId);
-    }*/
+    }
 
     @Override
     public Order getOrderById(Long id) {

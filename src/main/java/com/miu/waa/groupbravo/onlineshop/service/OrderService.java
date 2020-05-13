@@ -12,7 +12,7 @@ public interface OrderService {
     public abstract Order saveOrder(Order order);
     //public abstract EOrderStatus getStatusByName(EOrderStatus status);
     public abstract List<Order> getAllOrders();
-   // public abstract List<Order> getAllOrdersByUser(Long userId);
+    public abstract List<Order> getAllOrdersByUser(Long userId);
     public abstract  Order getOrderById(Long id);
     public abstract  Order cancelOrder(Order order) throws Exception;
     public abstract Order payOrder(Order order) throws Exception;

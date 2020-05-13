@@ -8,6 +8,7 @@ import com.miu.waa.groupbravo.onlineshop.repository.ProductRepository;
 import com.miu.waa.groupbravo.onlineshop.repository.UserRepository;
 import com.miu.waa.groupbravo.onlineshop.service.ProductService;
 import com.miu.waa.groupbravo.onlineshop.service.SequenceNumberService;
+import com.miu.waa.groupbravo.onlineshop.utils.SecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;

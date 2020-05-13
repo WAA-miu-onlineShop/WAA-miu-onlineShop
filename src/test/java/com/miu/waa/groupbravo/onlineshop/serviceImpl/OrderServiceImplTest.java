@@ -1,0 +1,74 @@
+package com.miu.waa.groupbravo.onlineshop.serviceImpl;
+
+import com.miu.waa.groupbravo.onlineshop.builder.OrderBuilder;
+import com.miu.waa.groupbravo.onlineshop.domain.*;
+import com.miu.waa.groupbravo.onlineshop.repository.CouponRepository;
+import com.miu.waa.groupbravo.onlineshop.repository.OrderHistoryRepository;
+import com.miu.waa.groupbravo.onlineshop.repository.OrderRepository;
+import com.miu.waa.groupbravo.onlineshop.repository.UserRepository;
+import com.miu.waa.groupbravo.onlineshop.service.OrderService;
+import com.miu.waa.groupbravo.onlineshop.service.SequenceNumberService;
+import com.miu.waa.groupbravo.onlineshop.service.serviceImpl.OrderServiceImpl;
+import org.hamcrest.core.IsInstanceOf;
+import org.junit.Before;
+import org.junit.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.mockito.internal.matchers.InstanceOf;
+import org.mockito.internal.stubbing.BaseStubbing;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+
+import java.util.Arrays;
+
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+public class OrderServiceImplTest {
+
+    private OrderService orderService;
+    @Mock
+    private OrderRepository orderRepository;
+        @Mock
+    private SequenceNumberService sequenceNumberService;
+    @Mock
+    private OrderHistoryRepository orderHistoryRepository;
+    @Mock
+    private UserRepository userRepository;
+    @Mock
+    private CouponRepository couponRepository;
+    @Before
+    public void setUp() throws Exception {
+        MockitoAnnotations.initMocks(this);
+        orderService=new OrderServiceImpl(orderRepository,sequenceNumberService,orderHistoryRepository,userRepository,couponRepository);
+        SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken("erurangwa","122333"));
+    }
+      @Test
+    public void testSaveOrder(){
+       String orderNumber="OR12020";
+
+        OrderHistory orderHistory=mock(OrderHistory.class);
+        Coupon coupon=mock(Coupon.class);
+        User buyer=new User();
+        Product product=new Product();
+        buyer.setFirstName("elias");
+        OrderLine orderLine1=new OrderLine();
+        orderLine1.setProduct(product);
+
+        Order order=new OrderBuilder().withOrderNumber(orderNumber).withOrderLineList(Arrays.asList(orderLine1)).build();
+
+
+
+
+
+        when(sequenceNumberService.getNextOrderNumber()).thenReturn(orderNumber);
+        when(orderHistoryRepository.save(orderHistory)).thenReturn(orderHistory);
+        when(couponRepository.save(coupon)).thenReturn(coupon);
+        when(couponRepository.findByUser(buyer)).thenReturn(null);
+        when(userRepository.findByUsername("erurangwa")).thenReturn(buyer);
+
+        orderService.saveOrder(order);
+
+    }
+}

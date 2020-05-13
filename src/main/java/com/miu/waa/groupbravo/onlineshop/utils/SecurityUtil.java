@@ -4,6 +4,9 @@ import com.miu.waa.groupbravo.onlineshop.OnlineshopApplication;
 import com.miu.waa.groupbravo.onlineshop.domain.User;
 import com.miu.waa.groupbravo.onlineshop.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
@@ -13,20 +16,26 @@ import java.security.Principal;
 
 
 public class SecurityUtil {
-    @Autowired
-    private UserRepository userRepository;
 
     public static User getUser(){
-       // SpringContextUtils
-
-       // SpringContextUtils.getApplicationContext().getBean("NNNN");
-        Object principal= SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (principal instanceof UserDetails) {
-            String username = ((UserDetails)principal).getUsername();
-        } else {
-            String username = principal.toString();
+        User user=null;
+        try {
+       /*     SpringApplicationBuilder applicationBuilder =SpringContextUtils.getApplicationContext(User);
+            SpringApplicationBuilder edew=SpringContextUtils.getApplicationContext().
+            ApplicationContext context=applicationBuilder.context();
+            UserRepository userRepository = (UserRepository) context.getBean(UserRepository.class);*/
+            Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            String username = "";
+            if (principal instanceof UserDetails) {
+                username = ((UserDetails) principal).getUsername();
+            } else {
+                username = principal.toString();
+            }
+         //  user= userRepository.findByUsername(username);
+        }catch(Exception ex){
+            //An exception occurs
+            System.out.println("exception :"+ex.getMessage());
         }
-       // User user=userRepository.findByUsername(principal.getName());
-        return null;
+        return user;
     }
 }

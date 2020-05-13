@@ -22,11 +22,8 @@ public interface OrderRepository extends CrudRepository<Order, Long> {
         public static final String findBySellerAndStatus="Order.findBySellerAndStatus";
 
     }
-    /*@Query("select o from Order o where o.buyer.id = :userId")
+    @Query("select o from Orders o where o.buyer.id = :userId")
     List<Order> getAllOrdersByUser(Long userId);
-
-    @Query("select o.orderStatus from Order o")
-    EOrderStatus getOrderStatus();*/
 
    List<Order> findOrderByBuyerAndStatus(@Param("buyer")User buyer,@Param("statusList")List<EOrderStatus> statusList);//@Param("statusList")List<EOrderStatus> statusList
 
