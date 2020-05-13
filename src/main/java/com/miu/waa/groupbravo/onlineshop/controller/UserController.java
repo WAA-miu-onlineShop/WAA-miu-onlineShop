@@ -5,6 +5,7 @@ import com.miu.waa.groupbravo.onlineshop.domain.EUserStatus;
 import com.miu.waa.groupbravo.onlineshop.domain.Product;
 import com.miu.waa.groupbravo.onlineshop.domain.User;
 import com.miu.waa.groupbravo.onlineshop.service.ProductCategoryService;
+import com.miu.waa.groupbravo.onlineshop.service.ProductService;
 import com.miu.waa.groupbravo.onlineshop.service.UserService;
 import org.dom4j.rule.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,9 @@ public class UserController {
     @Autowired
     private ProductCategoryService productCategoryService;
 
+    @Autowired
+    private ProductService productService;
+
     @GetMapping(value = "/seller/sellerStatus/{username}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public Boolean checkSellerStatus(@PathVariable String username){
         //System.out.println(username.trim());
@@ -44,10 +48,9 @@ public class UserController {
     public String checkSellerApproval(Model model){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User seller = userService.findByUsername(auth.getName());
-        //get list of product categories
+        model.addAttribute("products", productService.findProductsBySeller(seller));
         model.addAttribute("productCategories",productCategoryService.findAllProductCategory());
         if(seller.getUserStatus().getStatus().toUpperCase().equals("APPROVED")){
-            //fetch seller products from the database
             model.addAttribute("approved",true);
         }else{
             model.addAttribute("approved", false);

@@ -94,11 +94,87 @@
         <p>Welcome to Pick Bravo Online Shop, a place where you can buy and sell products. Register as a seller or buyer
             to get started and join the millions of other people already enjoying our services</p>
         <p>Contact the administrator for any queries regarding this online shop</p>
+        <hr/>
+        <div th:if="${#httpServletRequest.requestURI.contains('updateDetails')}">
+            <form enctype="multipart/form-data"  th:action="@{/seller/product/update}" method="post" th:object="${productDetails}">
+                <input type="hidden" th:field="*{id}" th:value="${productDetails.id}"/>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="serialNumber">Serial Number</label>
+                        <input th:value="${productDetails.getSerialNumber()}" th:field="*{serialNumber}" type="text" class="form-control" placeholder="Serial Number">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="productName">Product Name</label>
+                        <input th:value="${productDetails.getName()}" th:field="*{name}" type="text" class="form-control" placeholder="Product Name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <input th:value="${productDetails.getDescription()}" th:field="*{description}" type="text" class="form-control" placeholder="Product Description">
+                </div>
+                <div class="form-group">
+                    <label for="unitPrice">Unit Price</label>
+                    <input th:value="${productDetails.getUnitPrice()}" th:field="*{unitPrice}" type="text" class="form-control" id="unitPrice" placeholder="Unit price e.g. 200.00">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="productCategory1">Product Category</label>
+                        <select id="productCategory1" class="form-control" th:field="*{productCategory.id}">
+                            <option th:value="${productDetails.productCategory.id}" th:text="${productDetails.productCategory.name}">-Select-</option>
+                            <option th:each="category: ${productCategories}" th:text="${category.name}" th:value="${category.id}">
 
-        <div>
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="pictureUpload">Unit Price</label>
+                        <input th:field="*{multipartFile}" type="file" class="form-control">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Save</button>
+            </form>
+        </div>
+        <div th:unless="${#httpServletRequest.requestURI.contains('updateDetails')}">
             <div th:if="${approved}">
                 <!-- TODO: Display list of products for the seller -->
                 <p>Fill out the form below to add new product</p>
+                <div th:if="${products.size() > 0}">
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Serial</th>
+                            <th>Product No.</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Category</th>
+                            <th>Status</th>
+                            <th colspan="2">Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="product: ${products}">
+                            <td th:text="${product.id}"></td>
+                            <td th:text="${product.serialNumber}"></td>
+                            <td th:text="${product.productNumber}"></td>
+                            <td th:text="${product.name}"></td>
+                            <td th:text="${product.description}"></td>
+                            <td th:text="${product.unitPrice}"></td>
+                            <td th:text="${product.productCategory.name}"></td>
+                            <td th:text="${product.getProductStatus().getStatus()}"></td>
+                            <td th:if="${product.getProductStatus().getStatus() == 'New'}">
+                                <a th:href="@{'/seller/product/updateDetails/' + ${product.id}}">Edit</a>
+                            </td>
+                            <td th:if="${product.getProductStatus().getStatus() == 'New'}">
+                                <a th:href="@{'/seller/product/delete/' + ${product.id}}">Delete</a>
+                            </td>
+
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div th:unless="${approved}">
                 <div class="alert alert-danger">You need Administrator Approval to Add products</div>

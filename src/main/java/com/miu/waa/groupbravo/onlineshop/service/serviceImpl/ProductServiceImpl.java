@@ -18,6 +18,7 @@ import javax.transaction.Transactional;
 import java.io.File;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -90,7 +91,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product updateProduct(Product product) {
-
+        System.out.println("Product ID is: " + product.getId());
         return productRepository.save(product);
     }
 
@@ -103,6 +104,16 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> findProductsBySeller(User seller) {
         return productRepository.findBySeller(seller);
+    }
+
+    @Override
+    public void deleteProductById(Long productId) {
+        productRepository.deleteById(productId);
+    }
+
+    @Override
+    public Optional<Product> findProductById(Long productId) {
+        return productRepository.findById(productId);
     }
 
     //find product by user
