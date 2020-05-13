@@ -20,5 +20,5 @@ public interface OrderService {
     public abstract  Order delivering(Order order) throws Exception ;
     public abstract  List<Order> findOrderBySellerAndStatus(User seller,List<EOrderStatus> statusList);
     public abstract  List<Order> findOrderByBuyerAndStatus(User buyer,List<EOrderStatus> statusList);
-
+    Order findById(Long orderId);
 }

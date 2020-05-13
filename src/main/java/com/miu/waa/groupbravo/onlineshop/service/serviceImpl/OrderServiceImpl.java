@@ -195,6 +195,10 @@ public class OrderServiceImpl implements OrderService {
         return orderRepository.findOrderByBuyerAndStatus(buyer,statusList);
 
     }
+    @Override
+    public Order findById(Long orderId) {
+        return orderRepository.findById(orderId).get();
+    }
 
 
 }
