@@ -17,6 +17,7 @@ import javax.servlet.ServletContext;
 import javax.validation.Valid;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -62,7 +63,24 @@ public class ProductController {
         productService.findAll();
         return ("seller/product");
     }
+    @GetMapping("/availableProduct")
+    public String getAvailableProduct(Model model){
+        List<EProductStatus> available=new ArrayList<>();
+        available.add(EProductStatus.AVAILABLE);
+        List<Product> availableProducts=productService.findProductByStatus(available);
+        model.addAttribute("availableProducts",availableProducts);
+      return "buyer/ ";
+    }
+    @GetMapping("/availableProduct/{productCategoryId}")
+    public String getAvailableProductByCategory(@PathVariable("productCategoryId") Long productCategoryId, Model model){
 
+        ProductCategory productCategory= productCategoryService.findById(productCategoryId);
+        List<EProductStatus> available=new ArrayList<>();
+        available.add(EProductStatus.AVAILABLE);
+        List<Product> availableProducts=productService.findProductByCategoryAndStatus(productCategory,available);
+        model.addAttribute("availableProducts",availableProducts);
+        return "buyer/ ";
+    }
     @GetMapping("/byseller")
     public String findProductsBySeller(String username) {
         User seller = userService.findByUsername(username);
