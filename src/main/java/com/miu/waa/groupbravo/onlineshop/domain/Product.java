@@ -15,15 +15,15 @@ import java.math.BigDecimal;
 @NamedQueries({@NamedQuery(name= ProductRepository.QUERY_NAME.findByStatus,query=ProductRepository.QUERY.findByStatus),
         @NamedQuery(name=ProductRepository.QUERY_NAME.findByCategoryAndStatus,query=ProductRepository.QUERY.findByCategoryAndStatus)})
 public class Product extends DomainClass {
-    @Column(unique = true)
+   // @Column(unique = true)
     private String serialNumber;
 
     private String productNumber;
     @NotEmpty
-    @Size(min=2, max=20, message="{Size.Product.name.validation}")
+    @Size(min=2, max=30, message="{Size.Product.name.validation}")
     private String name;
     @NotEmpty
-    @Size(min=6, max=30, message="{Size.Product.description.validation}")
+    @Size(min=6, max=50, message="{Size.Product.description.validation}")
     private String description;
     @NotEmpty
     private BigDecimal unitPrice= BigDecimal.ZERO;
