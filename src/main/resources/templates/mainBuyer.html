@@ -109,7 +109,7 @@
             to get started and join the millions of other people already enjoying our services</p>
             <p>Contact the administrator for any queries regarding this online shop</p>
             <div id="shoppingCart" style="display: none" class="row">
-                <form id="shoppingCartForm" method="post" class="form-row">
+                <form id="shoppingCartForm" method="post" class="form-row" th:action="@{/buyer/createOrder}">
                     <table class="table table-bordered table-striped shopping-cart">
                         <thead>
                         <tr>
@@ -128,6 +128,9 @@
 
                         </tbody>
                     </table>
+                    <div style="display: none" id="totalItems">
+
+                    </div>
                     <div class="form-group">
                         <div>
                             <button type="submit" class="btn btn-primary btn-block">Checkout</button>

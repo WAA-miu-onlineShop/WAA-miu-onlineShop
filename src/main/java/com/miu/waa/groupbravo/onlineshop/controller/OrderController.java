@@ -10,20 +10,30 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.util.Arrays;
+import java.util.zip.DeflaterOutputStream;
 
 @Controller
-@RequestMapping("/order")
 public class OrderController {
    @Autowired
    private OrderService orderService;
-    @PostMapping("/createOrder")
-    public String createOrder(@Valid @ModelAttribute("order") Order order, BindingResult bindingResult, Model model){
 
-      if(bindingResult.hasErrors()){
-     return "buyer/";
-      }
-       orderService.saveOrder(order);
+    @PostMapping("/buyer/createOrder")
+    public String createOrder(Model model, HttpServletRequest request){
+        int totalItemsInCart = Integer.parseInt(request.getParameter("totalItems"));
+        //${itemName} : ${selectedQty} : ${itemUnitPrice} : ${amount} : ${itemId}
+        for(int i=1; i<= totalItemsInCart; i++){
+            String [] orderLine = request.getParameter("row-"+i).split(":");
+            Long productId = Long.parseLong(orderLine[4].trim());
+            String productName = orderLine[0];
+            int selectedQuantity = Integer.parseInt(orderLine[1].trim());
+            double unitPrice = Double.parseDouble(orderLine[2].trim());
+            double computedAmount = Double.parseDouble(orderLine[3].trim());
+            //System.out.println(Arrays.toString(orderLine));
+        }
+
         return "redirect:/buyer/";
     }
 

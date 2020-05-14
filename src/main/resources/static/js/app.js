@@ -1,22 +1,31 @@
 let totalAmount = 0.0;
+let items = 1;
 $("#addToCartForm").submit(function (event) {
     let selectedProduct = $("#cartProduct").val();
     let selectedProductArr = selectedProduct.split(":@");
     let selectedQty = $("#cartItemQty").val();
 
     let amount = parseInt(selectedQty) * parseFloat(selectedProductArr[5]);
+    let itemName = selectedProductArr[1];
+    let itemUnitPrice = selectedProductArr[5];
 
+    let itemId = selectedProductArr[0];
+    let submitRecord = `${itemName} : ${selectedQty} : ${itemUnitPrice} : ${amount} : ${itemId}`
 
-    let cartEntry = `<tr><td scope='row'>${selectedProductArr[1]}</td>
+    let cartEntry = `<tr><td scope='row'><input style="display: none" readonly type="hiddden" name="row-${items}" value="${submitRecord}"/>${selectedProductArr[1]}</td>
                 <td>${selectedProductArr[2]}</td>
                 <td>${selectedQty}</td>
                 <td>${selectedProductArr[5]}</td>
                 <td>${amount}</td>
                 </tr>`;
+
+    let targetTotalElems = $("#totalItems");
+    targetTotalElems.html(`<input type="hidden" value="${items}" name="totalItems"/>`);
     $("#shoppingCartBody").append(cartEntry);
     $("#totalCartAmount").html(computeTotalCartAmount(amount));
     $("#shoppingCart").css("display","block");
     $(".otherContent").css("display","none");
+    items++;
     event.preventDefault();
 });
 
