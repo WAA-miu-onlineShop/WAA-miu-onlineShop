@@ -101,6 +101,27 @@
         </nav>
 
         <h2 class="mb-4">Welcome <span sec:authentication="name"></span></h2>
+        <div th:if="${orderHistoryDetailsURL}">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Order #</th>
+                    <th>Date</th>
+                    <th>Order Status</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="orderHistoryEntry: ${orderHistory}">
+                    <td th:text="${orderHistoryEntry.order.orderNumber}"></td>
+                    <td th:text="${orderHistoryEntry.historyDate}"></td>
+                    <td th:text="${orderHistoryEntry.order.orderStatus.status}"></td>
+                    <td th:text="${orderHistoryEntry.description}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
         <div th:if="${orderSuccess}">
             <div class="alert alert-success">
                 <p>Thank you, your order has been received, and being proessed</p>

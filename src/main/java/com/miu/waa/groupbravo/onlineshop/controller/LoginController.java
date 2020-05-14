@@ -1,9 +1,6 @@
 package com.miu.waa.groupbravo.onlineshop.controller;
 
-import com.miu.waa.groupbravo.onlineshop.domain.Address;
-import com.miu.waa.groupbravo.onlineshop.domain.Order;
-import com.miu.waa.groupbravo.onlineshop.domain.Product;
-import com.miu.waa.groupbravo.onlineshop.domain.User;
+import com.miu.waa.groupbravo.onlineshop.domain.*;
 import com.miu.waa.groupbravo.onlineshop.service.ProductService;
 import com.miu.waa.groupbravo.onlineshop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,6 +69,9 @@ public class LoginController {
         model.addAttribute("userDetails",user);
         List<Order> orders = userController.getBuyerOrdersUtil();
         model.addAttribute("buyerOrders",orders);
+//        List<OrderHistory> orderHistory = new ArrayList<>();
+//        orderHistory.add(new OrderHistory());
+//        model.addAttribute("orderHistory",orderHistory);
         return "mainBuyer";
     }
 

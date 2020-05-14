@@ -35,12 +35,23 @@ public class UserController {
     @Autowired
     private OrderService orderService;
 
+    @Autowired
+    private OrderHistoryService orderHistoryService;
+
     @PostMapping("/buyer/order/pay/")
     public String makeOrderPayment(HttpServletRequest request){
         Long orderId = Long.parseLong(request.getParameter("orderId"));
         Double amount = Double.parseDouble(request.getParameter("amount"));
         orderService.payOrder(orderService.findById(orderId));
         return "redirect:/buyer/orders";
+    }
+
+    @GetMapping("/buyer/order/history/{orderId}")
+    public String getOrderHistory(@PathVariable Long orderId, RedirectAttributes redirectAttributes){
+        List<OrderHistory> orderHistory = orderHistoryService.findOrderHistoryByOrder(orderService.findById(orderId));
+        redirectAttributes.addFlashAttribute("orderHistory",orderHistory);
+        redirectAttributes.addFlashAttribute("orderHistoryDetailsURL",true);
+        return "redirect:/buyer";
     }
 
     @GetMapping("/buyer/orders")
