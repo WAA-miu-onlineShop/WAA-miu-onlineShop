@@ -146,6 +146,16 @@ public class OrderServiceImpl implements OrderService {
             }
         }
         order.setOrderStatus(EOrderStatus.CANCELLED);
+        //Avail the product
+        List<OrderLine> orderLineList=order.getOrderLineList();
+        for(OrderLine orderLine:orderLineList){
+           Product product= orderLine.getProduct();
+           product.setProductStatus(EProductStatus.AVAILABLE);
+           ProductCategory productCategory=product.getProductCategory();
+           productCategory.setQuantityAvailable(productCategory.getQuantityAvailable().add(orderLine.getQuantity()));
+           product.getProductCategory().setQuantityPurchased(productCategory.getQuantityPurchased().subtract(orderLine.getQuantity()));
+           productRepository.save(product);
+        }
         //Create OrderHistory
         createOrderHistory(order);
         //Reduce the coupons amounts
