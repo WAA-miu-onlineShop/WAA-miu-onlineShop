@@ -31,7 +31,22 @@ public class FollowServiceImpl  implements FollowService {
 
     @Override
     public Following unSubscribSeller(User seller, User buyer) {
-        return null;
+        Following following=followingRepository.getFollowingBySellerAndBuyer(seller,buyer);
+
+        if(following !=null){
+
+            following.setFollow(false);
+            following.setDate(LocalDate.now());
+            return followingRepository.save(following);
+        }else{
+            Following newFollowing=new Following();
+            newFollowing.setBuyer(buyer);
+            newFollowing.setSeller(seller);
+            newFollowing.setDate(LocalDate.now());
+            newFollowing.setFollow(false);
+            return followingRepository.save(newFollowing);
+        }
+
     }
 
     @Override
