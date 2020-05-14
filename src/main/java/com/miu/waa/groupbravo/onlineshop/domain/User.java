@@ -8,28 +8,39 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.List;
 
 @Entity
 @Table(name = "user")
 public class User extends  DomainClass{
+    @NotEmpty
     private String userNumber;
-    private String phone;
 
-    @Column(name = "firstname")
-    @NotEmpty(message = "*Please provide your first name")
+    @NotEmpty
+    private String phone;
+    @Column(name="firstname")
+    @NotEmpty
+    @Size(min=3, max=20, message="{Size.User.firstname.validation}")
     private String firstName;
 
-    @Column(name = "lastname")
-    @NotEmpty(message = "*Please provide your last name")
+    @Column(name="lastname")
+    @NotEmpty
+    @Size(min=3, max=20, message="{Size.User.lastname.validation}")
     private String lastName;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dob;
-    @Column(name = "username")
-    @NotEmpty(message = "*Please provide a username")
+
+    @NotEmpty
+    @Size(min=4, max=10, message="{Size.User.username.validation}")
     private String username;
+    @Column(name = "password")
+    @Length(min = 5, message = "{Size.User.password.validation}" )
+    @NotEmpty
+    private String password;
+
     public String getUsername() {
         return username;
     }
@@ -46,10 +57,6 @@ public class User extends  DomainClass{
         this.password = password;
     }
 
-    @Column(name = "password")
-    @Length(min = 5, message = "*Your password must have at least 5 characters")
-    @NotEmpty(message = "*Please provide your password")
-    private String password;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name="user_id")

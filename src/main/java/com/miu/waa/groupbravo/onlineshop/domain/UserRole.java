@@ -4,10 +4,12 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "userrole")
 public class UserRole extends  DomainClass{
+    @NotEmpty
     private String name;
     private String description;
     @Enumerated(EnumType.STRING)
