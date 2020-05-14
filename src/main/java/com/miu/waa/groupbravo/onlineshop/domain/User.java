@@ -15,7 +15,7 @@ import java.util.List;
 @Entity
 @Table(name = "user")
 public class User extends  DomainClass{
-    @NotEmpty
+
     private String userNumber;
 
     @NotEmpty
