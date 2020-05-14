@@ -10,5 +10,6 @@ import java.util.List;
 public interface OrderHistoryService {
     OrderHistory  saveOrderHitory(OrderHistory orderHistory);
     List<OrderHistory> getAllOrderHistoryByUser(Long userId);
+    List<OrderHistory> findOrderHistoryByOrder(Order order);
 
 }
