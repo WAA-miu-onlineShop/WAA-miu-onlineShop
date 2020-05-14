@@ -1,16 +1,15 @@
 package com.miu.waa.groupbravo.onlineshop.service.serviceImpl;
 
 import com.miu.waa.groupbravo.onlineshop.domain.*;
+import com.miu.waa.groupbravo.onlineshop.exceptions.BravoException;
 import com.miu.waa.groupbravo.onlineshop.repository.*;
 import com.miu.waa.groupbravo.onlineshop.service.OrderService;
 import com.miu.waa.groupbravo.onlineshop.service.SequenceNumberService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.io.ByteArrayInputStream;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.*;
@@ -29,8 +28,9 @@ public class OrderServiceImpl implements OrderService {
     private CouponRepository couponRepository;
     private ProductRepository productRepository;
     private ProductCategoryRepository productCategoryRepository;
+    private AddressRepository addressRepository;
 
-    public OrderServiceImpl(ProductCategoryRepository productCategoryRepository,ProductRepository productRepository,OrderRepository orderRepository,SequenceNumberService sequenceNumberService,OrderHistoryRepository orderHistoryRepository,UserRepository userRepository,CouponRepository couponRepository){
+    public OrderServiceImpl(AddressRepository addressRepository,ProductCategoryRepository productCategoryRepository,ProductRepository productRepository,OrderRepository orderRepository,SequenceNumberService sequenceNumberService,OrderHistoryRepository orderHistoryRepository,UserRepository userRepository,CouponRepository couponRepository){
         this.productRepository=productRepository;
         this.orderRepository=orderRepository;
         this.sequenceNumberService=sequenceNumberService;
@@ -38,6 +38,7 @@ public class OrderServiceImpl implements OrderService {
         this.userRepository=userRepository;
         this.couponRepository=couponRepository;
         this.productCategoryRepository=productCategoryRepository;
+        this.addressRepository=addressRepository;
     }
     @Override
     public Order saveOrder(Order order) {
@@ -48,10 +49,11 @@ public class OrderServiceImpl implements OrderService {
             order.setOrderStatus(EOrderStatus.NEW);
             order.setBuyer(getUser());
             BigDecimal couponPoints = getCouponPoint(order);
-            order.setTotalAmount(couponPoints);
+            order.setCoupons(couponPoints);
             savedOrder = orderRepository.save(order);
-
-            updateProduct(savedOrder);
+            Address shippingAddress=addressRepository.findAddressByUserAndAddressType(order.getBuyer(),EAddressRole.SHIPPING);
+            order.setShippingAddress(shippingAddress);
+            updateProductAndOrderLine(savedOrder);
             //order.getOrderLineList().stream().reduce()
             createOrderHistory(savedOrder);
             addCouponPoints(savedOrder);
@@ -60,10 +62,12 @@ public class OrderServiceImpl implements OrderService {
         }
         return savedOrder;
     }
-    private void updateProduct(Order order){
+    private void updateProductAndOrderLine(Order order){
 
         for(OrderLine orderLine: order.getOrderLineList()){
+            orderLine.setOrder(order);
             Product product=orderLine.getProduct();
+            orderLine.setDescription(product.getDescription());
             product.setProductStatus(EProductStatus.ORDERED);
             ProductCategory productCategory=product.getProductCategory();
             productCategory.setQuantityPurchased(productCategory.getQuantityPurchased().add(orderLine.getQuantity()));
@@ -88,8 +92,9 @@ public class OrderServiceImpl implements OrderService {
     private OrderHistory createOrderHistory(Order order){
         OrderHistory orderHistory = new OrderHistory();
         orderHistory.setDescription("Order History");
+        orderHistory.setOrder(order);
         orderHistory.setOrderStatus(order.getOrderStatus());
-        orderHistory.setUser(order.getBuyer());//Login in user, we have to retrieve this from Principal
+        orderHistory.setUser(getUser());//Login in user, we have to retrieve this from Principal
         orderHistory.setHistoryDate(LocalDateTime.now());
         return  orderHistoryRepository.save(orderHistory);
 
@@ -132,9 +137,13 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Order cancelOrder(Order order) throws Exception {
+    public Order cancelOrder(Order order)  {
         if (order.getOrderStatus().compareTo(EOrderStatus.NEW) != 0) {
-            throw new Exception("You can only cancel an order that is new");
+            try {
+                throw new Exception("You can only cancel an order that is new");
+            } catch (Exception e) {
+                throw  new BravoException(e);
+            }
         }
         order.setOrderStatus(EOrderStatus.CANCELLED);
         //Create OrderHistory
@@ -150,9 +159,13 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Order payOrder(Order order) throws Exception {
+    public Order payOrder(Order order){
         if (order.getOrderStatus().compareTo(EOrderStatus.NEW) != 0) {
-            throw new Exception("You can only pay the total amount for a new order");
+            try {
+                throw new Exception("You can only pay the total amount for a new order");
+            } catch (Exception e) {
+                throw  new BravoException(e);
+            }
         }
         order.setOrderStatus(EOrderStatus.PAID);
         //Create orderHistory
@@ -161,10 +174,18 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Order shippingOrder(Order order)throws Exception  {
+    public Order shippingOrder(Order order) {
 
         if (order.getOrderStatus().compareTo(EOrderStatus.PAID) != 0) {
+<<<<<<< HEAD
             throw new Exception("You can only ship a paid order");
+=======
+            try {
+                throw new Exception("You can only shipp a paid order");
+            } catch (Exception e) {
+                throw new BravoException(e);
+            }
+>>>>>>> 3f96de0757554e3b20b047be86178e01e0c84280
         }
         order.setOrderStatus(EOrderStatus.ON_THE_WAY);
         //create orderHistory
@@ -173,12 +194,15 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Order delivering(Order order) throws Exception {
+    public Order delivering(Order order){
 
         if (order.getOrderStatus().compareTo(EOrderStatus.PAID) != 0||order.getOrderStatus().compareTo(EOrderStatus.ON_THE_WAY) != 0) {
-            throw new Exception("You can only deliver a shipped or paid order");
+            try {
+                throw new Exception("You can only deliver a shipped or paid order");
+            } catch (Exception e) {
+                throw new BravoException(e);
+            }
         }
-
         order.setOrderStatus(EOrderStatus.DELIVERED);
         //Create orderHistory
         createOrderHistory(order);
@@ -194,6 +218,10 @@ public class OrderServiceImpl implements OrderService {
     public List<Order> findOrderByBuyerAndStatus(User buyer, List<EOrderStatus> statusList) {
         return orderRepository.findOrderByBuyerAndStatus(buyer,statusList);
 
+    }
+    @Override
+    public Order findById(Long orderId) {
+        return orderRepository.findById(orderId).get();
     }
 
 

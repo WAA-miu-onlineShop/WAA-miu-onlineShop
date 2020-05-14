@@ -39,10 +39,12 @@ public class OrderServiceImplTest {
     private ProductRepository productRepository;
     @Mock
     private ProductCategoryRepository productCategoryRepository;
+    @Mock
+    private AddressRepository addressRepository;
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        orderService=new OrderServiceImpl(productCategoryRepository,productRepository,orderRepository,sequenceNumberService,orderHistoryRepository,userRepository,couponRepository);
+        orderService=new OrderServiceImpl(addressRepository,productCategoryRepository,productRepository,orderRepository,sequenceNumberService,orderHistoryRepository,userRepository,couponRepository);
         SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken("erurangwa","122333"));
     }
       @Test

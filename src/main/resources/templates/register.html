@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Online Shop - Register</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/register.css}"/>
+</head>
+<body>
+<div class="container register">
+    <div class="row">
+        <div class="col-md-3 register-left">
+            <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
+            <h3>Welcome</h3>
+            <p>Register here as a buyer or seller to get started</p>
+<!--            <a th:href="@{/login}">Login Here</a>-->
+            <form method="get" th:action="@{/login}"><input type="submit" name="login" value="Login"/></form><br/>
+        </div>
+        <div class="col-md-9 register-right">
+<!--            <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Employee</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Hirer</a>-->
+<!--                </li>-->
+<!--            </ul>-->
+            <div >
+                <div >
+                    <form th:action="@{/registration}" th:object="${user}" method="post">
+                    <h3 class="register-heading" > Online Shop - Registration</h3>
+                    <div class="row register-form">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"
+                                       class="validation-message alert alert-danger"></label>
+                                <input type="text" th:field="*{firstName}" placeholder="FirstName"
+                                       class="form-control" required/>
+                            </div>
+                            <div class="form-group">
+                                <label th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
+                                       class="alert alert-danger"></label>
+                                <input type="text" th:field="*{lastName}"
+                                       placeholder="Last Name" class="form-control" required/>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" th:field="*{username}" placeholder="Username"
+                                       class="form-control"/> <label
+                                    th:if="${#fields.hasErrors('username')}" th:errors="*{username}"
+                                    class="validation-message alert alert-danger"></label>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" th:field="*{password}"
+                                       placeholder="Password" class="form-control" required/> <label
+                                    th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+                                    class="validation-message alert alert-danger"></label>
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control" id="roles" th:field="*{userRole}" required>
+                                    <option value="">-Select Role-</option>
+                                    <option th:each="role: ${roles}" th:value="${role.id}" th:text="${role.name}">
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label th:if="${#fields.hasErrors('dob')}" th:errors="*{dob}"
+                                       class="alert alert-danger"></label>
+                                <input type="date" th:field="*{dob}"
+                                       placeholder="Date of birth: e.g. yyyy-MM-dd" class="form-control" required/>
+                            </div>
+                            <div class="form-group">
+                                <label th:if="${#fields.hasErrors('phone')}" th:errors="*{lastName}"
+                                       class="alert alert-danger"></label>
+                                <input type="text" th:field="*{phone}"
+                                       placeholder="Phone Number e.g. 641-555-222-111" class="form-control" required/>
+                            </div>
+                            <input type="submit" class="btnRegister"  value="Register"/>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+                <div><span class="alert alert-success" th:utext="${successMessage}!=null ? ${successMessage}: ''">Click to submit</span></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

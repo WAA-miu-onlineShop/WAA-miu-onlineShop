@@ -7,22 +7,31 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 
 @Entity
 @NamedQueries({@NamedQuery(name= ProductRepository.QUERY_NAME.findByStatus,query=ProductRepository.QUERY.findByStatus),
         @NamedQuery(name=ProductRepository.QUERY_NAME.findByCategoryAndStatus,query=ProductRepository.QUERY.findByCategoryAndStatus)})
 public class Product extends DomainClass {
+   // @Column(unique = true)
     private String serialNumber;
     private String productNumber;
+    @NotEmpty
+    @Size(min=2, max=30, message="{Size.Product.name.validation}")
     private String name;
+    @NotEmpty
+    @Size(min=6, max=50, message="{Size.Product.description.validation}")
     private String description;
+
     private BigDecimal unitPrice= BigDecimal.ZERO;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name="seller_id")
-
     private User seller;
+
     @Enumerated(EnumType.STRING)
     private EProductStatus productStatus;
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
@@ -30,6 +39,7 @@ public class Product extends DomainClass {
     private ProductCategory productCategory;
     @Transient
     private MultipartFile multipartFile;
+
     private String file  ;
     public String getSerialNumber() {
         return serialNumber;

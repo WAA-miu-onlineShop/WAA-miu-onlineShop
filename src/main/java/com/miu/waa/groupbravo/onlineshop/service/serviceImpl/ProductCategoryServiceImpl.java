@@ -52,6 +52,11 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
         return productCategoryRepository.findBySeller(seller);
     }
 
+    @Override
+    public ProductCategory findById(Long productCategoryId) {
+    return productCategoryRepository.findById(productCategoryId).get();
+    }
+
     private  User getUser(){
         User user=null;
         try {

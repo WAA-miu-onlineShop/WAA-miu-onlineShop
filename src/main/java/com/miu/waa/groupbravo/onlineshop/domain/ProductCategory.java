@@ -7,16 +7,26 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 
 @Entity
 public class ProductCategory extends DomainClass {
+    @NotEmpty
+    @Size(min=6, max=50, message="{Size.ProductCategory.name.validation}")
     private String description;
+    @NotEmpty
+    @Size(min=2, max=30, message="{Size.ProductCategory.name.validation}")
     private String name;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="seller_id")
     private User seller;
+
     private BigDecimal quantityAvailable= BigDecimal.ZERO;
+
     private BigDecimal quantityPurchased= BigDecimal.ZERO;
 
     public String getDescription() {

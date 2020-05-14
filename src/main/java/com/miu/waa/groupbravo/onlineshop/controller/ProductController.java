@@ -7,16 +7,14 @@ import com.miu.waa.groupbravo.onlineshop.service.ProductCategoryService;
 import com.miu.waa.groupbravo.onlineshop.service.ProductService;
 import com.miu.waa.groupbravo.onlineshop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.ServletContext;
 import javax.validation.Valid;
-import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -62,7 +60,23 @@ public class ProductController {
         productService.findAll();
         return ("seller/product");
     }
+    //@GetMapping("/availableProduct")
+    public List<Product> getAvailableProduct(){
+        List<EProductStatus> available=new ArrayList<>();
+        available.add(EProductStatus.AVAILABLE);
+        List<Product> availableProducts=productService.findProductByStatus(available);
+        return availableProducts;
+    }
+    @GetMapping("/availableProduct/{productCategoryId}")
+    public String getAvailableProductByCategory(@PathVariable("productCategoryId") Long productCategoryId, Model model){
 
+        ProductCategory productCategory= productCategoryService.findById(productCategoryId);
+        List<EProductStatus> available=new ArrayList<>();
+        available.add(EProductStatus.AVAILABLE);
+        List<Product> availableProducts=productService.findProductByCategoryAndStatus(productCategory,available);
+        model.addAttribute("availableProducts",availableProducts);
+        return "buyer/ ";
+    }
     @GetMapping("/byseller")
     public String findProductsBySeller(String username) {
         User seller = userService.findByUsername(username);
@@ -77,14 +91,7 @@ public class ProductController {
             return  productCategoryService.findProductCategoriesBySeller(seller);
         }
 
-
-//    @GetMapping("/byseller")
-//    public String findProductsBySeller(User seller) {
-//        productService.findProductsBySeller(seller);
-//        return "product/mainSeller_List";
-//    }
-
-    @DeleteMapping("/seller/product/delete/{product_id}")
+    @DeleteMapping("/seller/product/delete")
     public String deleteProduct(Product product,Model model) {
         if(product.getProductStatus().compareTo(EProductStatus.NEW)!=0||product.getProductStatus().compareTo(EProductStatus.AVAILABLE)!=0){
             model.addAttribute("errorMessage","you can not delete a purchased product");
@@ -95,6 +102,20 @@ public class ProductController {
         }
         return ("seller/product");
     }
+//
+//    @DeleteMapping("/seller/product/delete/{product_id}")
+//    public String deleteProduduct(Long id,Model model){
+//    Product product=productService.findById(id);
+//        if(product.getProductStatus().compareTo(EProductStatus.NEW)!=0||product.getProductStatus().compareTo(EProductStatus.AVAILABLE)!=0){
+//            model.addAttribute("errorMessage","you can not delete a purchased product");
+//            return ("seller/product");
+//        }
+//        else {
+//            productService.deleteProduct(product);
+//        }
+//
+//        return ("seller/product");
+//    }
 
     @GetMapping("/seller/product/delete/{productId}")
     public String deleteProductById(@PathVariable Long productId, Model model) {
