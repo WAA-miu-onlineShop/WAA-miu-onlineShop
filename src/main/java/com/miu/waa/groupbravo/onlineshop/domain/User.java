@@ -17,11 +17,12 @@ import java.util.List;
 public class User extends  DomainClass{
     private String userNumber;
     private String phone;
-
+    @Column(name="firstname")
     @NotEmpty
     @Size(min=3, max=20, message="{Size.User.firstname.validation}")
     private String firstName;
 
+    @Column(name="lastname")
     @NotEmpty
     @Size(min=3, max=20, message="{Size.User.lastname.validation}")
     private String lastName;
@@ -30,7 +31,7 @@ public class User extends  DomainClass{
     private LocalDate dob;
 
     @NotEmpty
-    @Size(min=4, max=8, message="{Size.User.username.validation}")
+    @Size(min=4, max=10, message="{Size.User.username.validation}")
 
     private String username;
     public String getUsername() {
