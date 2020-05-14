@@ -8,6 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -17,18 +18,20 @@ public class User extends  DomainClass{
     private String userNumber;
     private String phone;
 
-    @Column(name = "firstname")
-    @NotEmpty(message = "*Please provide your first name")
+    @NotEmpty
+    @Size(min=3, max=20, message="{Size.User.firstname.validation}")
     private String firstName;
 
-    @Column(name = "lastname")
-    @NotEmpty(message = "*Please provide your last name")
+    @NotEmpty
+    @Size(min=3, max=20, message="{Size.User.lastname.validation}")
     private String lastName;
-
+    @NotEmpty
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dob;
-    @Column(name = "username")
-    @NotEmpty(message = "*Please provide a username")
+
+    @NotEmpty
+    @Size(min=4, max=8, message="{Size.User.username.validation}")
+
     private String username;
     public String getUsername() {
         return username;
