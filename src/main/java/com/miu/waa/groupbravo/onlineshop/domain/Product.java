@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 
@@ -17,7 +18,6 @@ import java.math.BigDecimal;
 public class Product extends DomainClass {
    // @Column(unique = true)
     private String serialNumber;
-
     private String productNumber;
     @NotEmpty
     @Size(min=2, max=30, message="{Size.Product.name.validation}")
@@ -25,6 +25,7 @@ public class Product extends DomainClass {
     @NotEmpty
     @Size(min=6, max=50, message="{Size.Product.description.validation}")
     private String description;
+
     private BigDecimal unitPrice= BigDecimal.ZERO;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})

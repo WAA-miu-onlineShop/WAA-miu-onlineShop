@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 
@@ -23,7 +24,6 @@ public class ProductCategory extends DomainClass {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="seller_id")
     private User seller;
-
 
     private BigDecimal quantityAvailable= BigDecimal.ZERO;
 
