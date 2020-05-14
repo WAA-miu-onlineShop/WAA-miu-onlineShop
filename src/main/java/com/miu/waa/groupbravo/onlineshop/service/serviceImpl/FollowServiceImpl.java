@@ -5,9 +5,13 @@ import com.miu.waa.groupbravo.onlineshop.domain.User;
 import com.miu.waa.groupbravo.onlineshop.repository.FollowingRepository;
 import com.miu.waa.groupbravo.onlineshop.service.FollowService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 
+@Service
+@Transactional
 public class FollowServiceImpl  implements FollowService {
     @Autowired
     private FollowingRepository followingRepository;

@@ -175,18 +175,13 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Order shippingOrder(Order order) {
-
+        try {
         if (order.getOrderStatus().compareTo(EOrderStatus.PAID) != 0) {
-<<<<<<< HEAD
             throw new Exception("You can only ship a paid order");
-=======
-            try {
-                throw new Exception("You can only shipp a paid order");
-            } catch (Exception e) {
+        }
+        } catch (Exception e) {
                 throw new BravoException(e);
             }
->>>>>>> 3f96de0757554e3b20b047be86178e01e0c84280
-        }
         order.setOrderStatus(EOrderStatus.ON_THE_WAY);
         //create orderHistory
         createOrderHistory(order);
