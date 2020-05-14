@@ -65,6 +65,7 @@ public class LoginController {
         model.addAttribute("addresses", user.getAddresses());
         model.addAttribute("products", productController.getAvailableProduct());
         model.addAttribute("userDetails",user);
+        //model.addAttribute()
         return "mainBuyer";
     }
 
@@ -84,7 +85,7 @@ public class LoginController {
     @RequestMapping("/login-error")
     public String loginError(Model model) {
         model.addAttribute("loginError", true);
-        return "login";
+        return "loginForm";
     }
 
     @PostMapping("/logout")

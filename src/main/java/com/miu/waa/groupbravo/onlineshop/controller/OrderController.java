@@ -43,8 +43,9 @@ public class OrderController {
         }
          order.setOrderLineList(orderLineList);
          order.setTotalAmount(order.getTotalAmount());
-          orderService.saveOrder(order);
-        return "redirect:/buyer/";
+         orderService.saveOrder(order);
+         //model.addAttribute("orderSuccess",true);
+         return "redirect:/buyer/";
     }
 
     private OrderLine getOrderLine(Long productId,int selectedQuantity ){
