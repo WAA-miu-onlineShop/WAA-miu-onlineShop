@@ -1,5 +1,7 @@
 package com.miu.waa.groupbravo.onlineshop.config;
 
+import com.miu.waa.groupbravo.onlineshop.domain.ERoleType;
+import com.miu.waa.groupbravo.onlineshop.domain.EUserStatus;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -20,12 +22,11 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
 
         Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
-        System.out.println(roles);
-        if (roles.contains("ADMIN")) {
+        if (roles.contains(ERoleType.ADMIN.toString())) {
             httpServletResponse.sendRedirect("/admin");
-        } else if (roles.contains("BUYER")){
+        } else if (roles.contains(ERoleType.BUYER.toString())){
             httpServletResponse.sendRedirect("/buyer");
-        }else if (roles.contains("SELLER")){
+        }else if (roles.contains(ERoleType.SELLER.toString())){
             //httpServletResponse.sendRedirect("/seller");
             httpServletResponse.sendRedirect("/seller/sellerStatus/");
         }else{

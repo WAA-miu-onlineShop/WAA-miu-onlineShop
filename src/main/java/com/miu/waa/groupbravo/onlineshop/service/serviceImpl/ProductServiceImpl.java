@@ -86,7 +86,7 @@ public class ProductServiceImpl implements ProductService {
         if(product.getProductStatus().compareTo(EProductStatus.NEW)==0||product.getProductStatus().compareTo(EProductStatus.AVAILABLE)==0) {
             productRepository.delete(product);
         }else{
-             new Exception("You can not delete  not new or available product");
+             new Exception("You can  neither delete a  new nor available product");
         }
     }
 
@@ -126,6 +126,12 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> findProductByCategoryAndStatus(ProductCategory productCategory, List<EProductStatus> productStatusList) {
         return productRepository.findByCategoryAndStatus(productCategory,productStatusList);
     }
+
+    @Override
+    public Product getProductBySerialNumber(String serialNumber) {
+        return productRepository.findBySerialNumber(serialNumber);
+    }
+
 
     //find product by user
 

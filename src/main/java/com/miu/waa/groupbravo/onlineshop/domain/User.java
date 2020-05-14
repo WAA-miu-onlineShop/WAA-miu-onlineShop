@@ -15,29 +15,26 @@ import java.util.List;
 @Entity
 @Table(name = "user")
 public class User extends  DomainClass{
-
     private String userNumber;
-
-   /* @NotEmpty*/
     private String phone;
     @Column(name="firstname")
     @NotEmpty
-    @Size(min=3, max=20, message="{Size.User.firstname.validation}")
+    @Size(min=3, max=100, message="{Size.User.firstname.validation}")
     private String firstName;
 
     @Column(name="lastname")
     @NotEmpty
-    @Size(min=3, max=20, message="{Size.User.lastname.validation}")
+    @Size(min=3, max=100, message="{Size.User.lastname.validation}")
     private String lastName;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dob;
 
     @NotEmpty
-    @Size(min=4, max=10, message="{Size.User.username.validation}")
+    @Size(min=4, max=20, message="{Size.User.username.validation}")
     private String username;
     @Column(name = "password")
-   // @Length(min = 5, message = "{Size.User.password.validation}" )
+    @Length(min = 5, message = "{Size.User.password.validation}" )
     @NotEmpty
     private String password;
 
@@ -45,16 +42,13 @@ public class User extends  DomainClass{
     @JoinColumn(name="user_id")
     private List<Address> addresses;
 
-
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="user_role_id")
     private UserRole userRole;
 
     @Enumerated(EnumType.STRING)
     private EUserStatus userStatus;
-   // @OneToMany(mappedBy ="buyer",cascade = CascadeType.ALL)
-/*    @Transient
-    private List<Order> orderList;*/
+
 
     public String getUsername() {
         return username;

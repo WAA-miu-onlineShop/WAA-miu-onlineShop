@@ -32,12 +32,12 @@ public class UserServiceImpl implements UserService {
     private AddressRepository addressRepository;
 
     public User findByUsername(String username) {
-        //System.out.println("Username in the service layer: " + username);
+
         return userRepository.findByUsername(username);
     }
 
     public User approveSeller(User seller){
-        //auth.getPrincipal();
+
         return userRepository.save(seller);
     }
 
@@ -53,7 +53,7 @@ public class UserServiceImpl implements UserService {
     }
 
     public User saveUser(User user) {
-        //System.out.println(passwordEncoder.encode("pass12345"));
+
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         if(user.isNew()){
             Optional<UserRole> userRole = userRoleRepository.findById(user.getUserRole().getId());
@@ -61,13 +61,12 @@ public class UserServiceImpl implements UserService {
             String userNumber = sequenceNumberService.getNextUserNumber(user.getUserRole().getRoleType());
             user.setUserNumber(userNumber);
         }
-        //user.getUserRole().getRoleType().compareTo(ERoleType.SELLER) == 0
         if(user.getUserRole().getRoleType().compareTo(ERoleType.SELLER) == 0){
             user.setUserStatus(EUserStatus.NEW);
-            //user.setActive(0);
+
         }else{
             user.setUserStatus(EUserStatus.APPROVED);
-            //user.setActive(1);
+
         }
         return userRepository.save(user);
     }

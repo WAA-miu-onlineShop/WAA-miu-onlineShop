@@ -7,7 +7,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.NamedQuery;
 @Repository
 public interface SequenceNumberRepository  extends CrudRepository<SequenceNumber,Long> {
     public static class QUERY{
@@ -16,5 +15,5 @@ public interface SequenceNumberRepository  extends CrudRepository<SequenceNumber
     public static  class QUERY_NAME{
         public static final String findBySequenceType = "SequenceNumber.findBySequenceType";
     }
-    public SequenceNumber findBySequenceType(@Param(IRepositoryConstant.sequenceType) ESequenceType sequenceType);
+    public SequenceNumber findBySequenceType(@Param(IRepositoryConstant.SEQUENCE_TYPE) ESequenceType sequenceType);
 }

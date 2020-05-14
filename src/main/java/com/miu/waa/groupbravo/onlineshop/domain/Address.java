@@ -12,16 +12,16 @@ import javax.validation.constraints.Size;
 @NamedQueries({@NamedQuery(name= AddressRepository.QUERY_NAME.findAddressByUserAndAddressType,query = AddressRepository.QUERY.findAddressByUserAndAddressType)})
 public class Address extends  DomainClass{
     @NotEmpty
-    @Size(min=3, max= 15, message="{Size.Address.city.validation}")
+    @Size(min=3, max= 50, message="{Size.Address.city.validation}")
     private String city;
     @NotEmpty
-    @Size(min=4, max= 100, message="{Size.Address.street.validation}")
+    @Size(min=2, max= 100, message="{Size.Address.street.validation}")
     private String street;
     @NotEmpty
-    @Size(min=4, max= 20, message="{Size.Address.state.validation}")
+    @Size(min=2, max= 100, message="{Size.Address.state.validation}")
     private String state;
     @NotEmpty
-    @Size(min = 5, max = 5,message="{Size.Address.zipcode.validation}")
+    @Size(min = 2, max = 20,message="{Size.Address.zipcode.validation}")
     private String zipCode;
 
     @Enumerated(EnumType.STRING)

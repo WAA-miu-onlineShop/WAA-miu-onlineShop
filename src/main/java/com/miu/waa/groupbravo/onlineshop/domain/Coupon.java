@@ -4,6 +4,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -14,6 +15,7 @@ public class Coupon  extends DomainClass implements Serializable {
     @OneToOne
     @JoinColumn(name="buyer_id")
     private User buyer;
+    @NotNull
     private BigDecimal totalPoint= BigDecimal.ZERO;
 
     public String getCouponNumber() {

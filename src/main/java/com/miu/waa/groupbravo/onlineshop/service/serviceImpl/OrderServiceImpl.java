@@ -49,7 +49,7 @@ public class OrderServiceImpl implements OrderService {
             order.setOrderStatus(EOrderStatus.NEW);
             order.setBuyer(getUser());
             BigDecimal couponPoints = getCouponPoint(order);
-            order.setTotalAmount(couponPoints);
+            order.setCoupons(couponPoints);
             savedOrder = orderRepository.save(order);
             Address shippingAddress=addressRepository.findAddressByUserAndAddressType(order.getBuyer(),EAddressRole.SHIPPING);
             order.setShippingAddress(shippingAddress);
@@ -94,7 +94,7 @@ public class OrderServiceImpl implements OrderService {
         orderHistory.setDescription("Order History");
         orderHistory.setOrder(order);
         orderHistory.setOrderStatus(order.getOrderStatus());
-        orderHistory.setUser(order.getBuyer());//Login in user, we have to retrieve this from Principal
+        orderHistory.setUser(getUser());//Login in user, we have to retrieve this from Principal
         orderHistory.setHistoryDate(LocalDateTime.now());
         return  orderHistoryRepository.save(orderHistory);
 
@@ -146,11 +146,24 @@ public class OrderServiceImpl implements OrderService {
             }
         }
         order.setOrderStatus(EOrderStatus.CANCELLED);
+         makeProductAvailable(order);
         //Create OrderHistory
         createOrderHistory(order);
         //Reduce the coupons amounts
         reduceCouponPoints(order);
         return orderRepository.save(order);
+    }
+    private void makeProductAvailable(Order order){
+        //Avail the product
+        List<OrderLine> orderLineList=order.getOrderLineList();
+        for(OrderLine orderLine:orderLineList){
+            Product product= orderLine.getProduct();
+            product.setProductStatus(EProductStatus.AVAILABLE);
+            ProductCategory productCategory=product.getProductCategory();
+            productCategory.setQuantityAvailable(productCategory.getQuantityAvailable().add(orderLine.getQuantity()));
+            product.getProductCategory().setQuantityPurchased(productCategory.getQuantityPurchased().subtract(orderLine.getQuantity()));
+            productRepository.save(product);
+        }
     }
     private Coupon reduceCouponPoints(Order order){
         Coupon coupon = couponRepository.findByUser(order.getBuyer());
@@ -175,14 +188,13 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Order shippingOrder(Order order) {
-
+        try {
         if (order.getOrderStatus().compareTo(EOrderStatus.PAID) != 0) {
-            try {
-                throw new Exception("You can only shipp a paid order");
-            } catch (Exception e) {
+            throw new Exception("You can only ship a paid order");
+        }
+        } catch (Exception e) {
                 throw new BravoException(e);
             }
-        }
         order.setOrderStatus(EOrderStatus.ON_THE_WAY);
         //create orderHistory
         createOrderHistory(order);
