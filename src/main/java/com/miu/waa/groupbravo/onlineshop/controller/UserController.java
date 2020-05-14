@@ -72,7 +72,9 @@ public class UserController {
         }else{
             model.addAttribute("approved", false);
         }
-        model.addAttribute("product", new Product());
+        if(model.asMap().get("product")==null) {
+            model.addAttribute("product", new Product());
+        }
         return "mainSeller";
     }
 

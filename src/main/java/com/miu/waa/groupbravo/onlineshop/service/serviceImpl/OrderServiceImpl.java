@@ -49,7 +49,7 @@ public class OrderServiceImpl implements OrderService {
             order.setOrderStatus(EOrderStatus.NEW);
             order.setBuyer(getUser());
             BigDecimal couponPoints = getCouponPoint(order);
-            order.setTotalAmount(couponPoints);
+            order.setCoupons(couponPoints);
             savedOrder = orderRepository.save(order);
             Address shippingAddress=addressRepository.findAddressByUserAndAddressType(order.getBuyer(),EAddressRole.SHIPPING);
             order.setShippingAddress(shippingAddress);
@@ -94,7 +94,7 @@ public class OrderServiceImpl implements OrderService {
         orderHistory.setDescription("Order History");
         orderHistory.setOrder(order);
         orderHistory.setOrderStatus(order.getOrderStatus());
-        orderHistory.setUser(order.getBuyer());//Login in user, we have to retrieve this from Principal
+        orderHistory.setUser(getUser());//Login in user, we have to retrieve this from Principal
         orderHistory.setHistoryDate(LocalDateTime.now());
         return  orderHistoryRepository.save(orderHistory);
 
