@@ -11,5 +11,6 @@ import java.util.List;
 
 @Repository
 public interface OrderHistoryRepository extends CrudRepository<OrderHistory, Long> {
+    List<OrderHistory> findByOrder(Order order);
 }
 
