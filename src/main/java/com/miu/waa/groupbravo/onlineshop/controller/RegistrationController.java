@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -36,7 +37,8 @@ public class RegistrationController {
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String registration(@ModelAttribute("user") User user) {
-        return "registration";
+        return "register";
+        //return "registration";
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
@@ -53,13 +55,15 @@ public class RegistrationController {
         if (bindingResult.hasErrors()) {
             System.out.println("I get here 3");
             System.out.println(bindingResult.getAllErrors());
-            return "registration";
+            //return "registration";
+            return "register";
         } else {
             System.out.println("I get here 4");
             userService.saveUser(user);
             model.addAttribute("successMessage", "User has been registered successfully");
             model.addAttribute("user", new User());
-            return "registration";
+            return "register";
+            //return "registration";
 
         }
 

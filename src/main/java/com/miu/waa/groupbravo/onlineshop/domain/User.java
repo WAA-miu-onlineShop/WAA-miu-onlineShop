@@ -4,6 +4,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.validator.constraints.Length;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -23,6 +24,8 @@ public class User extends  DomainClass{
     @Column(name = "lastname")
     @NotEmpty(message = "*Please provide your last name")
     private String lastName;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dob;
     @Column(name = "username")
     @NotEmpty(message = "*Please provide a username")
