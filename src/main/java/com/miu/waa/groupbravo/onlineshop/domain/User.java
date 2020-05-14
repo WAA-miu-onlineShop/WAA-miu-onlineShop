@@ -22,19 +22,19 @@ public class User extends  DomainClass{
     private String phone;
     @Column(name="firstname")
     @NotEmpty
-    @Size(min=3, max=20, message="{Size.User.firstname.validation}")
+    @Size(min=3, max=100, message="{Size.User.firstname.validation}")
     private String firstName;
 
     @Column(name="lastname")
     @NotEmpty
-    @Size(min=3, max=20, message="{Size.User.lastname.validation}")
+    @Size(min=3, max=100, message="{Size.User.lastname.validation}")
     private String lastName;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dob;
 
     @NotEmpty
-    @Size(min=4, max=10, message="{Size.User.username.validation}")
+    @Size(min=4, max=20, message="{Size.User.username.validation}")
     private String username;
     @Column(name = "password")
    // @Length(min = 5, message = "{Size.User.password.validation}" )
