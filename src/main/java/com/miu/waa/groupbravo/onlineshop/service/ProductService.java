@@ -18,4 +18,5 @@ public interface ProductService {
     public Optional<Product> findProductById(Long productId);
     public List<Product> findProductByStatus(List<EProductStatus> productStatusList);
     public List<Product> findProductByCategoryAndStatus(ProductCategory productCategory,List<EProductStatus> productStatusList);
+    Product getProductBySerialNumber(String serialNumber);
 }

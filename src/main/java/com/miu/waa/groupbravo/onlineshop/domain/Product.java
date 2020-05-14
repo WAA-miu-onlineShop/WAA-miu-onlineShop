@@ -2,13 +2,14 @@ package com.miu.waa.groupbravo.onlineshop.domain;
 
 
 import com.miu.waa.groupbravo.onlineshop.repository.ProductRepository;
+import com.miu.waa.groupbravo.onlineshop.customAnnotation.SerialNumber;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 
@@ -16,8 +17,10 @@ import java.math.BigDecimal;
 @NamedQueries({@NamedQuery(name= ProductRepository.QUERY_NAME.findByStatus,query=ProductRepository.QUERY.findByStatus),
         @NamedQuery(name=ProductRepository.QUERY_NAME.findByCategoryAndStatus,query=ProductRepository.QUERY.findByCategoryAndStatus)})
 public class Product extends DomainClass {
-   // @Column(unique = true)
+    @Pattern(regexp = "SN[1-9]+", message = "{Pattern.Product.serialNumber.validation}")
+    @SerialNumber
     private String serialNumber;
+
     private String productNumber;
     @NotEmpty
     @Size(min=2, max=30, message="{Size.Product.name.validation}")
