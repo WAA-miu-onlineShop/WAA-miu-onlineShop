@@ -15,7 +15,7 @@ public class Address extends  DomainClass{
     @Size(min=3, max= 15, message="{Size.Address.city.validation}")
     private String city;
     @NotEmpty
-    @Size(min=4, max= 20, message="{Size.Address.street.validation}")
+    @Size(min=4, max= 100, message="{Size.Address.street.validation}")
     private String street;
     @NotEmpty
     @Size(min=4, max= 20, message="{Size.Address.state.validation}")

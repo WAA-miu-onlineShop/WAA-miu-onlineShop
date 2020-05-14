@@ -18,7 +18,7 @@ public class User extends  DomainClass{
 
     private String userNumber;
 
-    @NotEmpty
+   /* @NotEmpty*/
     private String phone;
     @Column(name="firstname")
     @NotEmpty
@@ -37,9 +37,24 @@ public class User extends  DomainClass{
     @Size(min=4, max=10, message="{Size.User.username.validation}")
     private String username;
     @Column(name = "password")
-    @Length(min = 5, message = "{Size.User.password.validation}" )
+   // @Length(min = 5, message = "{Size.User.password.validation}" )
     @NotEmpty
     private String password;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="user_id")
+    private List<Address> addresses;
+
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="user_role_id")
+    private UserRole userRole;
+
+    @Enumerated(EnumType.STRING)
+    private EUserStatus userStatus;
+   // @OneToMany(mappedBy ="buyer",cascade = CascadeType.ALL)
+/*    @Transient
+    private List<Order> orderList;*/
 
     public String getUsername() {
         return username;
@@ -56,22 +71,6 @@ public class User extends  DomainClass{
     public void setPassword(String password) {
         this.password = password;
     }
-
-
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name="user_id")
-    private List<Address> addresses;
-
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="user_role_id")
-    private UserRole userRole;
-
-    @Enumerated(EnumType.STRING)
-    private EUserStatus userStatus;
-    @OneToMany(mappedBy ="buyer",cascade = CascadeType.ALL)
-    private List<Order> orderList;
-
 
     public String getUserNumber() {
         return userNumber;
@@ -141,13 +140,13 @@ public class User extends  DomainClass{
         this.userStatus = userStatus;
     }
 
-    public List<Order> getOrderList() {
+/*    public List<Order> getOrderList() {
         return orderList;
     }
 
     public void setOrderList(List<Order> orderList) {
         this.orderList = orderList;
-    }
+    }*/
 
     @Override
     public boolean equals(Object o) {
