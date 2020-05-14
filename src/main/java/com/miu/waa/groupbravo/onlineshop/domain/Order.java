@@ -25,7 +25,7 @@ public class Order extends DomainClass {
     @JoinColumn(name="shippingAddress_id")
     private Address shippingAddress;
 
-    @OneToMany(mappedBy = "order",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "order",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private List<OrderLine> orderLineList;
 
     public String getOrderNumber() {
