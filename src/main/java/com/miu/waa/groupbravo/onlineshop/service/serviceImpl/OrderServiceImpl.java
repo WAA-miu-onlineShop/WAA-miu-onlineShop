@@ -5,13 +5,11 @@ import com.miu.waa.groupbravo.onlineshop.exceptions.BravoException;
 import com.miu.waa.groupbravo.onlineshop.repository.*;
 import com.miu.waa.groupbravo.onlineshop.service.OrderService;
 import com.miu.waa.groupbravo.onlineshop.service.SequenceNumberService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.io.ByteArrayInputStream;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.*;
@@ -30,8 +28,9 @@ public class OrderServiceImpl implements OrderService {
     private CouponRepository couponRepository;
     private ProductRepository productRepository;
     private ProductCategoryRepository productCategoryRepository;
+    private AddressRepository addressRepository;
 
-    public OrderServiceImpl(ProductCategoryRepository productCategoryRepository,ProductRepository productRepository,OrderRepository orderRepository,SequenceNumberService sequenceNumberService,OrderHistoryRepository orderHistoryRepository,UserRepository userRepository,CouponRepository couponRepository){
+    public OrderServiceImpl(AddressRepository addressRepository,ProductCategoryRepository productCategoryRepository,ProductRepository productRepository,OrderRepository orderRepository,SequenceNumberService sequenceNumberService,OrderHistoryRepository orderHistoryRepository,UserRepository userRepository,CouponRepository couponRepository){
         this.productRepository=productRepository;
         this.orderRepository=orderRepository;
         this.sequenceNumberService=sequenceNumberService;
@@ -39,6 +38,7 @@ public class OrderServiceImpl implements OrderService {
         this.userRepository=userRepository;
         this.couponRepository=couponRepository;
         this.productCategoryRepository=productCategoryRepository;
+        this.addressRepository=addressRepository;
     }
     @Override
     public Order saveOrder(Order order) {
@@ -51,8 +51,9 @@ public class OrderServiceImpl implements OrderService {
             BigDecimal couponPoints = getCouponPoint(order);
             order.setTotalAmount(couponPoints);
             savedOrder = orderRepository.save(order);
-
-            updateProduct(savedOrder);
+            Address shippingAddress=addressRepository.findAddressByUserAndAddressType(order.getBuyer(),EAddressRole.SHIPPING);
+            order.setShippingAddress(shippingAddress);
+            updateProductAndOrderLine(savedOrder);
             //order.getOrderLineList().stream().reduce()
             createOrderHistory(savedOrder);
             addCouponPoints(savedOrder);
@@ -61,10 +62,12 @@ public class OrderServiceImpl implements OrderService {
         }
         return savedOrder;
     }
-    private void updateProduct(Order order){
+    private void updateProductAndOrderLine(Order order){
 
         for(OrderLine orderLine: order.getOrderLineList()){
+            orderLine.setOrder(order);
             Product product=orderLine.getProduct();
+            orderLine.setDescription(product.getDescription());
             product.setProductStatus(EProductStatus.ORDERED);
             ProductCategory productCategory=product.getProductCategory();
             productCategory.setQuantityPurchased(productCategory.getQuantityPurchased().add(orderLine.getQuantity()));
@@ -89,6 +92,7 @@ public class OrderServiceImpl implements OrderService {
     private OrderHistory createOrderHistory(Order order){
         OrderHistory orderHistory = new OrderHistory();
         orderHistory.setDescription("Order History");
+        orderHistory.setOrder(order);
         orderHistory.setOrderStatus(order.getOrderStatus());
         orderHistory.setUser(order.getBuyer());//Login in user, we have to retrieve this from Principal
         orderHistory.setHistoryDate(LocalDateTime.now());

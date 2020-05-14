@@ -1,15 +1,15 @@
 package com.miu.waa.groupbravo.onlineshop.domain;
+import com.miu.waa.groupbravo.onlineshop.repository.AddressRepository;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.hibernate.validator.constraints.Length;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 @Entity
+@NamedQueries({@NamedQuery(name= AddressRepository.QUERY_NAME.findAddressByUserAndAddressType,query = AddressRepository.QUERY.findAddressByUserAndAddressType)})
 public class Address extends  DomainClass{
     @NotEmpty
     @Size(min=3, max= 15, message="{Size.Address.city.validation}")
