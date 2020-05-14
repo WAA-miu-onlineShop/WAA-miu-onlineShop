@@ -164,7 +164,7 @@ public class OrderServiceImpl implements OrderService {
     public Order shippingOrder(Order order)throws Exception  {
 
         if (order.getOrderStatus().compareTo(EOrderStatus.PAID) != 0) {
-            throw new Exception("You can only shipp a paid order");
+            throw new Exception("You can only ship a paid order");
         }
         order.setOrderStatus(EOrderStatus.ON_THE_WAY);
         //create orderHistory
