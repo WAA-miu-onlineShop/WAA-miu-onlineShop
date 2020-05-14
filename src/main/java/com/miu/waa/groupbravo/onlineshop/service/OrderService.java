@@ -10,7 +10,6 @@ import java.util.List;
 public interface OrderService {
 
     public abstract Order saveOrder(Order order);
-    //public abstract EOrderStatus getStatusByName(EOrderStatus status);
     public abstract List<Order> getAllOrders();
     public abstract List<Order> getAllOrdersByUser(Long userId);
     public abstract  Order getOrderById(Long id);

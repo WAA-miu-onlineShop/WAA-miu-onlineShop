@@ -1,6 +1,7 @@
 
 package com.miu.waa.groupbravo.onlineshop.repository;
 
+import com.miu.waa.groupbravo.onlineshop.constant.IRepositoryConstant;
 import com.miu.waa.groupbravo.onlineshop.domain.EOrderStatus;
 import com.miu.waa.groupbravo.onlineshop.domain.Order;
 import com.miu.waa.groupbravo.onlineshop.domain.User;
@@ -25,8 +26,8 @@ public interface OrderRepository extends CrudRepository<Order, Long> {
     @Query("select o from Orders o where o.buyer.id = :userId")
     List<Order> getAllOrdersByUser(Long userId);
 
-   List<Order> findOrderByBuyerAndStatus(@Param("buyer")User buyer,@Param("statusList")List<EOrderStatus> statusList);//@Param("statusList")List<EOrderStatus> statusList
+   List<Order> findOrderByBuyerAndStatus(@Param(IRepositoryConstant.BUYER)User buyer, @Param(IRepositoryConstant.STATUS_LIST)List<EOrderStatus> statusList);
 
-    List<Order> findBySellerAndStatus(@Param("buyer")User seller,@Param("statusList")List<EOrderStatus> statusList);
+    List<Order> findBySellerAndStatus(@Param(IRepositoryConstant.BUYER)User seller,@Param(IRepositoryConstant.STATUS_LIST)List<EOrderStatus> statusList);
 }
 

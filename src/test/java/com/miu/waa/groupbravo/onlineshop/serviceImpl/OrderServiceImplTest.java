@@ -19,6 +19,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import java.util.Arrays;
 
 import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -58,15 +59,14 @@ public class OrderServiceImplTest {
         Product product=new Product();
         buyer.setFirstName("elias");
         OrderLine orderLine1=new OrderLine();
-       // orderLine1.setProduct(product);
         ProductCategory productCategory=mock(ProductCategory.class);
           ProductCategory productCategory1=new ProductCategory();
           productCategory1.setName("Laptop");
-          product1.setProductCategory(productCategory1);
-          orderLine1.setProduct(product1);
+          product.setProductCategory(productCategory1);
+          orderLine1.setProduct(product);
           Order order=new OrderBuilder().withOrderNumber(orderNumber).withOrderLineList(Arrays.asList(orderLine1)).build();
 
-
+          Address address=mock(Address.class);
         when(sequenceNumberService.getNextOrderNumber()).thenReturn(orderNumber);
         when(orderHistoryRepository.save(orderHistory)).thenReturn(orderHistory);
         when(couponRepository.save(coupon)).thenReturn(coupon);
@@ -75,6 +75,7 @@ public class OrderServiceImplTest {
         when(productRepository.save(product1)).thenReturn(product1);
         when(orderRepository.save(order)).thenReturn(order);
         when(productCategoryRepository.save(productCategory)).thenReturn(productCategory);
+        when(addressRepository.findById(Long.valueOf(anyLong()))).thenReturn(java.util.Optional.of(new Address()));
 
         orderService.saveOrder(order);
 

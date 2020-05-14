@@ -8,7 +8,6 @@ import com.miu.waa.groupbravo.onlineshop.service.serviceImpl.OrderHistoryService
 import java.util.List;
 
 public interface OrderHistoryService {
-    //Order save(Order order);
     OrderHistory  saveOrderHitory(OrderHistory orderHistory);
     List<OrderHistory> getAllOrderHistoryByUser(Long userId);
 

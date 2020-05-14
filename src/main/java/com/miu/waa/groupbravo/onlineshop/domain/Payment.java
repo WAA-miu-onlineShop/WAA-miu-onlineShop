@@ -7,11 +7,13 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 @Entity
 public class Payment extends DomainClass {
     private String paymentNumber;
+    @NotNull
     private BigDecimal paidAmount= BigDecimal.ZERO;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="order_id")

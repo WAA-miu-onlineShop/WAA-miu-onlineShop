@@ -11,4 +11,6 @@ public enum ERoleType {
     public String getStatus() {
         return status;
     }
+
+
 }

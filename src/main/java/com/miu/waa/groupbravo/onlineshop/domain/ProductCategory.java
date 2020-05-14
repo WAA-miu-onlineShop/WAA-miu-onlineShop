@@ -20,13 +20,12 @@ public class ProductCategory extends DomainClass {
     @NotEmpty
     @Size(min=2, max=30, message="{Size.ProductCategory.name.validation}")
     private String name;
-
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="seller_id")
     private User seller;
-
+    @NotNull
     private BigDecimal quantityAvailable= BigDecimal.ZERO;
-
+   @NotNull
     private BigDecimal quantityPurchased= BigDecimal.ZERO;
 
     public String getDescription() {

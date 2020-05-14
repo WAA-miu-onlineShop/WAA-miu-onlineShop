@@ -7,6 +7,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.List;
 @NamedQueries({@NamedQuery(name=OrderRepository.QUERY_NAME.findBySellerAndStatus,query =OrderRepository.QUERY.findBySellerAndStatus ),
@@ -14,7 +15,9 @@ import java.util.List;
 @Entity(name="Orders")
 public class Order extends DomainClass {
     private String orderNumber;
+    @NotNull
     private BigDecimal totalAmount= BigDecimal.ZERO;
+    @NotNull
     private BigDecimal coupons= BigDecimal.ZERO;
     @Enumerated(EnumType.STRING)
     private EOrderStatus orderStatus;

@@ -1,5 +1,6 @@
 package com.miu.waa.groupbravo.onlineshop.repository;
 
+import com.miu.waa.groupbravo.onlineshop.constant.IRepositoryConstant;
 import com.miu.waa.groupbravo.onlineshop.domain.EProductStatus;
 import com.miu.waa.groupbravo.onlineshop.domain.Product;
 import com.miu.waa.groupbravo.onlineshop.domain.ProductCategory;
@@ -22,7 +23,7 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
         public static final String findByCategoryAndStatus="Product.findByCategoryAndStatus";
     }
     List<Product> findBySeller(User seller);
-    List<Product> findByStatus(@Param("productStatusList")List<EProductStatus> productStatusList);
-    List<Product> findByCategoryAndStatus(@Param("productCategory") ProductCategory productCategory, @Param("productStatusList") List<EProductStatus> productStatusList);
+    List<Product> findByStatus(@Param(IRepositoryConstant.PRODUCT_STATUS_LIST)List<EProductStatus> productStatusList);
+    List<Product> findByCategoryAndStatus(@Param(IRepositoryConstant.PRODUCT_CATEGORY) ProductCategory productCategory, @Param(IRepositoryConstant.PRODUCT_STATUS_LIST) List<EProductStatus> productStatusList);
     Product findBySerialNumber(String serialNumber);
 }

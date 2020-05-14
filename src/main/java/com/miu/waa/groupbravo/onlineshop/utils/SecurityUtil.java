@@ -20,10 +20,7 @@ public class SecurityUtil {
     public static User getUser(){
         User user=null;
         try {
-       /*     SpringApplicationBuilder applicationBuilder =SpringContextUtils.getApplicationContext(User);
-            SpringApplicationBuilder edew=SpringContextUtils.getApplicationContext().
-            ApplicationContext context=applicationBuilder.context();
-            UserRepository userRepository = (UserRepository) context.getBean(UserRepository.class);*/
+            //Todo need the application context
             Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             String username = "";
             if (principal instanceof UserDetails) {

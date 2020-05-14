@@ -18,7 +18,6 @@ import javax.validation.constraints.NotNull;
 @NamedQueries({
 		@NamedQuery(name = SequenceNumberRepository.QUERY_NAME.findBySequenceType, query = SequenceNumberRepository.QUERY.findBySequenceType) })
 public class SequenceNumber  extends DomainClass{
-	
 
 	private static final long serialVersionUID = 1L;
 
