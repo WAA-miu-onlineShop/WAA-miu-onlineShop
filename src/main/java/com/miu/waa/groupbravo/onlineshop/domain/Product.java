@@ -25,7 +25,6 @@ public class Product extends DomainClass {
     @NotEmpty
     @Size(min=6, max=50, message="{Size.Product.description.validation}")
     private String description;
-    @NotEmpty
     private BigDecimal unitPrice= BigDecimal.ZERO;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
@@ -37,8 +36,6 @@ public class Product extends DomainClass {
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name="product_category_id")
     private ProductCategory productCategory;
-
-    @NotEmpty(message="{Product.image.validation}")
     @Transient
     private MultipartFile multipartFile;
 

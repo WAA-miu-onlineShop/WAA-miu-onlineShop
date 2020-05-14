@@ -24,9 +24,9 @@ public class ProductCategory extends DomainClass {
     @JoinColumn(name="seller_id")
     private User seller;
 
-    @NotEmpty
+
     private BigDecimal quantityAvailable= BigDecimal.ZERO;
-    @NotEmpty
+
     private BigDecimal quantityPurchased= BigDecimal.ZERO;
 
     public String getDescription() {
