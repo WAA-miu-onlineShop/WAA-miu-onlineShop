@@ -28,10 +28,7 @@
                         Buyer Portal</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
-                            <a href="#">Place Order</a>
-                        </li>
-                        <li>
-                            <a href="#">Manage Orders</a>
+                            <a href="#" th:href="@{/buyer/orders}">Your Orders</a>
                         </li>
                         <li>
                             <a href="#">View Points</a>
@@ -104,96 +101,167 @@
         </nav>
 
         <h2 class="mb-4">Welcome <span sec:authentication="name"></span></h2>
-<!--        <div th:if="${orderSuccess}" class="alert alert-success" th:text="Thank you, your order has been received"></div>-->
-        <div>
-            <p>Welcome to Pick Bravo Online Shop, a place where you can buy and sell products. Register as a seller or buyer
-            to get started and join the millions of other people already enjoying our services</p>
-            <p>Contact the administrator for any queries regarding this online shop</p>
-            <div id="shoppingCart" style="display: none" class="row">
-                <form id="shoppingCartForm" method="post" class="form-row" th:action="@{/buyer/createOrder}">
-                    <table class="table table-bordered table-striped shopping-cart">
-                        <thead>
-                        <tr>
-                            <th colspan="4" style="text-align: right">Sub Total</th>
-                            <th id="totalCartAmount"></th>
-                        </tr>
-                        <tr>
-                            <th scope="col">Item</th>
-                            <th scope="col">Info</th>
-                            <th scope="col">Qty</th>
-                            <th scope="col">UnitPrice</th>
-                            <th scope="col">Amount</th>
-                        </tr>
-                        </thead>
-                        <tbody id="shoppingCartBody">
-
-                        </tbody>
-                    </table>
-                    <div style="display: none" id="totalItems">
-
-                    </div>
-                    <div class="form-group">
-                        <div>
-                            <button type="submit" class="btn btn-primary btn-block">Checkout</button>
-                        </div>
-                    </div>
-                </form>
+        <div th:if="${orderSuccess}">
+            <div class="alert alert-success">
+                <p>Thank you, your order has been received, and being proessed</p>
+                <p>Click <a th:href="@{/buyer/orders}">here</a> to view list of all your orders</p>
             </div>
         </div>
 
-        <div th:if="${addresses.size() > 0}" class="otherContent">
+        <div th:if="${buyerOrdersURL}">
+            <div th:if="${orderCancelled}" class="alert alert-success">Your Order has been cancelled successfully!</div>
+            <div th:if="${(buyerOrders.size() > 0)}">
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th>#</th>
-                    <th>City</th>
-                    <th>Street</th>
-                    <th>State</th>
-                    <th>ZipCode</th>
-                    <th>Type</th>
-                    <th colspan="2">Actions</th>
+                    <th>Order #</th>
+                    <th>Details</th>
+                    <th>Shipping Address</th>
+                    <th>Amount</th>
+                    <th>Coupons</th>
+                    <th>Status</th>
+                    <th colspan="3">Actions</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="address: ${addresses}">
-                    <td th:text="${address.id}"></td>
-                    <td th:text="${address.city}"></td>
-                    <td th:text="${address.street}"></td>
-                    <td th:text="${address.state}"></td>
-                    <td th:text="${address.zipCode}"></td>
-                    <td th:text="${address.getAddressRole().getStatus()}"></td>
+                <tr th:each="order: ${buyerOrders}">
+                    <td th:text="${order.orderNumber}"></td>
                     <td>
-                        <a th:href="@{'/buyer/address/updateDetails/' + ${address.id}}">Edit</a>
+                        <ul th:each="orderLine: ${order.orderLineList}">
+                            <li th:text="${'Product: '+ orderLine.product.name + ' Serial No: ' + orderLine.product.serialNumber +' : Qty: '+ orderLine.quantity + ': Amount: ' + orderLine.amount}">
+
+                            </li>
+                        </ul>
+                    </td>
+                    <td th:text="${order.shippingAddress.toString()}"></td>
+                    <td th:text="${order.totalAmount}"></td>
+                    <td th:text="${order.coupons}"></td>
+                    <td th:text="${order.getOrderStatus().getStatus()}"></td>
+                    <td th:if="${order.getOrderStatus().getStatus().toUpperCase().equals('NEW')}">
+                        <a th:href="@{'/buyer/order/cancel/' + ${order.id}}">Cancel</a>
+                    </td>
+                    <td th:unless="${order.getOrderStatus().getStatus().toUpperCase().equals('NEW')}">
+
+                    </td>
+                    <td th:if="${order.getOrderStatus().getStatus().toUpperCase().equals('NEW')}">
+                        <a href="#" id="makeOrderPaymentLink">Pay</a>
+                        <div style="display: none" id="makePaymentDiv">
+                            <form method="post" th:action="@{/buyer/order/pay/}">
+                                <input type="text" name="amount"/>
+                                <p style="display: none">
+                                    <input class="form-control" type="hidden" name="orderId" th:value="${order.id}" readonly/>
+                                </p>
+                                <p>
+                                    <input class="btn btn-success" type="submit" value="Save" name="payBtn"/>
+                                </p>
+                            </form>
+                        </div>
+                    </td>
+                    <td th:unless="${order.getOrderStatus().getStatus().toUpperCase().equals('NEW')}">
+
                     </td>
                     <td>
-                        <a th:href="@{'/buyer/address/delete/' + ${address.id}}">Delete</a>
+                        <a th:href="@{'/buyer/order/history/' + ${order.id}}">History</a>
                     </td>
                 </tr>
                 </tbody>
             </table>
-        </div>
-
-        <div th:unless="${addresses.size() > 0}" class="otherContent row" style="margin-top: 10px;" id="dynamicContent">
-            <div class="card" style="width: 18rem; margin-left:15px;">
-                <img src="/images/delicacies.jpg" class="card-img-top" />
-                <div class="card-body">
-                    <p class="card-text">A wide range of delicacies also available in the shop</p>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem; margin-left:15px;">
-                <img src="/images/electronics.jpg" class="card-img-top" />
-                <div class="card-body">
-                    <p class="card-text">Electronics devices are among the most purchased items</p>
-                </div>
-
-            </div>
-            <div class="card" style="width: 18rem; margin-left:15px;">
-                <img src="/images/clothing.jpg" class="card-img-top" />
-                <div class="card-body">
-                    <p class="card-text">Checkout the clothing section for specialized clothing needs</p>
-                </div>
             </div>
         </div>
+
+        <div id="shoppingCart" style="display: none" class="row">
+            <form id="shoppingCartForm" method="post" class="form-row" th:action="@{/buyer/createOrder}">
+                <table class="table table-bordered table-striped shopping-cart">
+                    <thead>
+                    <tr>
+                        <th colspan="4" style="text-align: right">Sub Total</th>
+                        <th id="totalCartAmount"></th>
+                    </tr>
+                    <tr>
+                        <th scope="col">Item</th>
+                        <th scope="col">Info</th>
+                        <th scope="col">Qty</th>
+                        <th scope="col">UnitPrice</th>
+                        <th scope="col">Amount</th>
+                    </tr>
+                    </thead>
+                    <tbody id="shoppingCartBody">
+
+                    </tbody>
+                </table>
+                <div style="display: none" id="totalItems">
+
+                </div>
+                <div class="form-group">
+                    <div>
+                        <button type="submit" class="btn btn-primary btn-block">Checkout</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div th:unless="${buyerOrdersURL}">
+            <p>Welcome to Bravo Online Shop, a place where you can buy and sell products. Register as a seller or buyer
+            to get started and join the millions of other people already enjoying our services</p>
+            <p>Contact the administrator for any queries regarding this online shop</p>
+
+
+            <div th:if="${addresses.size() > 0}" class="otherContent">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>City</th>
+                        <th>Street</th>
+                        <th>State</th>
+                        <th>ZipCode</th>
+                        <th>Type</th>
+                        <th colspan="2">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="address: ${addresses}">
+                        <td th:text="${address.id}"></td>
+                        <td th:text="${address.city}"></td>
+                        <td th:text="${address.street}"></td>
+                        <td th:text="${address.state}"></td>
+                        <td th:text="${address.zipCode}"></td>
+                        <td th:text="${address.getAddressRole().getStatus()}"></td>
+                        <td>
+                            <a th:href="@{'/buyer/address/updateDetails/' + ${address.id}}">Edit</a>
+                        </td>
+                        <td>
+                            <a th:href="@{'/buyer/address/delete/' + ${address.id}}">Delete</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div th:unless="${addresses.size() > 0}" class="otherContent row" style="margin-top: 10px;" id="dynamicContent">
+                <div class="card" style="width: 18rem; margin-left:15px;">
+                    <img src="/images/delicacies.jpg" class="card-img-top" />
+                    <div class="card-body">
+                        <p class="card-text">A wide range of delicacies also available in the shop</p>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem; margin-left:15px;">
+                    <img src="/images/electronics.jpg" class="card-img-top" />
+                    <div class="card-body">
+                        <p class="card-text">Electronics devices are among the most purchased items</p>
+                    </div>
+
+                </div>
+                <div class="card" style="width: 18rem; margin-left:15px;">
+                    <img src="/images/clothing.jpg" class="card-img-top" />
+                    <div class="card-body">
+                        <p class="card-text">Checkout the clothing section for specialized clothing needs</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     </div>
 </div>
 
@@ -288,9 +356,9 @@
                                 </option>
                             </select>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" style="display: none">
                             <label for="cartItemQty">Item Name</label>
-                            <input pattern="^[0-9]*$" type="text" class="form-control" id="cartItemQty" aria-describedby="qtyHelp" placeholder="e.g. 2" required>
+                            <input value="1" pattern="^[0-9]*$" type="text" class="form-control" id="cartItemQty" aria-describedby="qtyHelp" placeholder="e.g. 2">
                             <small id="qtyHelp" class="form-text text-muted">Enter number of items</small>
                         </div>
                         <div class="form-group">

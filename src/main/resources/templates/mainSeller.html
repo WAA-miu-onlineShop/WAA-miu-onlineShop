@@ -331,20 +331,20 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="serialNumber">Serial Number</label>
-                            <input th:field="*{serialNumber}" type="text" class="form-control" id="serialNumber" placeholder="Serial Number">
+                            <input required th:field="*{serialNumber}" type="text" class="form-control" id="serialNumber" placeholder="Serial Number">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="productName">Product Name</label>
-                            <input th:field="*{name}" type="text" class="form-control" id="productName" placeholder="Product Name">
+                            <input required th:field="*{name}" type="text" class="form-control" id="productName" placeholder="Product Name">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="description">Description</label>
-                        <input th:field="*{description}" type="text" class="form-control" id="description" placeholder="Product Description">
+                        <input required th:field="*{description}" type="text" class="form-control" id="description" placeholder="Product Description">
                     </div>
                     <div class="form-group">
                         <label for="unitPrice">Unit Price</label>
-                        <input th:field="*{unitPrice}" type="text" class="form-control" id="unitPrice" placeholder="Unit price e.g. 200.00">
+                        <input required th:field="*{unitPrice}" type="text" class="form-control" id="unitPrice" placeholder="Unit price e.g. 200.00">
                     </div>
                     <div class="form-row">
 <!--                        <div class="form-group col-md-4">-->
@@ -363,7 +363,7 @@
 <!--                        </div>-->
                         <div class="form-group col-md-6">
                             <label for="productCategory">Product Category</label>
-                            <select id="productCategory" class="form-control" th:field="*{productCategory.id}">
+                            <select required id="productCategory" class="form-control" th:field="*{productCategory.id}">
                                 <option value="">-Select-</option>
                                 <option th:each="category: ${productCategories}" th:text="${category.name}" th:value="${category.id}">
 
@@ -371,7 +371,7 @@
                             </select>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="pictureUpload">Unit Price</label>
+                            <label for="pictureUpload">Upload Product Image</label>
                             <input th:field="*{multipartFile}" type="file" class="form-control" id="pictureUpload">
                         </div>
                     </div>

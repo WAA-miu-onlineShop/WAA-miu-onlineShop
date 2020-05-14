@@ -34,6 +34,16 @@ function computeTotalCartAmount(rowAmount){
     return totalAmount;
 }
 
+$("#makeOrderPaymentLink").click(function (event) {
+    if( $("#makePaymentDiv").css('display').toLowerCase() == 'block'){
+        $("#makePaymentDiv").css("display","none");
+    }else{
+        $("#makePaymentDiv").css("display","block");
+    }
+
+    event.preventDefault();
+});
+
 function loadAddressForm(){
     const targetDiv = $("#loadAddressForm");
     const selectedRole = $("#roles");

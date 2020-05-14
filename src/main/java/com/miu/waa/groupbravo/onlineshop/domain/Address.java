@@ -84,6 +84,16 @@ public class Address extends  DomainClass{
     }
 
     @Override
+    public String toString() {
+        return "[" +
+                "city='" + city + '\'' +
+                ", street='" + street + '\'' +
+                ", state='" + state + '\'' +
+                ", zipCode='" + zipCode + '\'' +
+                ']';
+    }
+
+    @Override
     public int hashCode() {
         return new HashCodeBuilder(17, 37)
                 .append(city)

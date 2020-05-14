@@ -1,6 +1,7 @@
 package com.miu.waa.groupbravo.onlineshop.controller;
 
 import com.miu.waa.groupbravo.onlineshop.domain.Address;
+import com.miu.waa.groupbravo.onlineshop.domain.Order;
 import com.miu.waa.groupbravo.onlineshop.domain.Product;
 import com.miu.waa.groupbravo.onlineshop.domain.User;
 import com.miu.waa.groupbravo.onlineshop.service.ProductService;
@@ -16,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -34,6 +36,9 @@ public class LoginController {
 
     @Autowired
     private ProductController productController;
+
+    @Autowired
+    private UserController userController;
 
     @RequestMapping("/")
     public String root(Principal principal, HttpServletRequest httpRequest, SecurityContextHolder auth) {
@@ -57,7 +62,7 @@ public class LoginController {
     }
 
     @RequestMapping("/buyer")
-    public String mainBuyerPage(Model model) {
+    public String mainBuyerPage(Model model, RedirectAttributes redirectAttributes) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findByUsername(auth.getName());
         Long userId = user.getId();
@@ -65,7 +70,8 @@ public class LoginController {
         model.addAttribute("addresses", user.getAddresses());
         model.addAttribute("products", productController.getAvailableProduct());
         model.addAttribute("userDetails",user);
-        //model.addAttribute()
+        List<Order> orders = userController.getBuyerOrdersUtil();
+        model.addAttribute("buyerOrders",orders);
         return "mainBuyer";
     }
 

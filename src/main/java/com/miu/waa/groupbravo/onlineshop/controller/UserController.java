@@ -1,10 +1,7 @@
 package com.miu.waa.groupbravo.onlineshop.controller;
 
 import com.miu.waa.groupbravo.onlineshop.domain.*;
-import com.miu.waa.groupbravo.onlineshop.service.AddressService;
-import com.miu.waa.groupbravo.onlineshop.service.ProductCategoryService;
-import com.miu.waa.groupbravo.onlineshop.service.ProductService;
-import com.miu.waa.groupbravo.onlineshop.service.UserService;
+import com.miu.waa.groupbravo.onlineshop.service.*;
 import org.dom4j.rule.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -14,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -33,6 +31,47 @@ public class UserController {
 
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private OrderService orderService;
+
+    @PostMapping("/buyer/order/pay/")
+    public String makeOrderPayment(HttpServletRequest request){
+        Long orderId = Long.parseLong(request.getParameter("orderId"));
+        Double amount = Double.parseDouble(request.getParameter("amount"));
+        orderService.payOrder(orderService.findById(orderId));
+        return "redirect:/buyer/orders";
+    }
+
+    @GetMapping("/buyer/orders")
+    public String getBuyerOrders(RedirectAttributes redirectAttributes, Model model){
+        redirectAttributes.addFlashAttribute("buyerOrders",getBuyerOrdersUtil());
+        redirectAttributes.addFlashAttribute("buyerOrdersURL",true);
+        return "redirect:/buyer";
+    }
+
+    @GetMapping("/buyer/order/cancel/{orderId}")
+    public String cancelBuyerOrder(@PathVariable Long orderId, RedirectAttributes redirectAttributes){
+        Order orderToBeCancelled = orderService.getOrderById(orderId);
+        orderService.cancelOrder(orderToBeCancelled);
+        redirectAttributes.addFlashAttribute("buyerOrders",getBuyerOrdersUtil());
+        redirectAttributes.addFlashAttribute("buyerOrdersURL",true);
+        redirectAttributes.addFlashAttribute("orderCancelled",true);
+        return "redirect:/buyer";
+    }
+
+    public List<Order> getBuyerOrdersUtil(){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User buyer = userService.findByUsername(auth.getName());
+        List<EOrderStatus> statusList = new ArrayList<>();
+        statusList.add(EOrderStatus.NEW);
+        statusList.add(EOrderStatus.PAID);
+        statusList.add(EOrderStatus.ON_THE_WAY);
+        statusList.add(EOrderStatus.CANCELLED);
+        statusList.add(EOrderStatus.SHIPPED);
+        List<Order> buyerOrders = orderService.findOrderByBuyerAndStatus(buyer,statusList);
+        return buyerOrders;
+    }
 
     @GetMapping(value = "/seller/sellerStatus/{username}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public Boolean checkSellerStatus(@PathVariable String username){
