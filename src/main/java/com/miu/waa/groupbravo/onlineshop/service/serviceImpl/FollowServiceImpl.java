@@ -51,6 +51,6 @@ public class FollowServiceImpl  implements FollowService {
 
     @Override
     public boolean isFollow(User seller, User buyer) {
-        return false;
+        return  followingRepository.getFollowingBySellerAndBuyer(seller,buyer).getFollow();
     }
 }
