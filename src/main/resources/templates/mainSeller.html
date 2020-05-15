@@ -131,22 +131,22 @@
                         </td>
                         <td th:if="${!order.getOrderStatus().getStatus().toUpperCase().equals('NEW') or
                         !order.getOrderStatus().getStatus().toUpperCase().equals('DELIVERED')}">
-                            <a href="#" id="sellerChangeOrderStatus">Change Status</a>
-                            <div style="display: none" id="changeStatusDiv">
+<!--                            <a href="#" id="sellerChangeOrderStatus">Change Status</a>-->
+                            <div style="display: block" id="changeStatusDiv">
                                 <form method="post" th:action="@{/seller/order/changeStatus/}">
-                                    <p style="display: none">
+                                    <div style="display: none">
                                         <input class="form-control" type="hidden" name="orderId" th:value="${order.id}" readonly/>
-                                    </p>
-                                    <p>
+                                    </div>
+                                    <div>
                                         <select class="form-control" name="newStatus" required>
                                             <option value="">-select-</option>
                                             <option value="shipped">SHIPPED</option>
                                             <option value="delivered">DELIVERED</option>
                                         </select>
-                                    </p>
-                                    <p>
+                                    </div>
+                                    <div>
                                         <input class="btn btn-success" type="submit" value="Save" name="changeStatusBtn"/>
-                                    </p>
+                                    </div>
                                 </form>
                             </div>
                         </td>

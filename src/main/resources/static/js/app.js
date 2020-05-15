@@ -34,12 +34,20 @@ function computeTotalCartAmount(rowAmount){
     return totalAmount;
 }
 
-$("#makeOrderPaymentLink").click(function (event) {
-    if( $("#makePaymentDiv").css('display').toLowerCase() == 'block'){
-        $("#makePaymentDiv").css("display","none");
-    }else{
-        $("#makePaymentDiv").css("display","block");
-    }
+$(".makeOrderPaymentLink").click(function (event) {
+    var $clickedLink = $(this);
+
+    // if($(this).find(".makePaymentDiv").css('display').toLowerCase() == 'block'){
+    //     $(this).find(".makePaymentDiv").css("display","none");
+    // }else{
+    //     $(this).find(".makePaymentDiv").css("display","block");
+    // }
+
+    // if($(".makePaymentDiv",this).css('display').toLowerCase() == 'block'){
+    //     $(".makePaymentDiv",this).css("display","none");
+    // }else{
+    //     $(".makePaymentDiv",this).css("display","block");
+    // }
 
     event.preventDefault();
 });
