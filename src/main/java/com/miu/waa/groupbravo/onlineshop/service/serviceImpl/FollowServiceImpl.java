@@ -18,9 +18,9 @@ public class FollowServiceImpl  implements FollowService {
 
     @Override
     public Following subscribSeller(User seller, User buyer) {
-        Following following=followingRepository.getFollowingBySellerAndBuyer(seller,buyer);
+        Following following=followingRepository.getBySellerAndBuyer(seller,buyer);
 
-        if(following.isNew()){
+        if(following==null){
             Following newFollowing=new Following();
             newFollowing.setBuyer(buyer);
             newFollowing.setSeller(seller);
@@ -35,7 +35,7 @@ public class FollowServiceImpl  implements FollowService {
 
     @Override
     public Following unSubscribSeller(User seller, User buyer) {
-        Following following=followingRepository.getFollowingBySellerAndBuyer(seller,buyer);
+        Following following=followingRepository.getBySellerAndBuyer(seller,buyer);
 
         if(following !=null){
 
@@ -52,9 +52,13 @@ public class FollowServiceImpl  implements FollowService {
         }
 
     }
-
     @Override
     public boolean isFollow(User seller, User buyer) {
-        return  followingRepository.getFollowingBySellerAndBuyer(seller,buyer).getFollow();
+        Following following=followingRepository.getBySellerAndBuyer(seller,buyer);
+        if(following!=null) {
+            return following.getFollow();
+        }else{
+            return false;
+        }
     }
 }

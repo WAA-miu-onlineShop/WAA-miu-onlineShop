@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface FollowingRepository extends CrudRepository<Following, Long> {
-    public Following getFollowingBySellerAndBuyer(User seller, User Buyer);
+    public Following getBySellerAndBuyer(User seller, User Buyer);
 
 }
