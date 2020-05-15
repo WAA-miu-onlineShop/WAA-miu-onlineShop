@@ -20,6 +20,7 @@ import javax.validation.Valid;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -110,11 +111,14 @@ public class UserController {
 
     @PostMapping("/buyer/followership/save/")
     public String followUnFollowSeller(Model model,HttpServletRequest request){
-        String[] followership = request.getParameterValues("followershipMap");
-        for(String entry:followership){
+        String[] followership = request.getParameterValues("follow");
+        System.out.println(Arrays.toString(followership));
+        System.out.println("here");
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User buyer = userService.findByUsername(auth.getName());
+        System.out.println(buyer.getUsername());
+        for(String entry: followership){
             String entryArr[] = entry.split(":");
-            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-            User buyer = userService.findByUsername(auth.getName());
             User seller = userService.findByUsername(entryArr[1].trim());
             if(entryArr[0].trim().toLowerCase().equals("true")){
                 followService.subscribSeller(seller,buyer);

@@ -87,7 +87,7 @@ public class LoginController {
 
         if(sellers.size()>0) {
             for (User seller : sellers) {
-                //System.out.println(followService.isFollow(seller, buyer));
+                System.out.println(seller.getUsername());
                 if (followService.isFollow(seller, buyer)) {
                     followingMap.put(seller,true);
                 }else{
@@ -96,6 +96,7 @@ public class LoginController {
             }
         }
 
+        System.out.println(followingMap.size());
         model.addAttribute("followingMap",followingMap);
 
         return "mainBuyer";
