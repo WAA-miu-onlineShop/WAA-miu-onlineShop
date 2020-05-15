@@ -86,7 +86,7 @@
                             </button>
                         </li>
                         <li class="nav-item">
-                            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#followSellerModal">
+                            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#followModal">
                                 Follow Seller
                             </button>
                         </li>
@@ -390,6 +390,7 @@
                         <div class="form-group">
                             <input type="submit" class="btn btn-primary" id="addToCartBtn" value="Add To Cart"/>
                         </div>
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">
@@ -401,31 +402,31 @@
 </div>
 
 <!-- Follow UnFollow Seller -->
-<div class="modal fade" id="followSellerModal" tabindex="-1" role="dialog" aria-labelledby="followSellerLabel"
+<div class="modal fade" id="followModal" tabindex="-1" role="dialog" aria-labelledby="followLabel"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="followSellerLabel">Follow/UnFollow Seller</h5>
+                <h5 class="modal-title" id="followLabel">Follow Or UnFollow Seller</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <div th:if="${followingMap.size() > 0}">
+<!--                <div th:if="${followingMap.size() > 0}">-->
                     <form method="POST" id="followSellerForm" th:action="@{/buyer/followership/save/}">
 
                         <div class="form-group">
                             <label for="seller">Select Sellers to Follow/Unfollow</label>
 
-                            <select id="seller" multiple searchable="Search..." name="followershipMap"  class="form-control" required>
+                            <select id="seller" multiple name="followershipMap"  class="form-control" required>
                                 <optgroup th:each="entry : ${followingMap}"
-                                          th:label="${'Seller: [' + entry.key.username +' '
-                                          + entry.key.firstName +' '+ entry.key.lastName +']'}">
-                                    <option th:if="${entry.value}" th:value="${'false,'+entry.key.username}">
+                                          th:label="${'Seller: ' + entry.key.username +' '
+                                          + entry.key.firstName +' '+ entry.key.lastName}">
+                                    <option th:if="${entry.value == true}" th:value="${'false:'+entry.key.username}">
                                         Unfollow
                                     </option>
-                                    <option th:unless="${entry.value}" th:value="${'true,'+entry.key.username}">
+                                    <option th:unless="${entry.value == true}" th:value="${'true:'+entry.key.username}">
                                         Follow
                                     </option>
                                 </optgroup>
@@ -435,8 +436,8 @@
                             <input type="submit" class="btn btn-primary" id="saveFollowingBtn" value="Save"/>
                         </div>
                     </form>
-                </div>
-                <div th:unless="${followingMap.size() > 0}" class="alert alert-info">No sellers registered in the shop at the moment</div>
+<!--                </div>-->
+<!--                <div th:unless="${followingMap.size() > 0}" class="alert alert-info">No sellers registered in the shop at the moment</div>-->
             </div>
             <div class="form-group modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

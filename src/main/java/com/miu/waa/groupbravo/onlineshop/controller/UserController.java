@@ -112,7 +112,7 @@ public class UserController {
     public String followUnFollowSeller(Model model,HttpServletRequest request){
         String[] followership = request.getParameterValues("followershipMap");
         for(String entry:followership){
-            String entryArr[] = entry.split(",");
+            String entryArr[] = entry.split(":");
             Authentication auth = SecurityContextHolder.getContext().getAuthentication();
             User buyer = userService.findByUsername(auth.getName());
             User seller = userService.findByUsername(entryArr[1].trim());
@@ -152,9 +152,9 @@ public class UserController {
         System.out.println(newStatus);
         System.out.println(orderId);
         Order orderToBeChanged = orderService.getOrderById(orderId);
-        if(newStatus.trim().toLowerCase() == "shipped"){
+        if(newStatus.trim().toLowerCase().equals("shipped")){
             orderService.shippingOrder(orderToBeChanged);
-        }else if(newStatus.trim().toLowerCase() == "delivered"){
+        }else if(newStatus.trim().toLowerCase().equals("delivered")){
             orderService.delivering(orderToBeChanged);
         }
         return "redirect:/seller/orders";

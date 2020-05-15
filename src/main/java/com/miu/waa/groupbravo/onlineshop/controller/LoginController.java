@@ -81,10 +81,13 @@ public class LoginController {
                             .stream()
                             .filter(seller -> seller.getUserRole().getRoleType().compareTo(ERoleType.SELLER)==0)
                             .collect(Collectors.toList());
+        //model.addAttribute("")
 
         Map<User,Boolean> followingMap = new HashMap<>();
+
         if(sellers.size()>0) {
             for (User seller : sellers) {
+                //System.out.println(followService.isFollow(seller, buyer));
                 if (followService.isFollow(seller, buyer)) {
                     followingMap.put(seller,true);
                 }else{

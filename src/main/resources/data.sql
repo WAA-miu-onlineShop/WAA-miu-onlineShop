@@ -17,7 +17,7 @@ INSERT INTO User (id, version, firstName, lastName, username, password, user_rol
 INSERT INTO User (id, version, firstName, lastName, username, password, user_status, user_role_id) VALUES(22, 1, 'Elias', 'Rurangwa', 'erurangwa', '$2a$10$kAsVIEI4C0xcEp2abBVM.uzrsfe94lWMAb2wy8pF9jB5031cJWwIy','APPROVED',2);
 INSERT INTO User (id, version, firstName, lastName, username, password, user_role_id) VALUES(23, 1, 'Jirom', 'Jirom', 'jirom', '$2a$10$kAsVIEI4C0xcEp2abBVM.uzrsfe94lWMAb2wy8pF9jB5031cJWwIy',3);
 INSERT INTO User (id, version, firstName, lastName, username, password, user_role_id) VALUES(24, 1, 'Erik', 'Erik', 'erik', '$2a$10$kAsVIEI4C0xcEp2abBVM.uzrsfe94lWMAb2wy8pF9jB5031cJWwIy',3);
-INSERT INTO User (id, version, firstName, lastName, username, password, user_status, user_role_id) VALUES(25, 1, 'Moses', 'Wasswa', 'mwseller', '$2a$10$kAsVIEI4C0xcEp2abBVM.uzrsfe94lWMAb2wy8pF9jB5031cJWwIy','NEW',2);
+INSERT INTO User (id, version, firstName, lastName, username, password, user_status, user_role_id) VALUES(25, 1, 'Moses', 'Wasswa', 'mwseller', '$2a$10$kAsVIEI4C0xcEp2abBVM.uzrsfe94lWMAb2wy8pF9jB5031cJWwIy','APPROVED',2);
 
 //PRODUCT_CATEGORY
 
