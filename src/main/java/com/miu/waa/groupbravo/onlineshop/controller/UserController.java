@@ -110,7 +110,7 @@ public class UserController {
     }
 
     @PostMapping("/buyer/followership/save/")
-    public String followUnFollowSeller(Model model,HttpServletRequest request){
+    public String followUnFollowSeller(Model model,HttpServletRequest request, RedirectAttributes redirectAttributes){
         String[] followership = request.getParameterValues("follow");
         System.out.println(Arrays.toString(followership));
         System.out.println("here");
@@ -122,10 +122,12 @@ public class UserController {
             User seller = userService.findByUsername(entryArr[1].trim());
             if(entryArr[0].trim().toLowerCase().equals("true")){
                 followService.subscribSeller(seller,buyer);
-            }else{
+            }
+            if(entryArr[0].trim().toLowerCase().equals("false")){
                 followService.unSubscribSeller(seller,buyer);
             }
         }
+        redirectAttributes.addFlashAttribute("followingAction",true);
         return "redirect:/buyer";
     }
 
