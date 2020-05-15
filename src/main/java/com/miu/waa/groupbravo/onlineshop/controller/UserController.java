@@ -109,6 +109,14 @@ public class UserController {
         return "redirect:/seller";
     }
 
+    @GetMapping("/buyer/followership")
+    public String getBuyerFollowership(){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User buyer = userService.findByUsername(auth.getName());
+
+        return "redirect:/buyer";
+    }
+
     @PostMapping("/buyer/followership/save/")
     public String followUnFollowSeller(Model model,HttpServletRequest request, RedirectAttributes redirectAttributes){
         String[] followership = request.getParameterValues("follow");
