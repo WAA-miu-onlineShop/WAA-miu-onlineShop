@@ -130,6 +130,8 @@ public class UserController {
     public String sellerChangeOrderStatus(HttpServletRequest request){
         Long orderId = Long.parseLong(request.getParameter("orderId"));
         String newStatus = request.getParameter("newStatus");
+        System.out.println(newStatus);
+        System.out.println(orderId);
         Order orderToBeChanged = orderService.getOrderById(orderId);
         if(newStatus.trim().toLowerCase() == "shipped"){
             orderService.shippingOrder(orderToBeChanged);
