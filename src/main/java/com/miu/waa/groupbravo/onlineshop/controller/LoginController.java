@@ -75,7 +75,7 @@ public class LoginController {
         return "mainBuyer";
     }
 
-    @RequestMapping("/seller")
+    @RequestMapping("/seller/sellerStatus")
     public String mainSellerPage(Model model) {
         //model.addAttribute("product", new Product());
         return "mainSeller";

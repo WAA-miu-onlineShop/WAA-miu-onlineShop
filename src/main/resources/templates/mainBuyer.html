@@ -109,14 +109,16 @@
                     <th>Date</th>
                     <th>Order Status</th>
                     <th>Description</th>
+                    <th>Action By</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="orderHistoryEntry: ${orderHistory}">
                     <td th:text="${orderHistoryEntry.order.orderNumber}"></td>
                     <td th:text="${orderHistoryEntry.historyDate}"></td>
-                    <td th:text="${orderHistoryEntry.order.orderStatus.status}"></td>
+                    <td th:text="${orderHistoryEntry.orderStatus.status}"></td>
                     <td th:text="${orderHistoryEntry.description}"></td>
+                    <td th:text="${orderHistoryEntry.user.firstName + ' '+ orderHistoryEntry.user.lastName}"></td>
                 </tr>
                 </tbody>
             </table>

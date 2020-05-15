@@ -85,6 +85,27 @@ public class UserController {
         return "redirect:/buyer";
     }
 
+    @GetMapping("/seller/orders")
+    public String getSellerOrders(Model model, RedirectAttributes redirectAttributes){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User seller = userService.findByUsername(auth.getName());
+        List<EOrderStatus> statusList = new ArrayList<>();
+        statusList.add(EOrderStatus.NEW);
+        statusList.add(EOrderStatus.PAID);
+        statusList.add(EOrderStatus.ON_THE_WAY);
+        statusList.add(EOrderStatus.CANCELLED);
+        statusList.add(EOrderStatus.SHIPPED);
+
+        List<Order> sellerOrders = orderService.findOrderBySellerAndStatus(seller,statusList);
+
+//        model.addAttribute("sellerOrders",sellerOrders);
+//        model.addAttribute("sellerOrdersURL",true);
+          redirectAttributes.addFlashAttribute("sellerOrders",sellerOrders);
+          redirectAttributes.addFlashAttribute("sellerOrdersURL",true);
+
+        return "redirect:/seller";
+    }
+
     @GetMapping("/buyer/order/cancel/{orderId}")
     public String cancelBuyerOrder(@PathVariable Long orderId, RedirectAttributes redirectAttributes){
         Order orderToBeCancelled = orderService.getOrderById(orderId);
@@ -93,6 +114,29 @@ public class UserController {
         redirectAttributes.addFlashAttribute("buyerOrdersURL",true);
         redirectAttributes.addFlashAttribute("orderCancelled",true);
         return "redirect:/buyer";
+    }
+
+    @GetMapping("/seller/order/cancel/{orderId}")
+    public String sellerCancelBuyerOrder(@PathVariable Long orderId, RedirectAttributes redirectAttributes){
+        Order orderToBeCancelled = orderService.getOrderById(orderId);
+        orderService.cancelOrder(orderToBeCancelled);
+//        redirectAttributes.addFlashAttribute("buyerOrders",getBuyerOrdersUtil());
+//        redirectAttributes.addFlashAttribute("buyerOrdersURL",true);
+//        redirectAttributes.addFlashAttribute("orderCancelled",true);
+        return "redirect:/seller/orders";
+    }
+
+    @PostMapping("/seller/order/changeStatus/")
+    public String sellerChangeOrderStatus(HttpServletRequest request){
+        Long orderId = Long.parseLong(request.getParameter("orderId"));
+        String newStatus = request.getParameter("newStatus");
+        Order orderToBeChanged = orderService.getOrderById(orderId);
+        if(newStatus.trim().toLowerCase() == "shipped"){
+            orderService.shippingOrder(orderToBeChanged);
+        }else if(newStatus.trim().toLowerCase() == "delivered"){
+            orderService.delivering(orderToBeChanged);
+        }
+        return "redirect:/seller/orders";
     }
 
     public List<Order> getBuyerOrdersUtil(){
@@ -135,12 +179,15 @@ public class UserController {
         return "redirect:/buyer";
     }
 
-    @GetMapping(value = "/seller/sellerStatus/")
+    @GetMapping(value = "/seller")
     public String checkSellerApproval(Model model){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User seller = userService.findByUsername(auth.getName());
         model.addAttribute("products", productService.findProductsBySeller(seller));
         model.addAttribute("productCategories",productCategoryService.findAllProductCategory());
+//        List<Order> sellerOrders = new ArrayList<>();
+//        sellerOrders.add(new Order());
+//        model.addAttribute("sellerOrders",sellerOrders);
         if(seller.getUserStatus().getStatus().toUpperCase().equals("APPROVED")){
             model.addAttribute("approved",true);
         }else{

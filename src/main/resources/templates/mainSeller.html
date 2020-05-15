@@ -28,10 +28,10 @@
                         Seller Portal</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
-                            <a href="#" th:href="@{/seller/sellerStatus/}">Manage products</a>
+                            <a href="#" th:href="@{/seller}">Manage products</a>
                         </li>
                         <li>
-                            <a href="#">Manage Orders</a>
+                            <a href="#" th:href="@{/seller/orders/}">Manage Orders</a>
                         </li>
                     </ul>
                 </li>
@@ -95,6 +95,70 @@
             to get started and join the millions of other people already enjoying our services</p>
         <p>Contact the administrator for any queries regarding this online shop</p>
         <hr/>
+        <div th:if="${sellerOrdersURL}">
+            <div th:if="${sellerOrders.size() > 0}">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Order #</th>
+                        <th>Details</th>
+                        <th>Shipping Address</th>
+                        <th>Amount</th>
+                        <th>Buyer</th>
+                        <th>Status</th>
+                        <th colspan="3">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="order: ${sellerOrders}">
+                        <td th:text="${order.orderNumber}"></td>
+                        <td>
+                            <ul th:each="orderLine: ${order.orderLineList}">
+                                <li th:text="${'Product: '+ orderLine.product.name + ' Serial No: ' + orderLine.product.serialNumber +' : Qty: '+ orderLine.quantity + ': Amount: ' + orderLine.amount}">
+
+                                </li>
+                            </ul>
+                        </td>
+                        <td th:text="${order.shippingAddress.toString()}"></td>
+                        <td th:text="${order.totalAmount}"></td>
+                        <td th:text="${order.buyer.firstName + ' '+ order.buyer.lastName}"></td>
+                        <td th:text="${order.getOrderStatus().getStatus()}"></td>
+                        <td th:if="${order.getOrderStatus().getStatus().toUpperCase().equals('NEW')}">
+                            <a th:href="@{'/seller/order/cancel/' + ${order.id}}">Cancel</a>
+                        </td>
+                        <td th:unless="${order.getOrderStatus().getStatus().toUpperCase().equals('NEW')}">
+
+                        </td>
+                        <td th:if="${!order.getOrderStatus().getStatus().toUpperCase().equals('NEW') or
+                        !order.getOrderStatus().getStatus().toUpperCase().equals('DELIVERED')}">
+                            <a href="#" id="sellerChangeOrderStatus">Change Status</a>
+                            <div style="display: none" id="changeStatusDiv">
+                                <form method="post" th:action="@{/seller/order/changeStatus/}">
+                                    <p style="display: none">
+                                        <input class="form-control" type="hidden" name="orderId" th:value="${order.id}" readonly/>
+                                    </p>
+                                    <p>
+                                        <select class="form-control" name="newStatus" required>
+                                            <option value="">-select-</option>
+                                            <option value="Shipped">SHIPPED</option>
+                                            <option value="Delivered">DELIVERED</option>
+                                        </select>
+                                    </p>
+                                    <p>
+                                        <input class="btn btn-success" type="submit" value="Save" name="changeStatusBtn"/>
+                                    </p>
+                                </form>
+                            </div>
+                        </td>
+                        <td th:unless="${!order.getOrderStatus().getStatus().toUpperCase().equals('NEW') or
+                        !order.getOrderStatus().getStatus().toUpperCase().equals('DELIVERED')}">
+
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
         <div th:if="${#httpServletRequest.requestURI.contains('updateDetails')}">
             <form enctype="multipart/form-data"  th:action="@{/seller/product/update}" method="post" th:object="${productDetails}">
                 <input type="hidden" th:field="*{id}" th:value="${productDetails.id}"/>

@@ -44,6 +44,16 @@ $("#makeOrderPaymentLink").click(function (event) {
     event.preventDefault();
 });
 
+$("#sellerChangeOrderStatus").click(function (event) {
+    if( $("#changeStatusDiv").css('display').toLowerCase() == 'block'){
+        $("#changeStatusDiv").css("display","none");
+    }else{
+        $("#changeStatusDiv").css("display","block");
+    }
+
+    event.preventDefault();
+});
+
 function loadAddressForm(){
     const targetDiv = $("#loadAddressForm");
     const selectedRole = $("#roles");

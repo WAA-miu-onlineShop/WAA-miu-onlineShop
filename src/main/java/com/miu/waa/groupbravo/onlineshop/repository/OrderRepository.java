@@ -28,6 +28,6 @@ public interface OrderRepository extends CrudRepository<Order, Long> {
 
    List<Order> findOrderByBuyerAndStatus(@Param(IRepositoryConstant.BUYER)User buyer, @Param(IRepositoryConstant.STATUS_LIST)List<EOrderStatus> statusList);
 
-    List<Order> findBySellerAndStatus(@Param(IRepositoryConstant.BUYER)User seller,@Param(IRepositoryConstant.STATUS_LIST)List<EOrderStatus> statusList);
+    List<Order> findBySellerAndStatus(@Param(IRepositoryConstant.SELLER)User seller,@Param(IRepositoryConstant.STATUS_LIST)List<EOrderStatus> statusList);
 }
 

@@ -66,7 +66,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/", "/login", "/registration", "/h2-console/**","/logout/").permitAll()
                 .antMatchers("/admin/**").hasAuthority("ADMIN")
                 .antMatchers("/buyer/**").hasAuthority("BUYER")
-                .antMatchers("/seller/**").hasAuthority("SELLER")
+                .antMatchers("/seller/**","/seller/sellerStatus/**").hasAuthority("SELLER")
                 .anyRequest().authenticated() //all other urls can be access by any authenticated role
                 .and()
                 .formLogin() //enable form login instead of basic login

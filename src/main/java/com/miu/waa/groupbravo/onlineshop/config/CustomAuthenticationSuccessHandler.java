@@ -28,7 +28,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
             httpServletResponse.sendRedirect("/buyer");
         }else if (roles.contains(ERoleType.SELLER.toString())){
             //httpServletResponse.sendRedirect("/seller");
-            httpServletResponse.sendRedirect("/seller/sellerStatus/");
+            httpServletResponse.sendRedirect("/seller");
         }else{
             httpServletResponse.sendRedirect("/login");
         }
