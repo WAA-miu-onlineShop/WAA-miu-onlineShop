@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 @Entity
 public class OrderHistory extends  DomainClass {
     private String description;
+
     private LocalDateTime historyDate;
    @OneToOne
     @JoinColumn(name="order_id")

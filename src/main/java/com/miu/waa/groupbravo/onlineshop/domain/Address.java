@@ -21,7 +21,7 @@ public class Address extends  DomainClass{
     @Size(min=2, max= 100, message="{Size.Address.state.validation}")
     private String state;
     @NotEmpty
-    @Size(min = 2, max = 20,message="{Size.Address.zipcode.validation}")
+    @Size(min = 5, max = 5,message="{Size.Address.zipcode.validation}")
     private String zipCode;
 
     @Enumerated(EnumType.STRING)
