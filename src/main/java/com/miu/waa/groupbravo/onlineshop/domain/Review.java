@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 
 @Entity
 public class Review extends DomainClass {
+
     private String description;
     private LocalDateTime reviewDate;
     @OneToOne
