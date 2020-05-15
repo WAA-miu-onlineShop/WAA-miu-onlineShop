@@ -19,4 +19,5 @@ public interface ProductService {
     public List<Product> findProductByStatus(List<EProductStatus> productStatusList);
     public List<Product> findProductByCategoryAndStatus(ProductCategory productCategory,List<EProductStatus> productStatusList);
     Product getProductBySerialNumber(String serialNumber);
+    List<Product> findProductsByBuyer(User buyer);
 }

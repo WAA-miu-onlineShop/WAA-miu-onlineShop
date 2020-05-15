@@ -16,7 +16,8 @@ import java.math.BigDecimal;
 
 @Entity
 @NamedQueries({@NamedQuery(name= ProductRepository.QUERY_NAME.findByStatus,query=ProductRepository.QUERY.findByStatus),
-        @NamedQuery(name=ProductRepository.QUERY_NAME.findByCategoryAndStatus,query=ProductRepository.QUERY.findByCategoryAndStatus)})
+        @NamedQuery(name=ProductRepository.QUERY_NAME.findByCategoryAndStatus,query=ProductRepository.QUERY.findByCategoryAndStatus),
+        @NamedQuery(name=ProductRepository.QUERY_NAME.findByBuyer,query=ProductRepository.QUERY.findByBuyer)})
 public class Product extends DomainClass {
     @Pattern(regexp = "SN[1-9]+", message = "{Pattern.Product.serialNumber.validation}")
     @SerialNumber
