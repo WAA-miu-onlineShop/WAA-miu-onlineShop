@@ -179,7 +179,10 @@
                         </div>
                     </td>
                     <td th:unless="${order.getOrderStatus().getStatus().toUpperCase().equals('NEW')}">
-
+                        <p th:if="${!order.getOrderStatus().getStatus().toUpperCase().equals('NEW') and
+                                    !order.getOrderStatus().getStatus().toUpperCase().equals('CANCELLED')}">
+                            <a th:href="@{'/buyer/download/receipt/' + ${order.id}}">Print Receipt</a>
+                        </p>
                     </td>
                     <td>
                         <a th:href="@{'/buyer/order/history/' + ${order.id}}">History</a>

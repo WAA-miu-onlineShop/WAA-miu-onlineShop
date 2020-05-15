@@ -1,5 +1,7 @@
 package com.miu.waa.groupbravo.onlineshop.controller;
 
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfWriter;
 import com.miu.waa.groupbravo.onlineshop.domain.*;
 import com.miu.waa.groupbravo.onlineshop.service.*;
 import org.dom4j.rule.Mode;
@@ -15,6 +17,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -44,6 +48,26 @@ public class UserController {
         Double amount = Double.parseDouble(request.getParameter("amount"));
         orderService.payOrder(orderService.findById(orderId));
         return "redirect:/buyer/orders";
+    }
+
+    @GetMapping(value = "/buyer/download/receipt/{orderId}", produces = MediaType.APPLICATION_PDF_VALUE)
+    public void downloadReceipt(@PathVariable Long orderId,Model model) throws FileNotFoundException, DocumentException {
+        Order order = orderService.getOrderById(orderId);
+        model.addAttribute("order",order);
+
+        Document document = new Document();
+        PdfWriter.getInstance(document, new FileOutputStream("OrderReceipt.pdf"));
+
+        document.open();
+        Font font = FontFactory.getFont(FontFactory.COURIER, 16, BaseColor.BLACK);
+        Chunk chunk = new Chunk("Receipt for your Order\n", font);
+        for(OrderLine orderLine: order.getOrderLineList()) {
+            String entry = orderLine.getProduct().getName() + " --------------- " + orderLine.getAmount() + "\n";
+            chunk.append(entry);
+        }
+        chunk.append("Total Amount for the receipt is: " + order.getTotalAmount());
+        document.add(chunk);
+        document.close();
     }
 
     @GetMapping("/buyer/order/history/{orderId}")
