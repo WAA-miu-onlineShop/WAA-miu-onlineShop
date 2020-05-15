@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 @Transactional
@@ -60,5 +61,15 @@ public class FollowServiceImpl  implements FollowService {
         }else{
             return false;
         }
+    }
+
+    @Override
+    public List<Following> findFollowingsBySeller(User seller) {
+        return followingRepository.findBySeller(seller);
+    }
+
+    @Override
+    public List<Following> findFollowingsByBuyer(User buyer) {
+        return followingRepository.findByBuyer(buyer);
     }
 }
