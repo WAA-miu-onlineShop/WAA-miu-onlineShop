@@ -15,7 +15,7 @@ import java.math.BigDecimal;
 @Entity
 public class ProductCategory extends DomainClass {
     @NotEmpty
-    @Size(min=6, max=50, message="{Size.ProductCategory.name.validation}")
+    @Size(min=6, max=50, message="{Size.ProductCategory.description.validation}")
     private String description;
     @NotEmpty
     @Size(min=2, max=30, message="{Size.ProductCategory.name.validation}")
