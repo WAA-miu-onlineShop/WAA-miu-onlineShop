@@ -418,7 +418,7 @@
                         <div class="form-group">
                             <label for="seller">Select Sellers to Follow/Unfollow</label>
 
-                            <select id="seller" multiple searchable="..." name="followershipMap"  class="form-control" required>
+                            <select id="seller" multiple searchable="Search..." name="followershipMap"  class="form-control" required>
                                 <optgroup th:each="entry : ${followingMap}"
                                           th:label="${'Seller: [' + entry.key.username +' '
                                           + entry.key.firstName +' '+ entry.key.lastName +']'}">

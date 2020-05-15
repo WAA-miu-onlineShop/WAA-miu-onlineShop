@@ -29,6 +29,8 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private FollowService followService;
 
     @Autowired
     private ProductCategoryService productCategoryService;
@@ -104,6 +106,23 @@ public class UserController {
           redirectAttributes.addFlashAttribute("sellerOrdersURL",true);
 
         return "redirect:/seller";
+    }
+
+    @PostMapping("/buyer/followership/save/")
+    public String followUnFollowSeller(Model model,HttpServletRequest request){
+        String[] followership = request.getParameterValues("followershipMap");
+        for(String entry:followership){
+            String entryArr[] = entry.split(",");
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            User buyer = userService.findByUsername(auth.getName());
+            User seller = userService.findByUsername(entryArr[1].trim());
+            if(entryArr[0].trim().toLowerCase().equals("true")){
+                followService.subscribSeller(seller,buyer);
+            }else{
+                followService.unSubscribSeller(seller,buyer);
+            }
+        }
+        return "redirect:/buyer";
     }
 
     @GetMapping("/buyer/order/cancel/{orderId}")
@@ -232,5 +251,5 @@ public class UserController {
     public List<User> getListOfUsers(){
         return userService.findAll();
     }
-    
+
 }
