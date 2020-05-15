@@ -175,7 +175,7 @@ public class OrderServiceImpl implements OrderService {
     public Order payOrder(Order order){
         if (order.getOrderStatus().compareTo(EOrderStatus.NEW) != 0) {
             try {
-                throw new Exception("You can only pay the total amount for a new order");
+                throw new BravoException("You can only pay the total amount for a new order");
             } catch (Exception e) {
                 throw  new BravoException(e);
             }
@@ -188,13 +188,16 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Order shippingOrder(Order order) {
-        try {
-        if (order.getOrderStatus().compareTo(EOrderStatus.PAID) != 0) {
-            throw new Exception("You can only ship a paid order");
-        }
-        } catch (Exception e) {
+
+            if (order.getOrderStatus().compareTo(EOrderStatus.PAID) != 0) {
+
+                try {
+                throw new BravoException("You can only ship a paid order");
+
+            } catch(Exception e){
                 throw new BravoException(e);
             }
+        }
         order.setOrderStatus(EOrderStatus.ON_THE_WAY);
         //create orderHistory
         createOrderHistory(order);
@@ -204,13 +207,15 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public Order delivering(Order order){
 
-        if (order.getOrderStatus().compareTo(EOrderStatus.PAID) != 0||order.getOrderStatus().compareTo(EOrderStatus.ON_THE_WAY) != 0) {
+        if (order.getOrderStatus().compareTo(EOrderStatus.PAID) != 0 && order.getOrderStatus().compareTo(EOrderStatus.ON_THE_WAY) != 0) {
             try {
-                throw new Exception("You can only deliver a shipped or paid order");
+                throw new BravoException("You can only deliver a shipped or paid order");
+
             } catch (Exception e) {
                 throw new BravoException(e);
             }
         }
+
         order.setOrderStatus(EOrderStatus.DELIVERED);
         //Create orderHistory
         createOrderHistory(order);

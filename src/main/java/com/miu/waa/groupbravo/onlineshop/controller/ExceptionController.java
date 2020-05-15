@@ -23,7 +23,7 @@ public class ExceptionController {
     }
 
     @ExceptionHandler(BravoException.class)
-    public String handleBravoException(RequestBravoException ex,Model model  ){
+    public String handleBravoException(BravoException ex,Model model  ){
         String errorMessage=ex.getMessage();
         model.addAttribute("errorMessage",errorMessage);
         return  "errorPage";
