@@ -1,6 +1,7 @@
 package com.miu.waa.groupbravo.onlineshop.controller;
 
 import com.miu.waa.groupbravo.onlineshop.domain.*;
+import com.miu.waa.groupbravo.onlineshop.service.FollowService;
 import com.miu.waa.groupbravo.onlineshop.service.ProductService;
 import com.miu.waa.groupbravo.onlineshop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Controller
 public class LoginController {
@@ -36,6 +40,9 @@ public class LoginController {
 
     @Autowired
     private UserController userController;
+
+    @Autowired
+    private FollowService followService;
 
     @RequestMapping("/")
     public String root(Principal principal, HttpServletRequest httpRequest, SecurityContextHolder auth) {
@@ -61,17 +68,33 @@ public class LoginController {
     @RequestMapping("/buyer")
     public String mainBuyerPage(Model model, RedirectAttributes redirectAttributes) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        User user = userService.findByUsername(auth.getName());
-        Long userId = user.getId();
+        User buyer = userService.findByUsername(auth.getName());
+        Long userId = buyer.getId();
         model.addAttribute("address",new Address());
-        model.addAttribute("addresses", user.getAddresses());
+        model.addAttribute("addresses", buyer.getAddresses());
         model.addAttribute("products", productController.getAvailableProduct());
-        model.addAttribute("userDetails",user);
+        model.addAttribute("userDetails",buyer);
         List<Order> orders = userController.getBuyerOrdersUtil();
         model.addAttribute("buyerOrders",orders);
-//        List<OrderHistory> orderHistory = new ArrayList<>();
-//        orderHistory.add(new OrderHistory());
-//        model.addAttribute("orderHistory",orderHistory);
+
+        List<User> sellers = userService.findAll()
+                            .stream()
+                            .filter(seller -> seller.getUserRole().getRoleType().compareTo(ERoleType.SELLER)==0)
+                            .collect(Collectors.toList());
+
+        Map<User,Boolean> followingMap = new HashMap<>();
+        if(sellers.size()>0) {
+            for (User seller : sellers) {
+                if (followService.isFollow(seller, buyer)) {
+                    followingMap.put(seller,true);
+                }else{
+                    followingMap.put(seller,false);
+                }
+            }
+        }
+
+        model.addAttribute("followingMap",followingMap);
+
         return "mainBuyer";
     }
 

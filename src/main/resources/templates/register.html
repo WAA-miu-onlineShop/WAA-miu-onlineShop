@@ -32,51 +32,64 @@
                 <div >
                     <form th:action="@{/registration}" th:object="${user}" method="post">
                     <h3 class="register-heading" > Online Shop - Registration</h3>
+                        <div th:if="${#fields.hasErrors()}" class="alert alert-danger">
+                            <div th:each="error: ${#fields.allErrors()}">
+                                <p th:text="${error}"></p>
+                            </div>
+                        </div>
                     <div class="row register-form">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"
                                        class="validation-message alert alert-danger"></label>
-                                <input type="text" th:field="*{firstName}" placeholder="FirstName"
+                                <label for="firstName" class="text-info">First Name:</label><br>
+                                <input id="firstName" type="text" th:field="*{firstName}" placeholder="FirstName"
                                        class="form-control" required/>
                             </div>
                             <div class="form-group">
                                 <label th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
                                        class="alert alert-danger"></label>
-                                <input type="text" th:field="*{lastName}"
+                                <label for="lastName" class="text-info">Last Name:</label><br>
+                                <input id="lastName" type="text" th:field="*{lastName}"
                                        placeholder="Last Name" class="form-control" required/>
                             </div>
                             <div class="form-group">
-                                <input type="text" th:field="*{username}" placeholder="Username"
+                                <label for="username" class="text-info">Username:</label><br>
+                                <input id="username" type="text" th:field="*{username}" placeholder="Username"
                                        class="form-control"/> <label
                                     th:if="${#fields.hasErrors('username')}" th:errors="*{username}"
                                     class="validation-message alert alert-danger"></label>
                             </div>
                             <div class="form-group">
-                                <input type="password" th:field="*{password}"
+                                <label for="password" class="text-info">Password:</label><br>
+                                <input id="password" type="password" th:field="*{password}"
                                        placeholder="Password" class="form-control" required/> <label
                                     th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
                                     class="validation-message alert alert-danger"></label>
                             </div>
+
+                        </div>
+                        <div class="col-md-6">
                             <div class="form-group">
+                                <label for="roles" class="text-info">Registration type:</label><br>
                                 <select class="form-control" id="roles" th:field="*{userRole}" required>
                                     <option value="">-Select Role-</option>
                                     <option th:each="role: ${roles}" th:value="${role.id}" th:text="${role.name}">
                                     </option>
                                 </select>
                             </div>
-                        </div>
-                        <div class="col-md-6">
                             <div class="form-group">
                                 <label th:if="${#fields.hasErrors('dob')}" th:errors="*{dob}"
                                        class="alert alert-danger"></label>
-                                <input type="date" th:field="*{dob}"
+                                <label for="dob" class="text-info">Date of Birth:</label><br>
+                                <input id="dob" type="date" th:field="*{dob}"
                                        placeholder="Date of birth: e.g. yyyy-MM-dd" class="form-control" required/>
                             </div>
                             <div class="form-group">
                                 <label th:if="${#fields.hasErrors('phone')}" th:errors="*{lastName}"
                                        class="alert alert-danger"></label>
-                                <input type="text" th:field="*{phone}"
+                                <label for="phone" class="text-info">Phone Number:</label><br>
+                                <input id="phone" type="tel" th:field="*{phone}"
                                        placeholder="Phone Number e.g. 641-555-222-111" class="form-control" required/>
                             </div>
                             <input type="submit" class="btnRegister"  value="Register"/>

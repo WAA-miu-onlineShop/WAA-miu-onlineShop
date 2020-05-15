@@ -86,7 +86,7 @@
                             </button>
                         </li>
                         <li class="nav-item">
-                            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#addItemModal">
+                            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#followSellerModal">
                                 Follow Seller
                             </button>
                         </li>
@@ -377,7 +377,7 @@
                                         + product.serialNumber + ':@' + product.productNumber + ':@' + product.unitPrice}">
 
                                 </option>
-                                <option th:unless="${products.size() > 0}" value="">
+                                <option disabled selected th:unless="${products.size() > 0}" value="">
                                     -No Products Available In the Shop-
                                 </option>
                             </select>
@@ -399,42 +399,44 @@
         </div>
     </div>
 </div>
-<!-- Add Item Modal -->
-<div class="modal fade" id="addItemModal" tabindex="-1" role="dialog" aria-labelledby="addItemModalLabel"
+
+<!-- Follow UnFollow Seller -->
+<div class="modal fade" id="followSellerModal" tabindex="-1" role="dialog" aria-labelledby="followSellerLabel"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="addItemModalLabel">Create Menu Item</h5>
+                <h5 class="modal-title" id="followSellerLabel">Follow/UnFollow Seller</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <div id="submitFormErrors" style="display: none;"></div>
-                <form method="POST" id="addItemForm">
-                    <div class="form-group">
-                        <label for="itemName">Item Name</label>
-                        <input type="text" class="form-control" id="itemName" aria-describedby="nameHelp" placeholder="E.g. Orange Juice" required>
-                        <small id="nameHelp" class="form-text text-muted">Enter name of item</small>
-                    </div>
-                    <div class="form-group">
-                        <label for="description">Description</label>
-                        <input type="text" class="form-control" id="description" placeholder="E.g. 100% orange juice" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="category">Category</label>
-                        <select id="category" class="form-control" required>
-                            <option value="">-Select Category-</option>
-                            <option value="breakfast">Breakfast</option>
-                            <option value="lunch">Lunch</option>
-                            <option value="dinner">Dinner</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" class="btn btn-primary" id="addItemBtn" value="Add Item"/>
-                    </div>
-                </form>
+                <div th:if="${followingMap.size() > 0}">
+                    <form method="POST" id="followSellerForm" th:action="@{/buyer/followership/save/}">
+
+                        <div class="form-group">
+                            <label for="seller">Select Sellers to Follow/Unfollow</label>
+
+                            <select id="seller" multiple searchable="..." name="followershipMap"  class="form-control" required>
+                                <optgroup th:each="entry : ${followingMap}"
+                                          th:label="${'Seller: [' + entry.key.username +' '
+                                          + entry.key.firstName +' '+ entry.key.lastName +']'}">
+                                    <option th:if="${entry.value}" th:value="${'false,'+entry.key.username}">
+                                        Unfollow
+                                    </option>
+                                    <option th:unless="${entry.value}" th:value="${'true,'+entry.key.username}">
+                                        Follow
+                                    </option>
+                                </optgroup>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary" id="saveFollowingBtn" value="Save"/>
+                        </div>
+                    </form>
+                </div>
+                <div th:unless="${followingMap.size() > 0}" class="alert alert-info">No sellers registered in the shop at the moment</div>
             </div>
             <div class="form-group modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
