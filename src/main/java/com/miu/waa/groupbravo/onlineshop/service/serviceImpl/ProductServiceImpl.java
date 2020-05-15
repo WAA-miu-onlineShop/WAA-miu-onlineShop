@@ -132,6 +132,11 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findBySerialNumber(serialNumber);
     }
 
+    @Override
+    public List<Product> findProductsByBuyer(User buyer) {
+        return productRepository.findByBuyer(buyer);
+    }
+
 
     //find product by user
 
