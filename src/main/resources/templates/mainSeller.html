@@ -212,12 +212,12 @@
                         <tr>
                             <th>#</th>
                             <th>Serial</th>
-                            <th>Product No.</th>
                             <th>Name</th>
                             <th>Description</th>
                             <th>Price</th>
                             <th>Category</th>
                             <th>Status</th>
+                            <th>Image</th>
                             <th colspan="2">Actions</th>
                         </tr>
                         </thead>
@@ -225,12 +225,12 @@
                         <tr th:each="product: ${products}">
                             <td th:text="${product.id}"></td>
                             <td th:text="${product.serialNumber}"></td>
-                            <td th:text="${product.productNumber}"></td>
                             <td th:text="${product.name}"></td>
                             <td th:text="${product.description}"></td>
                             <td th:text="${product.unitPrice}"></td>
                             <td th:text="${product.productCategory.name}"></td>
                             <td th:text="${product.getProductStatus().getStatus()}"></td>
+                            <td><img width="100px;" height="100px;" th:src="@{'/images/'+${product.file}}"/></td>
                             <td th:if="${product.getProductStatus().getStatus() == 'New'}">
                                 <a th:href="@{'/seller/product/updateDetails/' + ${product.id}}">Edit</a>
                             </td>
