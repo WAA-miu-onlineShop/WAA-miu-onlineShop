@@ -1,20 +1,26 @@
 package com.miu.waa.groupbravo.onlineshop.controller;
-import com.miu.waa.groupbravo.onlineshop.domain.EProductStatus;
-import com.miu.waa.groupbravo.onlineshop.domain.Product;
-import com.miu.waa.groupbravo.onlineshop.domain.ProductCategory;
-import com.miu.waa.groupbravo.onlineshop.domain.User;
+import com.miu.waa.groupbravo.onlineshop.domain.*;
 import com.miu.waa.groupbravo.onlineshop.service.ProductCategoryService;
 import com.miu.waa.groupbravo.onlineshop.service.ProductService;
+import com.miu.waa.groupbravo.onlineshop.service.ReviewService;
 import com.miu.waa.groupbravo.onlineshop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.FileNotFoundException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -32,6 +38,9 @@ public class ProductController {
 
     @Autowired
     UserController userController;
+
+    @Autowired
+    private ReviewService reviewService;
 
     @PostMapping("/seller/product")
     public String addProduct(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult, Model model)throws FileNotFoundException {
@@ -129,6 +138,24 @@ public class ProductController {
         model.addAttribute("productDetails",prod);
         return userController.checkSellerApproval(model);
         //return "mainSeller";
+    }
+
+    @PostMapping("/buyer/product/review/")
+    public String makeProductReview(HttpServletRequest request, RedirectAttributes redirectAttributes){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User buyer = userService.findByUsername(auth.getName());
+        Long productId = Long.parseLong(request.getParameter("productId").trim());
+        String description = request.getParameter("productReview");
+        Review review = new Review();
+        review.setBuyer(buyer);
+        review.setDescription(description);
+        Product product = productService.findProductById(productId).get();
+        review.setProduct(product);
+        reviewService.saveReview(review);
+        review.setReviewDate(LocalDateTime.now());
+        reviewService.saveReview(review);
+        redirectAttributes.addFlashAttribute("saveReviewURL",true);
+        return "redirect:/buyer";
     }
 
 

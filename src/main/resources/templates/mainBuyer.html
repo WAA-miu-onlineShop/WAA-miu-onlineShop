@@ -31,10 +31,10 @@
                             <a href="#" th:href="@{/buyer/orders}">Your Orders</a>
                         </li>
                         <li>
-                            <a href="#">View Points</a>
+                            <a href="#" th:href="@{/buyer/bought/products}">Bought products</a>
                         </li>
                         <li>
-                            <a href="#" th:href="@{/buyer/followership}">View Seller Following</a>
+                            <a href="#" th:href="@{/buyer/followership}">Seller Followership</a>
                         </li>
                     </ul>
                 </li>
@@ -101,6 +101,56 @@
         </nav>
 
         <h2 class="mb-4">Welcome <span sec:authentication="name"></span></h2>
+        <div th:if="${saveReviewURL}">
+            <div class="alert alert-success">
+                Your product review has been registered successfully pending administrator approval.
+                <a th:href="@{/buyer/bought/products}"> Click here.. </a> to return to make more reviews
+            </div>
+        </div>
+        <div th:if="${buyerProductsURL}">
+            <div th:if="${buyerProducts.size() > 0}">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Serial</th>
+                        <th>Product No.</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Category</th>
+                        <th colspan="2">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="product: ${buyerProducts}">
+                        <td th:text="${product.id}"></td>
+                        <td th:text="${product.serialNumber}"></td>
+                        <td th:text="${product.productNumber}"></td>
+                        <td th:text="${product.name}"></td>
+                        <td th:text="${product.description}"></td>
+                        <td th:text="${product.unitPrice}"></td>
+                        <td th:text="${product.productCategory.name}"></td>
+                        <td>
+                            <form method="post" th:action="@{'/buyer/product/review/'}">
+                                <input type="hidden" readonly name="productId" th:value="${product.id}"/>
+                                <div>
+                                    <input class="form-control" type="text" placeholder="Write your review.." name="productReview"/>
+                                </div>
+                                <div>
+                                    <input type="submit" value="Save" class="btn btn-success"/>
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div th:unless="${buyerProducts.size() > 0}" class="alert alert-info">
+                You have not bought any products from this shop yet. Click place order to get started
+            </div>
+        </div>
+
         <div th:if="${getFollowingsURL}">
             <div th:if="${myFollowings.size() > 0}">
                 <table class="table table-bordered">

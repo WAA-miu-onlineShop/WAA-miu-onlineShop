@@ -109,6 +109,16 @@ public class UserController {
         return "redirect:/seller";
     }
 
+    @GetMapping("/buyer/bought/products")
+    public String buyerBoughtProducts(RedirectAttributes redirectAttributes){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User buyer = userService.findByUsername(auth.getName());
+        List<Product> buyerProducts = productService.findProductsByBuyer(buyer);
+        redirectAttributes.addFlashAttribute("buyerProducts",buyerProducts);
+        redirectAttributes.addFlashAttribute("buyerProductsURL",true);
+        return "redirect:/buyer";
+    }
+
     @GetMapping("/buyer/followership")
     public String getBuyerFollowership(RedirectAttributes redirectAttributes){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
