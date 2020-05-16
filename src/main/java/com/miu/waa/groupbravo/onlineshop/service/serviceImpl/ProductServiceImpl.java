@@ -3,6 +3,7 @@ import com.miu.waa.groupbravo.onlineshop.domain.EProductStatus;
 import com.miu.waa.groupbravo.onlineshop.domain.Product;
 import com.miu.waa.groupbravo.onlineshop.domain.ProductCategory;
 import com.miu.waa.groupbravo.onlineshop.domain.User;
+import com.miu.waa.groupbravo.onlineshop.exceptions.BravoException;
 import com.miu.waa.groupbravo.onlineshop.repository.ProductCategoryRepository;
 import com.miu.waa.groupbravo.onlineshop.repository.ProductRepository;
 import com.miu.waa.groupbravo.onlineshop.repository.UserRepository;
@@ -13,11 +14,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.transaction.Transactional;
 import java.io.File;
 import java.math.BigDecimal;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,7 +46,7 @@ public class ProductServiceImpl implements ProductService {
      this.userRepository=userRepository;
     }
     @Override
-    public void addProduct(Product product) {
+    public Product addProduct(Product product) {
         if(product.isNew()){
             String productNumber=sequenceNumberService.getNextProductNumber();
             ProductCategory productCategory=productCategoryRepository.findById(product.getProductCategory().getId()).get();
@@ -50,20 +56,28 @@ public class ProductServiceImpl implements ProductService {
             product.setSeller(getUser());
             productCategory.setQuantityAvailable(productCategory.getQuantityAvailable().add(BigDecimal.valueOf(1)));
             ///UPLOAD FILE
-            String rootDirectory=System.getProperty("user.dir");
-            MultipartFile photo = product.getMultipartFile();
-            String path=rootDirectory+"\\images\\"+ product.getProductNumber()+ ".jpg";
-            product.setFile(path);
-            if (photo!=null && !photo.isEmpty()) {
+           // String rootDirectory=System.getProperty("user.dir");
+            MultipartFile picture = product.getMultipartFile();
+            //String path=rootDirectory+"\\images\\"+ product.getProductNumber()+ ".jpg";
+
+            String filePath=product.getFile();
+            String pathToBeSaved=product.getProductNumber()+ ".jpg";
+            String newName= StringUtils.cleanPath(pathToBeSaved);
+            product.setFile(newName);
+            if (picture!=null && !picture.isEmpty()) {
                 try {
-                    photo.transferTo(new File(path));
+
+                    Path path= Paths.get(filePath+"src\\main\\resources\\static\\images\\" + newName);
+                    Files.copy(picture.getInputStream(),path, StandardCopyOption.REPLACE_EXISTING);
+
                 } catch (Exception e) {
-                   // throw new FileNotFoundException("Can't upload the image: " + photo.getOriginalFilename() );
+
+                    throw new BravoException("Can't upload the image: " + picture.getOriginalFilename() );
                 }
             }
         }
 
-        productRepository.save(product);
+       return productRepository.save(product);
     }
     private  User getUser(){
         User user=null;

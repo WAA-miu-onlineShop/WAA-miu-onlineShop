@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ProductService {
-    public void addProduct(Product product);
+    public Product addProduct(Product product);
     public void deleteProduct(Product product);
     public Product updateProduct(Product product);
     public List<Product> findAll();

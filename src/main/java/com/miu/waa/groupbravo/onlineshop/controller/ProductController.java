@@ -1,22 +1,31 @@
 package com.miu.waa.groupbravo.onlineshop.controller;
 import com.miu.waa.groupbravo.onlineshop.domain.*;
+import com.miu.waa.groupbravo.onlineshop.exceptions.BravoException;
 import com.miu.waa.groupbravo.onlineshop.service.ProductCategoryService;
 import com.miu.waa.groupbravo.onlineshop.service.ProductService;
 import com.miu.waa.groupbravo.onlineshop.service.ReviewService;
 import com.miu.waa.groupbravo.onlineshop.service.UserService;
+import org.apache.tomcat.util.file.ConfigurationSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -44,12 +53,14 @@ public class ProductController {
     private ReviewService reviewService;
 
     @PostMapping("/seller/product")
-    public String addProduct(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult, Model model)throws FileNotFoundException {
+    public String addProduct(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult, Model model,HttpServletRequest request)throws FileNotFoundException {
         if (bindingResult.hasErrors()) {
 
             return userController.checkSellerApproval(model);
         }
-        productService.addProduct(product);
+        String rootDirectory = request.getSession().getServletContext().getContextPath();
+        product.setFile(rootDirectory);
+        product=productService.addProduct(product);
 
         return userController.checkSellerApproval(model);
     }
