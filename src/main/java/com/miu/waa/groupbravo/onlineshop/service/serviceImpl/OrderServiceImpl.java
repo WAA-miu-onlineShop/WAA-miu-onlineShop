@@ -5,6 +5,7 @@ import com.miu.waa.groupbravo.onlineshop.exceptions.BravoException;
 import com.miu.waa.groupbravo.onlineshop.repository.*;
 import com.miu.waa.groupbravo.onlineshop.service.OrderService;
 import com.miu.waa.groupbravo.onlineshop.service.SequenceNumberService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
@@ -40,6 +41,7 @@ public class OrderServiceImpl implements OrderService {
         this.productCategoryRepository=productCategoryRepository;
         this.addressRepository=addressRepository;
     }
+    @PreAuthorize("hasAuthority('BUYER')")
     @Override
     public Order saveOrder(Order order) {
         Order savedOrder = null;
