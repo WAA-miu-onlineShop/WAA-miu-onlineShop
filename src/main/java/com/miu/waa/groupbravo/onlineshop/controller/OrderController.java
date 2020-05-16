@@ -31,17 +31,20 @@ public class OrderController {
         //${itemName} : ${selectedQty} : ${itemUnitPrice} : ${amount} : ${itemId}
          Order order=new Order();
          List<OrderLine> orderLineList=new ArrayList<>();
-        for(int i=1; i<= totalItemsInCart; i++){
-            String [] orderLine= request.getParameter("row-"+i).split(":");
-            Long productId = Long.parseLong(orderLine[4].trim());
-            String productName = orderLine[0];
-            int selectedQuantity = Integer.parseInt(orderLine[1].trim());
-            double unitPrice = Double.parseDouble(orderLine[2].trim());
-            double computedAmount = Double.parseDouble(orderLine[3].trim());
-            //System.out.println(Arrays.toString(orderLine));
-           OrderLine orderLineObject= getOrderLine(productId,selectedQuantity);
-           orderLineList.add(orderLineObject);
-        }
+        //for(int i=1; i<= totalItemsInCart; i++){
+            String [] orderLineArr= request.getParameterValues("row");
+            for(String orderLines: orderLineArr) {
+                String [] orderLine = orderLines.split(":");
+                Long productId = Long.parseLong(orderLine[4].trim());
+                String productName = orderLine[0];
+                int selectedQuantity = Integer.parseInt(orderLine[1].trim());
+                double unitPrice = Double.parseDouble(orderLine[2].trim());
+                double computedAmount = Double.parseDouble(orderLine[3].trim());
+                //System.out.println(Arrays.toString(orderLine));
+                OrderLine orderLineObject = getOrderLine(productId, selectedQuantity);
+                orderLineList.add(orderLineObject);
+            }
+        //}
          order.setOrderLineList(orderLineList);
          order.setTotalAmount(order.getTotalAmount());
          orderService.saveOrder(order);

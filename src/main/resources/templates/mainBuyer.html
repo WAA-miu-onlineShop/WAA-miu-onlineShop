@@ -306,10 +306,10 @@
 
         <div id="shoppingCart" style="display: none" class="row">
             <form id="shoppingCartForm" method="post" class="form-row" th:action="@{/buyer/createOrder}">
-                <table class="table table-bordered table-striped shopping-cart">
+                <table class="table table-bordered table-striped shopping-cart" id="shopping-cart">
                     <thead>
                     <tr>
-                        <th colspan="4" style="text-align: right">Sub Total</th>
+                        <th colspan="5" style="text-align: right">Sub Total</th>
                         <th id="totalCartAmount"></th>
                     </tr>
                     <tr>
@@ -318,6 +318,7 @@
                         <th scope="col">Qty</th>
                         <th scope="col">UnitPrice</th>
                         <th scope="col">Amount</th>
+                        <th scope="col">Action</th>
                     </tr>
                     </thead>
                     <tbody id="shoppingCartBody">

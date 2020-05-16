@@ -1,5 +1,5 @@
 let totalAmount = 0.0;
-let items = 1;
+let items = 0;
 $("#addToCartForm").submit(function (event) {
     let selectedProduct = $("#cartProduct").val();
     let selectedProductArr = selectedProduct.split(":@");
@@ -12,12 +12,15 @@ $("#addToCartForm").submit(function (event) {
     let itemId = selectedProductArr[0];
     let submitRecord = `${itemName} : ${selectedQty} : ${itemUnitPrice} : ${amount} : ${itemId}`
 
-    let cartEntry = `<tr><td scope='row'><input style="display: none" readonly type="hiddden" name="row-${items}" value="${submitRecord}"/>${selectedProductArr[1]}</td>
+    items++;
+    let cartEntry = `<tr><td scope='row'><input style="display: none" readonly type="hiddden" name="row" value="${submitRecord}"/>${selectedProductArr[1]}</td>
                 <td>${selectedProductArr[2]}</td>
                 <td>${selectedQty}</td>
                 <td>${selectedProductArr[5]}</td>
                 <td>${amount}</td>
+                <td><input class="btn btn-outline-info form-control" type="button" value="Remove" onclick="deleteCartEntry(this, ${amount})"/></td>
                 </tr>`;
+
 
     let targetTotalElems = $("#totalItems");
     targetTotalElems.html(`<input type="hidden" value="${items}" name="totalItems"/>`);
@@ -25,9 +28,19 @@ $("#addToCartForm").submit(function (event) {
     $("#totalCartAmount").html(computeTotalCartAmount(amount));
     $("#shoppingCart").css("display","block");
     $(".otherContent").css("display","none");
-    items++;
+
     event.preventDefault();
 });
+
+function deleteCartEntry(col, amount){
+    var i = col.parentNode.parentNode.rowIndex;
+    document.getElementById("shopping-cart").deleteRow(i);
+    totalAmount -= parseFloat(amount);
+    $("#totalCartAmount").html(totalAmount);
+    items--;
+    let targetTotalElems = $("#totalItems");
+    targetTotalElems.html(`<input type="hidden" value="${items}" name="totalItems"/>`);
+}
 
 function computeTotalCartAmount(rowAmount){
     totalAmount += rowAmount;
