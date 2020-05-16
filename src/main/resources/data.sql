@@ -12,20 +12,20 @@ INSERT INTO UserRole  (ID, VERSION, NAME, DESCRIPTION, ROLE_TYPE) VALUES (2,1, '
 INSERT INTO UserRole   (ID, VERSION, NAME, DESCRIPTION, ROLE_TYPE) VALUES (3,1, 'BUYER','This is the buyer','BUYER');
 
 -- USER
--- USER
 
--- INSERT INTO User (id, version, firstName, lastName, username, password, user_role_id)
--- VALUES(121, 1, 'Moses1', 'Wasswa1', 'mwasswa', '$2a$10$kAsVIEI4C0xcEp2abBVM.uzrsfe94lWMAb2wy8pF9jB5031cJWwIy', 1);
-INSERT INTO User (id, version, firstName, lastName, username, password, user_status,user_number, user_role_id)
-VALUES(122, 1, 'Elias', 'Rurangwa', 'erurangwa', '$2a$10$kAsVIEI4C0xcEp2abBVM.uzrsfe94lWMAb2wy8pF9jB5031cJWwIy','APPROVED','US001',2);
-INSERT INTO User (id, version, firstName, lastName, username, password, user_role_id)
-VALUES(123, 1, 'Jirom', 'Jirom', 'jirom', '$2a$10$kAsVIEI4C0xcEp2abBVM.uzrsfe94lWMAb2wy8pF9jB5031cJWwIy',3);
-INSERT INTO User (id, version, firstName, lastName, username, password, user_role_id)
-VALUES(124, 1, 'Erik', 'Erik', 'erik', '$2a$10$kAsVIEI4C0xcEp2abBVM.uzrsfe94lWMAb2wy8pF9jB5031cJWwIy',3);
-INSERT INTO User (id, version, firstName, lastName, username, password, user_status,user_number, user_role_id)
-VALUES(126, 1, 'Moses', 'Wasswa', 'mwseller', '$2a$10$kAsVIEI4C0xcEp2abBVM.uzrsfe94lWMAb2wy8pF9jB5031cJWwIy','APPROVED','US002',2);
-INSERT INTO User (id, version, firstName, lastName, username, password, user_role_id)
-VALUES(127, 1, 'MosesTest', 'MosesTest', 'moseswasswa', '$2a$10$kAsVIEI4C0xcEp2abBVM.uzrsfe94lWMAb2wy8pF9jB5031cJWwIy',1);
+INSERT INTO USER (ID,VERSION,DOB,FIRSTNAME,LASTNAME,PASSWORD,PHONE,USER_NUMBER,USER_STATUS,USERNAME,USER_ROLE_ID)
+VALUES(122, 1,'1990-01-01', 'Elias', 'Elias', '$2a$10$kAsVIEI4C0xcEp2abBVM.uzrsfe94lWMAb2wy8pF9jB5031cJWwIy','641-819-0022','US5','APPROVED','erurangwa',2);
+
+INSERT INTO USER (ID,VERSION,DOB,FIRSTNAME,LASTNAME,PASSWORD,PHONE,USER_NUMBER,USER_STATUS,USERNAME,USER_ROLE_ID)
+VALUES(123, 1,'1995-01-01', 'Jirom', 'Jirom', '$2a$10$kAsVIEI4C0xcEp2abBVM.uzrsfe94lWMAb2wy8pF9jB5031cJWwIy','641-819-0042','US4','APPROVED','jirom',3);
+
+
+INSERT INTO USER (ID,VERSION,DOB,FIRSTNAME,LASTNAME,PASSWORD,PHONE,USER_NUMBER,USER_STATUS,USERNAME,USER_ROLE_ID)
+VALUES(124, 1,'1993-01-01', 'Erik', 'Erik', '$2a$10$kAsVIEI4C0xcEp2abBVM.uzrsfe94lWMAb2wy8pF9jB5031cJWwIy','641-819-0040','US3','APPROVED','erik',3);
+INSERT INTO USER (ID,VERSION,DOB,FIRSTNAME,LASTNAME,PASSWORD,PHONE,USER_NUMBER,USER_STATUS,USERNAME,USER_ROLE_ID)
+VALUES(126, 1,'1980-01-01', 'Moses', 'Wasswa', '$2a$10$kAsVIEI4C0xcEp2abBVM.uzrsfe94lWMAb2wy8pF9jB5031cJWwIy','641-819-0001','US2','APPROVED','moseswasswa',2);
+INSERT INTO USER (ID,VERSION,DOB,FIRSTNAME,LASTNAME,PASSWORD,PHONE,USER_NUMBER,USER_STATUS,USERNAME,USER_ROLE_ID)
+VALUES(127, 1,'1990-01-01', 'MosesTest', 'MosesTest', '$2a$10$kAsVIEI4C0xcEp2abBVM.uzrsfe94lWMAb2wy8pF9jB5031cJWwIy','641-819-0000','US1','APPROVED','moseswasswa',1);
 
 -- PRODUCT_CATEGORY
 
