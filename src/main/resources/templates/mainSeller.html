@@ -209,7 +209,6 @@
         <div th:unless="${#httpServletRequest.requestURI.contains('updateDetails')}">
             <div th:if="${approved}">
                 <!-- TODO: Display list of products for the seller -->
-                <p>Fill out the form below to add new product</p>
                 <div th:if="${products.size() > 0}">
                     <table class="table table-bordered">
                         <thead>
