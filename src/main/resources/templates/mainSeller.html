@@ -169,6 +169,10 @@
                     <div class="form-group col-md-6">
                         <label for="serialNumber">Serial Number</label>
                         <input th:value="${productDetails.getSerialNumber()}" th:field="*{serialNumber}" type="text" class="form-control" placeholder="Serial Number">
+
+
+                        <input  type="hidden" th:value="${productDetails.getProductNumber()}" th:field="*{productNumber}"  placeholder="product Number ">
+                        <input  type="hidden" th:value="${productDetails.getProductStatus()}" th:field="*{productStatus}"  placeholder="product Status ">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="productName">Product Name</label>

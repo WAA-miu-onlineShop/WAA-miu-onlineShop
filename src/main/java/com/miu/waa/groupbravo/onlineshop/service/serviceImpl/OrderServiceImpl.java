@@ -167,7 +167,7 @@ public class OrderServiceImpl implements OrderService {
     }
     private Coupon reduceCouponPoints(Order order){
         Coupon coupon = couponRepository.findByUser(order.getBuyer());
-        coupon.setTotalPoint(coupon.getTotalPoint().add(order.getCoupons()));
+        coupon.setTotalPoint(coupon.getTotalPoint().subtract(order.getCoupons()));
      return couponRepository.save(coupon);
     }
 

@@ -42,7 +42,7 @@ public class UserController {
     @Autowired
     private FollowService followService;
 
-    @Autowired
+   @Autowired
     private ProductCategoryService productCategoryService;
 
     @Autowired
@@ -64,26 +64,6 @@ public class UserController {
         orderService.payOrder(orderService.findById(orderId));
         return "redirect:/buyer/orders";
     }
-/*
-    @GetMapping(value = "/buyer/download/receipt/{orderId}", produces = MediaType.APPLICATION_PDF_VALUE)
-    public void downloadReceipt(@PathVariable Long orderId,Model model) throws FileNotFoundException, DocumentException {
-        Order order = orderService.getOrderById(orderId);
-        model.addAttribute("order",order);
-
-        Document document = new Document();
-        PdfWriter.getInstance(document, new FileOutputStream("OrderReceipt.pdf"));
-
-        document.open();
-        Font font = FontFactory.getFont(FontFactory.COURIER, 16, BaseColor.BLACK);
-        Chunk chunk = new Chunk("Receipt for your Order\n", font);
-        for(OrderLine orderLine: order.getOrderLineList()) {
-            String entry = orderLine.getProduct().getName() + " --------------- " + orderLine.getAmount() + "\n";
-            chunk.append(entry);
-        }
-        chunk.append("Total Amount for the receipt is: " + order.getTotalAmount());
-        document.add(chunk);
-        document.close();
-    }*/
     @GetMapping(value = "/buyer/download/receipt/{orderId}", produces = MediaType.APPLICATION_PDF_VALUE)
     ResponseEntity<InputStreamResource> downloadReceipt(@PathVariable Long orderId,Model model) throws FileNotFoundException, DocumentException {
         Order order = orderService.getOrderById(orderId);
@@ -186,13 +166,12 @@ public class UserController {
                 cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
                 cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
                 table.addCell(cell);
-             //   cell.setPaddingRight(5);
 
                 cell = new PdfPCell(new Phrase(String.valueOf(orderLine.getAmount())));
                 cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
                 cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
                 table.addCell(cell);
-              //  cell.setPaddingRight(5);
+
                  BigDecimal totalOrderLine=orderLine.getQuantity().multiply(orderLine.getAmount());
                 totalInvoice=totalInvoice.add(totalOrderLine);
                 cell = new PdfPCell(new Phrase(String.valueOf(totalOrderLine.toString())));
