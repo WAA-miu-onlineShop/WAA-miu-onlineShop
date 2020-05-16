@@ -233,16 +233,23 @@
 
         <div th:if="${orderSuccess}">
             <div class="alert alert-success">
-                <p>Thank you, your order has been received, and being proessed</p>
-                <p>Click <a th:href="@{/buyer/orders}">here</a> to view list of all your orders</p>
+                Thank you, your order has been received, and being proessed.
+                Click <a th:href="@{/buyer/orders}"> here.. </a> to view list of all your orders
             </div>
         </div>
 
         <div th:if="${buyerOrdersURL}">
-            <div th:if="${orderCancelled}" class="alert alert-success">Your Order has been cancelled successfully!</div>
+            <div th:if="${orderCancelled}" class="alert alert-success">
+                Your Order has been cancelled successfully!
+                Click <a th:href="@{/buyer/orders}"> here.. </a> to return to your list of orders
+            </div>
             <div th:if="${(buyerOrders.size() > 0)}">
             <table class="table table-bordered">
                 <thead>
+                <tr>
+                    <th colspan="8" style="text-align: center">TOTAL NUMBER OF COUPONS</th>
+                    <th th:text="${numberOfCoupons}" style="text-align: center"></th>
+                </tr>
                 <tr>
                     <th>Order #</th>
                     <th>Details</th>

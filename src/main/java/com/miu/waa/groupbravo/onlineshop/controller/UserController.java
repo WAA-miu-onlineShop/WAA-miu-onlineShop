@@ -54,6 +54,9 @@ public class UserController {
     @Autowired
     private OrderHistoryService orderHistoryService;
 
+    @Autowired
+    private CouponService couponService;
+
     @PostMapping("/buyer/order/pay/")
     public String makeOrderPayment(HttpServletRequest request){
         Long orderId = Long.parseLong(request.getParameter("orderId"));
@@ -227,7 +230,11 @@ public class UserController {
 
     @GetMapping("/buyer/orders")
     public String getBuyerOrders(RedirectAttributes redirectAttributes, Model model){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User buyer = userService.findByUsername(auth.getName());
+        BigDecimal points = couponService.findCouponByUser(buyer).getTotalPoint();
         redirectAttributes.addFlashAttribute("buyerOrders",getBuyerOrdersUtil());
+        redirectAttributes.addFlashAttribute("numberOfCoupons",points);
         redirectAttributes.addFlashAttribute("buyerOrdersURL",true);
         return "redirect:/buyer";
     }
