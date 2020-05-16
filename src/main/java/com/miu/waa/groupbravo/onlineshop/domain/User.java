@@ -8,6 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.List;
@@ -28,13 +29,14 @@ public class User extends  DomainClass{
     private String lastName;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Past(message = "The date of birth must be in the past")
     private LocalDate dob;
 
     @NotEmpty
-    @Size(min=4, max=20, message="{Size.User.username.validation}")
+    @Size(min=4, max=20, message="The username must be at least 4 characters")
     private String username;
     @Column(name = "password")
-    @Length(min = 5, message = "{Size.User.password.validation}" )
+    @Length(min = 5, message = "password must be at least 5 characters" )
     @NotEmpty
     private String password;
 
