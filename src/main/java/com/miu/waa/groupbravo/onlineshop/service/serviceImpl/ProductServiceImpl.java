@@ -55,7 +55,7 @@ public class ProductServiceImpl implements ProductService {
             ProductCategory productCategory=productCategoryRepository.findById(product.getProductCategory().getId()).get();
             product.setProductNumber(productNumber);
             product.setProductCategory(productCategory);
-            product.setProductStatus(EProductStatus.NEW);
+            product.setProductStatus(EProductStatus.AVAILABLE);
             product.setSeller(getUser());
             productCategory.setQuantityAvailable(productCategory.getQuantityAvailable().add(BigDecimal.valueOf(1)));
             if(product.getMultipartFile()!=null){
