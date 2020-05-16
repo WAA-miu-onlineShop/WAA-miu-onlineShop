@@ -67,6 +67,9 @@ public class LoginController {
 
     @RequestMapping("/buyer")
     public String mainBuyerPage(Model model, RedirectAttributes redirectAttributes) {
+//        List<Following> follow = new ArrayList<>();
+//        model.addAttribute("myFollowings",follow);
+
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User buyer = userService.findByUsername(auth.getName());
         Long userId = buyer.getId();

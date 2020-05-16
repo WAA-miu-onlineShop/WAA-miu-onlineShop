@@ -101,6 +101,30 @@
         </nav>
 
         <h2 class="mb-4">Welcome <span sec:authentication="name"></span></h2>
+        <div th:if="${getFollowingsURL}">
+            <div th:if="${myFollowings.size() > 0}">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Seller</th>
+                        <th>Date</th>
+                        <th>Is following</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="following: ${myFollowings}">
+                        <td th:text="${following.seller.firstName +' '+ following.seller.lastName}"></td>
+                        <td th:text="${following.date}"></td>
+                        <td th:text="${following.follow}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div th:unless="${myFollowings.size() > 0}" class="alert alert-info">
+                You are not following any seller at the moment. Click Follow seller button to start following
+            </div>
+
+        </div>
         <div th:if="${orderHistoryDetailsURL}">
             <table class="table table-bordered">
                 <thead>
@@ -178,7 +202,7 @@
                                     <input placeholder="Enter Payment" class="form-control" type="hidden" name="orderId" th:value="${order.id}" readonly/>
                                 </div>
                                 <div>
-                                    <input class="btn btn-success" type="submit" value="Save" name="payBtn"/>
+                                    <input class="btn btn-success" type="submit" value="Pay" name="payBtn"/>
                                 </div>
                             </form>
                         </div>

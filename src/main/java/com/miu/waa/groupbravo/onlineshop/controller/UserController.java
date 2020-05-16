@@ -98,7 +98,7 @@ public class UserController {
         statusList.add(EOrderStatus.ON_THE_WAY);
         statusList.add(EOrderStatus.CANCELLED);
         statusList.add(EOrderStatus.SHIPPED);
-
+        statusList.add(EOrderStatus.DELIVERED);
         List<Order> sellerOrders = orderService.findOrderBySellerAndStatus(seller,statusList);
 
 //        model.addAttribute("sellerOrders",sellerOrders);
@@ -110,10 +110,12 @@ public class UserController {
     }
 
     @GetMapping("/buyer/followership")
-    public String getBuyerFollowership(){
+    public String getBuyerFollowership(RedirectAttributes redirectAttributes){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User buyer = userService.findByUsername(auth.getName());
-
+        List<Following> followings = followService.findFollowingsByBuyer(buyer);
+        redirectAttributes.addFlashAttribute("myFollowings",followings);
+        redirectAttributes.addFlashAttribute("getFollowingsURL",true);
         return "redirect:/buyer";
     }
 
@@ -183,6 +185,7 @@ public class UserController {
         statusList.add(EOrderStatus.ON_THE_WAY);
         statusList.add(EOrderStatus.CANCELLED);
         statusList.add(EOrderStatus.SHIPPED);
+        statusList.add(EOrderStatus.DELIVERED);
         List<Order> buyerOrders = orderService.findOrderByBuyerAndStatus(buyer,statusList);
         return buyerOrders;
     }
