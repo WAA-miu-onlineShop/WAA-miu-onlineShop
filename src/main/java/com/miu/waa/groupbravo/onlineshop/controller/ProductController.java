@@ -22,6 +22,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class ProductController {
@@ -172,6 +173,19 @@ public class ProductController {
         redirectAttributes.addFlashAttribute("productReviewsApprovalURL",true);
         return "redirect:/admin";
     }
+
+    @GetMapping("/buyer/view/product/reviews")
+    public String viewAllProductReviews(RedirectAttributes redirectAttributes){
+        redirectAttributes.addFlashAttribute("approvedProductReviews",
+                reviewService.findAllReviews()
+                                .stream()
+                                .filter(review->review.getReviewStatus().compareTo(EReviewStatus.APPROVED)==0)
+                                .collect(Collectors.toList())
+        );
+        redirectAttributes.addFlashAttribute("approvedProductReviewsURL",true);
+        return "redirect:/buyer";
+    }
+
 
 
 
