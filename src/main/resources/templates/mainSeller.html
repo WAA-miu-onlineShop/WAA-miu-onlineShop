@@ -235,16 +235,16 @@
                             <td th:text="${product.productCategory.name}"></td>
                             <td th:text="${product.getProductStatus().getStatus()}"></td>
                             <td><img width="100px;" height="100px;" th:src="@{'/images/'+${product.file}}"/></td>
-                            <td th:if="${product.getProductStatus().getStatus() == 'New'}">
+                            <td th:if="${product.getProductStatus().getStatus() == 'Available'}">
                                 <a th:href="@{'/seller/product/updateDetails/' + ${product.id}}">Edit</a>
                             </td>
-                            <td th:unless="${product.getProductStatus().getStatus() == 'New'}">
+                            <td th:unless="${product.getProductStatus().getStatus() == 'Available'}">
 
                             </td>
-                            <td th:if="${product.getProductStatus().getStatus() == 'New'}">
+                            <td th:if="${product.getProductStatus().getStatus() == 'Available'}">
                                 <a th:href="@{'/seller/product/delete/' + ${product.id}}">Delete</a>
                             </td>
-                            <td th:unless="${product.getProductStatus().getStatus() == 'New'}">
+                            <td th:unless="${product.getProductStatus().getStatus() == 'Available'}">
 
                             </td>
 
