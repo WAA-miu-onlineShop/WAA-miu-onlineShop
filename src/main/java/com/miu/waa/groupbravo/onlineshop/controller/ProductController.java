@@ -158,6 +158,21 @@ public class ProductController {
         return "redirect:/buyer";
     }
 
+    @GetMapping("/admin/product/reviews")
+    public String getProductReviews(RedirectAttributes redirectAttributes){
+        redirectAttributes.addFlashAttribute("productReviews",reviewService.findAllReviews());
+        redirectAttributes.addFlashAttribute("productReviewsURL",true);
+        return "redirect:/admin";
+    }
+
+    @GetMapping("/admin/approve/product/review/{reviewId}")
+    public String approveProductReview(@PathVariable Long reviewId, RedirectAttributes redirectAttributes){
+        Review review = reviewService.findReviewById(reviewId);
+        reviewService.approveReview(review);
+        redirectAttributes.addFlashAttribute("productReviewsApprovalURL",true);
+        return "redirect:/admin";
+    }
+
 
 
 }

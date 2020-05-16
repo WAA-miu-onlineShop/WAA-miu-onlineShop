@@ -36,7 +36,7 @@
           </li>
 
           <li>
-            <a href="#" id="top5Items">Top 5 Menu Items</a>
+            <a href="#" th:href="@{/admin/product/reviews}">Product Reviews</a>
           </li>
           <li>
             <a href="#" id="nutritionalFacts">Nutritional Facts</a>
@@ -101,6 +101,51 @@
       <p>Welcome to Pick Bravo Online Shop, a place where you can buy and sell products. Register as a seller or buyer
         to get started and join the millions of other people already enjoying our services</p>
       <p>Contact the administrator for any queries regarding this online shop</p>
+
+      <div th:if="${productReviewsApprovalURL}">
+        <div class="alert alert-info">
+          The review has been approved successfully
+          <a th:href="@{/admin/product/reviews}"> Click here.. </a> to approve go back to list of reviews
+        </div>
+      </div>
+
+      <div th:if="${productReviewsURL}">
+        <div th:if="${productReviews.size() > 0}">
+          <table class="table table-bordered">
+            <thead>
+            <tr>
+              <th>Date</th>
+              <th>Product</th>
+              <th>Review</th>
+              <th>Reviewed By</th>
+              <th>Seller</th>
+              <th>Status</th>
+              <th colspan="2">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="review: ${productReviews}">
+              <td th:text="${review.reviewDate}"></td>
+              <td th:text="${review.product.name + ': ' +
+              review.product.serialNumber}"></td>
+              <td th:text="${review.description}"></td>
+              <td th:text="${review.buyer.firstName + ' '+
+              review.buyer.lastName}"></td>
+              <td th:text="${review.product.seller.firstName + ' '+review.product.seller.lastName}"></td>
+              <td th:text="${review.reviewStatus.status}"></td>
+              <td th:if="${review.reviewStatus.status.trim().toLowerCase().equals('new')}">
+                <a th:href="@{'/admin/approve/product/review/' + ${review.id}}">Approve</a>
+              </td>
+              <td th:unless="${review.reviewStatus.status.trim().toLowerCase().equals('new')}">
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div th:unless="${productReviews.size() > 0}" class="alert alert-success">
+          No product Reviews have been posted yet
+        </div>
+      </div>
 
       <div>
         <div th:if="${sellers.size() > 0}">

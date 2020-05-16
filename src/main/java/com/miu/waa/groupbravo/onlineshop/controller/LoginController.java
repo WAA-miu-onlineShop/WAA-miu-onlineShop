@@ -60,6 +60,8 @@ public class LoginController {
 
     @RequestMapping("/admin")
     public String mainAdminPage(Model model) {
+//        List<Review> productReviews = new ArrayList<>();
+//        model.addAttribute("productReviews",productReviews);
         List<User> sellers = new ArrayList<>();
         model.addAttribute("sellers",sellers);
         return "mainAdmin";

@@ -5,21 +5,28 @@ create table if not exists persistent_logins (
   last_used timestamp not null
   );
 
-//USERROLE
+-- //USERROLE
 
 INSERT INTO UserRole (ID, VERSION, NAME, DESCRIPTION, ROLE_TYPE) VALUES (1,1, 'ADMIN','This is the administrator','ADMIN');
 INSERT INTO UserRole  (ID, VERSION, NAME, DESCRIPTION, ROLE_TYPE) VALUES (2,1, 'SELLER','This is the Seller','SELLER');
 INSERT INTO UserRole   (ID, VERSION, NAME, DESCRIPTION, ROLE_TYPE) VALUES (3,1, 'BUYER','This is the buyer','BUYER');
 
-//USER
+-- //USER
 
-INSERT INTO User (id, version, firstName, lastName, username, password, user_role_id) VALUES(121, 1, 'Moses', 'Wasswa', 'mwasswa', '$2a$10$kAsVIEI4C0xcEp2abBVM.uzrsfe94lWMAb2wy8pF9jB5031cJWwIy', 1);
-INSERT INTO User (id, version, firstName, lastName, username, password, user_status,user_number, user_role_id) VALUES(122, 1, 'Elias', 'Rurangwa', 'erurangwa', '$2a$10$kAsVIEI4C0xcEp2abBVM.uzrsfe94lWMAb2wy8pF9jB5031cJWwIy','APPROVED','US001',2);
-INSERT INTO User (id, version, firstName, lastName, username, password, user_role_id) VALUES(123, 1, 'Jirom', 'Jirom', 'jirom', '$2a$10$kAsVIEI4C0xcEp2abBVM.uzrsfe94lWMAb2wy8pF9jB5031cJWwIy',3);
-INSERT INTO User (id, version, firstName, lastName, username, password, user_role_id) VALUES(124, 1, 'Erik', 'Erik', 'erik', '$2a$10$kAsVIEI4C0xcEp2abBVM.uzrsfe94lWMAb2wy8pF9jB5031cJWwIy',3);
-INSERT INTO User (id, version, firstName, lastName, username, password, user_status,user_number, user_role_id) VALUES(125, 1, 'Moses', 'Wasswa', 'mwseller', '$2a$10$kAsVIEI4C0xcEp2abBVM.uzrsfe94lWMAb2wy8pF9jB5031cJWwIy','APPROVED','US002',2);
+-- INSERT INTO User (id, version, firstName, lastName, username, password, user_role_id)
+-- VALUES(121, 1, 'Moses1', 'Wasswa1', 'mwasswa', '$2a$10$kAsVIEI4C0xcEp2abBVM.uzrsfe94lWMAb2wy8pF9jB5031cJWwIy', 1);
+INSERT INTO User (id, version, firstName, lastName, username, password, user_status,user_number, user_role_id)
+VALUES(122, 1, 'Elias', 'Rurangwa', 'erurangwa', '$2a$10$kAsVIEI4C0xcEp2abBVM.uzrsfe94lWMAb2wy8pF9jB5031cJWwIy','APPROVED','US001',2);
+INSERT INTO User (id, version, firstName, lastName, username, password, user_role_id)
+VALUES(123, 1, 'Jirom', 'Jirom', 'jirom', '$2a$10$kAsVIEI4C0xcEp2abBVM.uzrsfe94lWMAb2wy8pF9jB5031cJWwIy',3);
+INSERT INTO User (id, version, firstName, lastName, username, password, user_role_id)
+VALUES(124, 1, 'Erik', 'Erik', 'erik', '$2a$10$kAsVIEI4C0xcEp2abBVM.uzrsfe94lWMAb2wy8pF9jB5031cJWwIy',3);
+INSERT INTO User (id, version, firstName, lastName, username, password, user_status,user_number, user_role_id)
+VALUES(126, 1, 'Moses', 'Wasswa', 'mwseller', '$2a$10$kAsVIEI4C0xcEp2abBVM.uzrsfe94lWMAb2wy8pF9jB5031cJWwIy','APPROVED','US002',2);
+INSERT INTO User (id, version, firstName, lastName, username, password, user_role_id)
+VALUES(127, 1, 'MosesTest', 'MosesTest', 'moseswasswa', '$2a$10$kAsVIEI4C0xcEp2abBVM.uzrsfe94lWMAb2wy8pF9jB5031cJWwIy',1);
 
-//PRODUCT_CATEGORY
+-- //PRODUCT_CATEGORY
 
 INSERT INTO product_category (id,version, description, name, quantity_available, quantity_purchased, seller_id)
 VALUES(371,1,'Electronic Devices phones', 'Phones',100,20,122);
@@ -50,7 +57,7 @@ INSERT INTO Product (ID, VERSION,DESCRIPTION,FILE,NAME,PRODUCT_NUMBER,PRODUCT_ST
 VALUES (437,1, 'Dell Laptop with webcam','File not found','Dell Lattitude','PR72020','AVAILABLE','SN7',600,375,122);
 
 
-//ADDRESS
+-- //ADDRESS
 INSERT INTO ADDRESS (ID, VERSION,ADDRESS_ROLE,CITY,STATE,STREET,ZIP_CODE,USER_ID)
 VALUES (503,1,'SHIPPING','Ottumwa','IA','2024 W 10TH ST',53661,123);
 INSERT INTO ADDRESS (ID, VERSION,ADDRESS_ROLE,CITY,STATE,STREET,ZIP_CODE,USER_ID)
@@ -59,7 +66,7 @@ INSERT INTO ADDRESS (ID, VERSION,ADDRESS_ROLE,CITY,STATE,STREET,ZIP_CODE,USER_ID
 VALUES (505,1,'BILLING','Iowa city','IA','2222 N 33TH ST',52373,122);
 
 
-//orders
+-- //orders
 
 INSERT INTO Orders (ID, VERSION,COUPONS,ORDER_NUMBER,ORDER_STATUS,TOTAL_AMOUNT,BUYER_ID,SHIPPING_ADDRESS_ID)
 VALUES (661,1, 1.00,'OR12020','NEW',1000.00,123,503);
@@ -71,7 +78,7 @@ INSERT INTO Orders (ID, VERSION,COUPONS,ORDER_NUMBER,ORDER_STATUS,TOTAL_AMOUNT,B
 VALUES (664,1, 1.00,'OR42020','PAID',100.00,124,504);
 
 
-//ORDER_LINE
+-- //ORDER_LINE
 
 INSERT INTO ORDER_LINE (ID, VERSION,AMOUNT,DESCRIPTION,QUANTITY,ORDER_ID,PRODUCT_ID)
 VALUES (711,1,1000.00,'Samsung Galaxy Smartphone with both cameras',3.00,661,432);
@@ -80,7 +87,7 @@ VALUES (712,2,2000.00,'Sneakers for running and jogging',1.00,662,435);
 INSERT INTO ORDER_LINE (ID, VERSION,AMOUNT,DESCRIPTION,QUANTITY,ORDER_ID,PRODUCT_ID)
 VALUES (714,1,100.00,'Refregilators for multipurpose use',1.00,664,436);
 
-//ORDER_HISTORY
+-- //ORDER_HISTORY
 INSERT INTO ORDER_HISTORY (ID, VERSION,DESCRIPTION,HISTORY_DATE,ORDER_STATUS,ORDER_ID,USER_ID)
 VALUES (841,1,'Samsung Galaxy ','2020-05-14','NEW',661,123);
 INSERT INTO ORDER_HISTORY (ID, VERSION,DESCRIPTION,HISTORY_DATE,ORDER_STATUS,ORDER_ID,USER_ID)
@@ -88,7 +95,7 @@ VALUES (842,2,'Addidas Fast Sneakers ','2020-05-20','PAID',662,124);
 INSERT INTO ORDER_HISTORY (ID, VERSION,DESCRIPTION,HISTORY_DATE,ORDER_STATUS,ORDER_ID,USER_ID)
 VALUES (844,1,'Refrigulators for multipurpose use','2020-04-25','PAID',664,124);
 
-//COUPON
+-- //COUPON
 
 INSERT INTO COUPON(ID, VERSION,COUPON_NUMBER,TOTAL_POINT,BUYER_ID)
 VALUES (951,1,'CP12020',1,123);
@@ -98,7 +105,7 @@ INSERT INTO COUPON(ID, VERSION,COUPON_NUMBER,TOTAL_POINT,BUYER_ID)
 VALUES (953,1,'CP32020',2,124);
 
 
-//SEQUENCE
+-- //SEQUENCE
 
 INSERT INTO SEQUENCE_NUMBER  (ID, VERSION,SEQUENCE,TYPE)
 VALUES (1000,1,1000,'ORDER');
@@ -111,19 +118,19 @@ VALUES (1003,1,1000,'PRODUCT');
 INSERT INTO SEQUENCE_NUMBER  (ID, VERSION,SEQUENCE,TYPE)
 VALUES (1005,1,1000,'COUPON');
 
-//FOLLOWING
+-- //FOLLOWING
 INSERT INTO FOLLOWING  (ID, VERSION,DATE,FOLLOW,BUYER_ID,SELLER_ID)
 VALUES (1501,1,'2020-05-20','TRUE',124,122);
 INSERT INTO FOLLOWING  (ID, VERSION,DATE,FOLLOW,BUYER_ID,SELLER_ID)
 VALUES (1502,1,'2020-06-21','TRUE',123,122);
 
-//PAYMENT
+-- //PAYMENT
 INSERT INTO PAYMENT (ID, VERSION,PAID_AMOUNT,PAYMENT_NUMBER,ORDER_ID)
 VALUES (2000,1,500.00,'PM12020',662);
 INSERT INTO PAYMENT (ID, VERSION,PAID_AMOUNT,PAYMENT_NUMBER,ORDER_ID)
 VALUES (2001,1,100.00,'PM42020',664);
 
-//REVIEW
+-- //REVIEW
 
 INSERT INTO REVIEW (ID, VERSION,DESCRIPTION,REVIEW_STATUS,BUYER_ID,PRODUCT_ID)
 VALUES (2500,1,'I really like the sneakers,they are good quality','Approved',124,435);
