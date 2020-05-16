@@ -339,7 +339,7 @@
         <div th:unless="${buyerOrdersURL}">
             <p>Welcome to Bravo Online Shop, a place where you can buy and sell products. Register as a seller or buyer
             to get started and join the millions of other people already enjoying our services</p>
-            <p>Contact the administrator for any queries regarding this online shop</p>
+            <div class="alert alert-info">You must provide both Shipping and Billing Address before you can place an order</div>
             <div th:if="${followingAction}" class="alert alert-success">
                 Thank you! Your seller follwership has been updated accordingly.
                 <span><a th:href="@{/buyer/followership}">Click here</a>to view these changes</span>

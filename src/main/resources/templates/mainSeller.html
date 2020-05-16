@@ -93,7 +93,7 @@
         <h2 class="mb-4">Welcome <span sec:authentication="name" id="usernameDisplay"></span></h2>
         <p>Welcome to Pick Bravo Online Shop, a place where you can buy and sell products. Register as a seller or buyer
             to get started and join the millions of other people already enjoying our services</p>
-        <p>Contact the administrator for any queries regarding this online shop</p>
+        <div class="alert alert-info">If you're newly registered, you will only register products after administrator approves your account</div>
         <hr/>
         <div th:if="${sellerOrdersURL}">
             <div th:if="${sellerOrders.size() > 0}">
@@ -234,8 +234,14 @@
                             <td th:if="${product.getProductStatus().getStatus() == 'New'}">
                                 <a th:href="@{'/seller/product/updateDetails/' + ${product.id}}">Edit</a>
                             </td>
+                            <td th:unless="${product.getProductStatus().getStatus() == 'New'}">
+
+                            </td>
                             <td th:if="${product.getProductStatus().getStatus() == 'New'}">
                                 <a th:href="@{'/seller/product/delete/' + ${product.id}}">Delete</a>
+                            </td>
+                            <td th:unless="${product.getProductStatus().getStatus() == 'New'}">
+
                             </td>
 
                         </tr>

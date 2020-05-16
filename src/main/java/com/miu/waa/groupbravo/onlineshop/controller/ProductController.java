@@ -54,8 +54,6 @@ public class ProductController {
         return userController.checkSellerApproval(model);
     }
 
-
-
     @PostMapping("/seller/product/update")
     public String updateProduct(@Valid @ModelAttribute("productDetails") Product product, BindingResult bindingResult, Model model) {
         if(bindingResult.hasErrors()){
