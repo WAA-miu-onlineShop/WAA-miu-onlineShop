@@ -106,7 +106,7 @@ public class ProductServiceImpl implements ProductService {
       }
         return user;
     }
-    @PreAuthorize("hasAuthority('ROLE_SELLER')")
+    @PreAuthorize("hasAuthority('SELLER')")
     @Override
     public void deleteProduct(Product product) {
         if(product.getProductStatus().compareTo(EProductStatus.NEW)==0||product.getProductStatus().compareTo(EProductStatus.AVAILABLE)==0) {
@@ -115,7 +115,7 @@ public class ProductServiceImpl implements ProductService {
              new BravoException("You can  neither delete a  new nor available product");
         }
     }
-    @PreAuthorize("hasAuthority('ROLE_SELLER')")
+    @PreAuthorize("hasAuthority('SELLER')")
     @Override
     public Product updateProduct(Product product) {
         ProductCategory productCategory=productCategoryRepository.findById(product.getProductCategory().getId()).get();
