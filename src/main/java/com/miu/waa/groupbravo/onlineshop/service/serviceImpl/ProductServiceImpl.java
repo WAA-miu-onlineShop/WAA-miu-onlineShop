@@ -11,6 +11,7 @@ import com.miu.waa.groupbravo.onlineshop.service.ProductService;
 import com.miu.waa.groupbravo.onlineshop.service.SequenceNumberService;
 import com.miu.waa.groupbravo.onlineshop.utils.SecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -45,6 +47,7 @@ public class ProductServiceImpl implements ProductService {
      this.productCategoryRepository=productCategoryRepository;
      this.userRepository=userRepository;
     }
+    @PreAuthorize("hasAuthority('SELLER')")
     @Override
     public Product addProduct(Product product) {
         if(product.isNew()){
@@ -52,7 +55,7 @@ public class ProductServiceImpl implements ProductService {
             ProductCategory productCategory=productCategoryRepository.findById(product.getProductCategory().getId()).get();
             product.setProductNumber(productNumber);
             product.setProductCategory(productCategory);
-            product.setProductStatus(EProductStatus.NEW);
+            product.setProductStatus(EProductStatus.AVAILABLE);
             product.setSeller(getUser());
             productCategory.setQuantityAvailable(productCategory.getQuantityAvailable().add(BigDecimal.valueOf(1)));
             if(product.getMultipartFile()!=null){
@@ -103,6 +106,7 @@ public class ProductServiceImpl implements ProductService {
       }
         return user;
     }
+    @PreAuthorize("hasAuthority('SELLER')")
     @Override
     public void deleteProduct(Product product) {
         if(product.getProductStatus().compareTo(EProductStatus.NEW)==0||product.getProductStatus().compareTo(EProductStatus.AVAILABLE)==0) {
@@ -111,7 +115,7 @@ public class ProductServiceImpl implements ProductService {
              new BravoException("You can  neither delete a  new nor available product");
         }
     }
-
+    @PreAuthorize("hasAuthority('SELLER')")
     @Override
     public Product updateProduct(Product product) {
         ProductCategory productCategory=productCategoryRepository.findById(product.getProductCategory().getId()).get();
