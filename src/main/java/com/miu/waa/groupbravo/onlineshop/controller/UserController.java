@@ -6,6 +6,7 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.miu.waa.groupbravo.onlineshop.domain.*;
 import com.miu.waa.groupbravo.onlineshop.service.*;
+import com.miu.waa.groupbravo.onlineshop.utils.NumberToWordsConverter;
 import org.dom4j.rule.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
@@ -95,6 +96,38 @@ public class UserController {
 
     }
     ///
+    public static PdfPTable getFooter(BigDecimal totalAmount){
+        PdfPTable table = new PdfPTable(2);
+        try {
+
+            table.setWidthPercentage(80);
+            table.setWidths(new int[]{4, 8});
+
+            Font headFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
+
+            PdfPCell hcell;
+            hcell = new PdfPCell(new Phrase("Amount", headFont));
+            hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(hcell);
+
+            hcell = new PdfPCell(new Phrase(String.valueOf(totalAmount), headFont));
+            hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(hcell);
+
+            hcell = new PdfPCell(new Phrase("Amount", headFont));
+            hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(hcell);
+
+            hcell = new PdfPCell(new Phrase(new NumberToWordsConverter().convert(totalAmount.longValue()), headFont));
+            hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(hcell);
+
+
+        }catch(DocumentException ex){
+            //write in log file
+        }
+     return table;
+    }
     public static ByteArrayInputStream generateOrderReport(Order order) {
 
         Document document = new Document();
@@ -129,6 +162,7 @@ public class UserController {
             hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
 
             table.addCell(hcell);
+            BigDecimal totalInvoice=BigDecimal.ZERO;
 
             for (OrderLine orderLine : order.getOrderLineList()) {
 
@@ -157,6 +191,7 @@ public class UserController {
                 table.addCell(cell);
               //  cell.setPaddingRight(5);
                  BigDecimal totalOrderLine=orderLine.getQuantity().multiply(orderLine.getAmount());
+                totalInvoice=totalInvoice.add(totalOrderLine);
                 cell = new PdfPCell(new Phrase(String.valueOf(totalOrderLine.toString())));
                 cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
                 cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
@@ -164,11 +199,10 @@ public class UserController {
                 table.addCell(cell);
                 count++;
             }
-
             PdfWriter.getInstance(document, out);
             document.open();
             document.add(table);
-
+            document.add(getFooter(totalInvoice));
             document.close();
 
         } catch (DocumentException ex) {
