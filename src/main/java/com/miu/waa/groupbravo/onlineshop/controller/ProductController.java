@@ -66,10 +66,12 @@ public class ProductController {
     }
 
     @PostMapping("/seller/product/update")
-    public String updateProduct(@Valid @ModelAttribute("productDetails") Product product, BindingResult bindingResult, Model model) {
-        if(bindingResult.hasErrors()){
+    public String updateProduct(@Valid @ModelAttribute("productDetails") Product product, BindingResult bindingResult, Model model,HttpServletRequest request) {
+/*        if(bindingResult.hasErrors()){
             return userController.checkSellerApproval(model);
-        }
+        }*/
+        String rootDirectory = request.getSession().getServletContext().getContextPath();
+        product.setFile(rootDirectory);
         productService.updateProduct(product);
         return userController.checkSellerApproval(model);
     }
