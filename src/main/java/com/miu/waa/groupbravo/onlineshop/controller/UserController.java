@@ -1,12 +1,18 @@
 package com.miu.waa.groupbravo.onlineshop.controller;
 
 import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.miu.waa.groupbravo.onlineshop.domain.*;
 import com.miu.waa.groupbravo.onlineshop.service.*;
+import com.miu.waa.groupbravo.onlineshop.utils.NumberToWordsConverter;
 import org.dom4j.rule.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -17,8 +23,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -52,7 +61,7 @@ public class UserController {
         orderService.payOrder(orderService.findById(orderId));
         return "redirect:/buyer/orders";
     }
-
+/*
     @GetMapping(value = "/buyer/download/receipt/{orderId}", produces = MediaType.APPLICATION_PDF_VALUE)
     public void downloadReceipt(@PathVariable Long orderId,Model model) throws FileNotFoundException, DocumentException {
         Order order = orderService.getOrderById(orderId);
@@ -71,7 +80,142 @@ public class UserController {
         chunk.append("Total Amount for the receipt is: " + order.getTotalAmount());
         document.add(chunk);
         document.close();
+    }*/
+    @GetMapping(value = "/buyer/download/receipt/{orderId}", produces = MediaType.APPLICATION_PDF_VALUE)
+    ResponseEntity<InputStreamResource> downloadReceipt(@PathVariable Long orderId,Model model) throws FileNotFoundException, DocumentException {
+        Order order = orderService.getOrderById(orderId);
+        ByteArrayInputStream bis = generateOrderReport(order);
+        var headers = new HttpHeaders();
+        headers.add("Content-Disposition", "inline; filename=citiesreport.pdf");
+
+        return ResponseEntity
+                .ok()
+                .headers(headers)
+                .contentType(MediaType.APPLICATION_PDF)
+                .body(new InputStreamResource(bis));
+
     }
+    ///
+    public static PdfPTable getFooter(BigDecimal totalAmount){
+        PdfPTable table = new PdfPTable(2);
+        try {
+
+            table.setWidthPercentage(80);
+            table.setWidths(new int[]{4, 8});
+
+            Font headFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
+
+            PdfPCell hcell;
+            hcell = new PdfPCell(new Phrase("Amount", headFont));
+            hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(hcell);
+
+            hcell = new PdfPCell(new Phrase(String.valueOf(totalAmount), headFont));
+            hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(hcell);
+
+            hcell = new PdfPCell(new Phrase("Amount", headFont));
+            hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(hcell);
+
+            hcell = new PdfPCell(new Phrase(new NumberToWordsConverter().convert(totalAmount.longValue()), headFont));
+            hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(hcell);
+
+
+        }catch(DocumentException ex){
+            //write in log file
+        }
+     return table;
+    }
+    public static ByteArrayInputStream generateOrderReport(Order order) {
+
+        Document document = new Document();
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        try {
+           Integer count=1;
+            PdfPTable table = new PdfPTable(5);
+            table.setWidthPercentage(80);
+            table.setWidths(new int[]{1, 3, 3,3,3});
+
+            Font headFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
+
+            PdfPCell hcell;
+            hcell = new PdfPCell(new Phrase("No", headFont));
+            hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(hcell);
+
+            hcell = new PdfPCell(new Phrase("Product ", headFont));
+            hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(hcell);
+
+            hcell = new PdfPCell(new Phrase("Quantity", headFont));
+            hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
+
+            table.addCell(hcell);
+            hcell = new PdfPCell(new Phrase("Unity Price", headFont));
+            hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
+
+            table.addCell(hcell);
+
+            hcell = new PdfPCell(new Phrase("Total", headFont));
+            hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
+
+            table.addCell(hcell);
+            BigDecimal totalInvoice=BigDecimal.ZERO;
+
+            for (OrderLine orderLine : order.getOrderLineList()) {
+
+                PdfPCell cell;
+
+                cell = new PdfPCell(new Phrase(count.toString()));
+                cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                table.addCell(cell);
+
+                cell = new PdfPCell(new Phrase(orderLine.getProduct().getName()));
+               // cell.setPaddingLeft(5);
+                cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                cell.setHorizontalAlignment(Element.ALIGN_LEFT);
+                table.addCell(cell);
+
+                cell = new PdfPCell(new Phrase(String.valueOf(orderLine.getQuantity())));
+                cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
+                table.addCell(cell);
+             //   cell.setPaddingRight(5);
+
+                cell = new PdfPCell(new Phrase(String.valueOf(orderLine.getAmount())));
+                cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
+                table.addCell(cell);
+              //  cell.setPaddingRight(5);
+                 BigDecimal totalOrderLine=orderLine.getQuantity().multiply(orderLine.getAmount());
+                totalInvoice=totalInvoice.add(totalOrderLine);
+                cell = new PdfPCell(new Phrase(String.valueOf(totalOrderLine.toString())));
+                cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
+                cell.setPaddingRight(5);
+                table.addCell(cell);
+                count++;
+            }
+            PdfWriter.getInstance(document, out);
+            document.open();
+            document.add(table);
+            document.add(getFooter(totalInvoice));
+            document.close();
+
+        } catch (DocumentException ex) {
+
+           // logger.error("Error occurred: {0}", ex);
+        }
+
+        return new ByteArrayInputStream(out.toByteArray());
+    }
+
+
+
+    ///
 
     @GetMapping("/buyer/order/history/{orderId}")
     public String getOrderHistory(@PathVariable Long orderId, RedirectAttributes redirectAttributes){
