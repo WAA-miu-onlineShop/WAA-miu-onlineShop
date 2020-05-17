@@ -29,9 +29,6 @@
               <li>
                 <a href="#" id="approveSellerLink" th:href="@{/admin/manageSeller}">Manage Seller</a>
               </li>
-              <li>
-                <a href="#" id="menuLunch">Approve Buyer Review</a>
-              </li>
             </ul>
           </li>
 
@@ -74,19 +71,6 @@
               <li class="nav-item active">
                 <a class="nav-link" href="#">Home</a>
               </li>
-              <li class="nav-item">
-                <!-- <a class="nav-link" href="#">Place Order</a> -->
-                <button type="button" class="btn btn-outline-primary btn-nav-bar" data-toggle="modal"
-                  data-target="#exampleModal" id="placeOrderNavBtn">
-                  Approve Seller
-                </button>
-              </li>
-              <li class="nav-item">
-                        <!-- <a class="nav-link" href="#">Create Menu</a> -->
-                        <button id ="createMenuNavBtn" type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#menuModal">
-                        Approve Review
-                        </button>
-                    </li>
               <li class="nav-item">
                   <form method="post" th:action="@{/logout}">
                         <input type="submit" class="btn btn-outline-primary" data-toggle="modal" value="Sign Out"/>

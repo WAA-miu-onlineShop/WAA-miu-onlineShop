@@ -74,7 +74,7 @@
                         <li class="nav-item active">
                             <a class="nav-link" href="#">Home</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" th:if="${approved}">
                             <button type="button" class="btn btn-outline-primary btn-nav-bar" data-toggle="modal"
                                     data-target="#addProductModal" id="addProductNavBtn">
                                 Add Product
